@@ -1,0 +1,251 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: "Poppin";
+  src: url("/fonts/Poppins.ttf");
+}
+
+@font-face {
+  font-family: "FiraCode";
+  src: url("/fonts/FiraCode.ttf");
+}
+
+@font-face {
+  font-family: "Cario";
+  src: url("/fonts/Cairo-Light.ttf");
+}
+
+:root {
+  --dark1: #0c0c0c8c;
+  --bg1: #202022;
+  --bg2: #2d2e32;
+  --bg3: #25262a;
+  --gr1: #64f4ac;
+  --gr2: #64f4acea;
+  --gr3: rgb(100 244 172 / 0.7);
+  --grnbg1: #05ff82;
+  --grnbg2: #15eb80;
+  --grnbg3: rgb(3 252 128 / 0.4);
+  --white1: #fff;
+  --white2: #ccc;
+  --white3: rgb(129 129 129);
+  --red1: #ff0000;
+  --red2: rgb(255 0 0 / 0.4);
+
+  --poppin: Poppin;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  position: relative;
+  left: 0;
+  margin: 0;
+  min-height: 100vh;
+  width: 100%;
+  overflow-x: hidden;
+  font-family: var(--poppin), sans-serif;
+  color: var(--white1);
+  background: var(--bg1);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.navbar .right ul a:hover > .mail {
+  opacity: 1;
+}
+
+.navbar .right ul a .mail {
+  padding: 8px;
+  font-size: 30px;
+  background: var(--bg1);
+  color: var(--gr1);
+  border-radius: 50%;
+  opacity: 0.7;
+}
+
+.mobileNav {
+  width: 100%;
+  height: auto;
+  position: fixed;
+  left: 0;
+  bottom: -5px;
+  background: var(--bg3);
+  box-shadow: 0 0 4px #000;
+  z-index: 1000;
+  overflow: hidden;
+}
+
+.mobileNav .main {
+  width: 100%;
+  max-width: 500px;
+  max-height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0 auto;
+  padding: 0;
+}
+
+.mobileNav .main .li,
+.mobileNav .main .active {
+  display: flex;
+  list-style: none;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  transition: all 0.2s ease;
+  padding: 10px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.mobileNav .main li .icon {
+  font-size: 20px;
+  padding: 15px;
+  transition: all 0.2s ease;
+}
+
+.mobileNav .main .li .label {
+  font-size: 12px;
+  font-weight: 300;
+  transition: all 0.3s ease;
+  transform: translateY(100px);
+}
+
+.mobileNav .main .li:hover > .label {
+  transform: translateY(-2px);
+  color: var(--gr2);
+}
+
+.mobileNav .main .li:hover > .icon {
+  background: var(--bg1);
+  border-radius: 50%;
+  color: var(--gr2);
+}
+
+.mobileNav .main .active > .label {
+  font-size: 12px;
+  font-weight: 300;
+  transform: translateY(-2px);
+  color: var(--gr2);
+}
+
+.mobileNav .main .active > .icon {
+  padding: 7px;
+  background: var(--bg1);
+  border-radius: 50%;
+  color: var(--gr2);
+}
+
+.header .main {
+  width: 50%;
+  height: auto;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.header .main .img-cont {
+  position: relative;
+  z-index: 30;
+  box-shadow: 0 0 0 6px rgb(45 46 50 / 0.9);
+}
+
+.header .main .circleA,
+.header .main .circleB,
+.header .main .circleC {
+  width: 360px;
+  height: 360px;
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  border-radius: 50%;
+  z-index: 10;
+  pointer-events: none;
+}
+
+.header .circleA .langImgA {
+  width: 8vmin;
+  padding: 12px;
+  position: absolute;
+  top: 8px;
+  right: 46px;
+  background: var(--bg2);
+  border-radius: 50%;
+  box-shadow: 0 0 15px var(--bg1);
+  z-index: 10;
+  animation: cycleA 10s linear infinite;
+}
+
+.header .circleB .langImgB {
+  width: 12vmin;
+  padding: 15px;
+  position: absolute;
+  right: -36px;
+  bottom: 50px;
+  background: var(--bg2);
+  border-radius: 50%;
+  box-shadow: 0 0 15px var(--bg1);
+  z-index: 10;
+  animation: cycleB 10s linear infinite;
+}
+
+.header .circleC .langImgC {
+  width: 10vmin;
+  padding: 15px;
+  position: absolute;
+  left: -34px;
+  top: 86px;
+  background: var(--bg2);
+  border-radius: 50%;
+  box-shadow: 0 0 15px var(--bg1);
+  z-index: 10;
+  animation: cycleC 10s linear infinite;
+}
+
+@keyframes cycleA {
+  from {
+    transform: rotate(0deg) translateX(20px) rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg) translateX(20px) rotate(-360deg);
+  }
+}
+
+@keyframes cycleB {
+  from {
+    transform: rotate(360deg) translateX(20px) rotate(-360deg);
+  }
+  to {
+    transform: rotate(0deg) translateX(20px) rotate(0deg);
+  }
+}
+
+@keyframes cycleC {
+  from {
+    transform: rotate(0deg) translateX(20px) rotate(0deg);
+  }
+  to {
+    transform: rotate(-360deg) translateX(20px) rotate(360deg);
+  }
+}
+
+@media (max-width: 700px) {
+  .header .main {
+    display: none;
+  }
+}
