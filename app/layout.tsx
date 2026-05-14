@@ -6,20 +6,20 @@ import { resumeData } from "@/data/resume";
 
 export const metadata: Metadata = {
   title: {
-    default: `${resumeData.fullName} | ${resumeData.role}`,
-    template: `%s | ${resumeData.fullName}`,
+    default: resumeData.seoProfile.defaultTitle,
+    template: resumeData.seoProfile.titleTemplate,
   },
-  description: resumeData.profileSummary,
+  description: resumeData.seoProfile.description,
   openGraph: {
-    title: `${resumeData.fullName} | ${resumeData.role}`,
-    description: resumeData.profileSummary,
-    type: "website",
+    title: resumeData.seoProfile.defaultTitle,
+    description: resumeData.seoProfile.description,
+    type: resumeData.seoProfile.ogType,
     url: resumeData.socials.website,
   },
   twitter: {
     card: "summary_large_image",
-    title: `${resumeData.fullName} | ${resumeData.role}`,
-    description: resumeData.profileSummary,
+    title: resumeData.seoProfile.defaultTitle,
+    description: resumeData.seoProfile.description,
   },
 };
 

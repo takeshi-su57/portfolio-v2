@@ -15,11 +15,18 @@ interface ProjectsProps {
 
 export default function Projects({
   repos,
-  heading = "Latest Works",
+  heading = "Selected Product Work",
   showAllLink = true,
   featuredLimit = 6,
 }: ProjectsProps) {
-  const featuredProjects = resumeData.featuredProjects.slice(0, featuredLimit);
+  const featuredProjects: FeaturedProject[] =
+    resumeData.featuredProjects.slice(0, featuredLimit);
+  const hasFeaturedProjects = featuredProjects.length > 0;
+  const hasOpenSourceItems = repos.length > 0;
+
+  if (!hasFeaturedProjects && !hasOpenSourceItems) {
+    return null;
+  }
 
   return (
     <div className="projectCont relative top-[50px] mb-[50px] flex h-auto w-full flex-col items-center justify-center p-[10px]">
@@ -47,21 +54,30 @@ export default function Projects({
         )}
       </div>
 
-      <div className="projects mb-[50px] flex h-auto w-full flex-row flex-wrap items-center justify-between p-3">
-        {featuredProjects.map((project) => (
-          <ProjectCard key={project.title} project={project} />
-        ))}
-      </div>
+      {hasFeaturedProjects && (
+        <div className="projects mb-[50px] flex h-auto w-full flex-row flex-wrap items-center justify-between p-3">
+          {featuredProjects.map((project) => (
+            <ProjectCard key={project.title} project={project} />
+          ))}
+        </div>
+      )}
 
-      <div className="mb-5 mt-4 flex h-auto w-full flex-row flex-wrap items-center justify-between p-3">
-        {repos.length > 0 ? (
-          repos.slice(0, 3).map((repo) => <GithubRepoCard key={repo.id} repo={repo} />)
-        ) : (
-          <p className="text-white-300">
-            GitHub data is currently unavailable. Check back soon.
-          </p>
-        )}
-      </div>
+      {hasOpenSourceItems && (
+        <>
+          <div className="mb-2 mt-4 w-full px-3">
+            <h3 className="text-[16px] text-white-200">Open-Source Highlights</h3>
+            <p className="text-[12px] text-white-300">
+              Recent repositories from GitHub with stars and forks.
+            </p>
+          </div>
+
+          <div className="mb-5 mt-2 flex h-auto w-full flex-row flex-wrap items-center justify-between p-3">
+            {repos.slice(0, 3).map((repo) => (
+              <GithubRepoCard key={repo.id} repo={repo} />
+            ))}
+          </div>
+        </>
+      )}
     </div>
   );
 }
@@ -92,6 +108,11 @@ function ProjectCard({ project }: ProjectCardProps) {
               ? `${project.description.slice(0, 130)}...`
               : project.description}
           </small>
+          {project.outcome ? (
+            <p className="mt-3 border-l-2 border-l-green-200 pl-2 text-[11px] text-green-100">
+              Outcome: {project.outcome}
+            </p>
+          ) : null}
         </div>
 
         <br />
@@ -143,10 +164,10 @@ function GithubRepoCard({ repo }: GithubRepoCardProps) {
       <br />
       <div className="ratings absolute bottom-4 flex w-full flex-row items-start justify-start">
         <span className="mr-2 flex flex-row items-start justify-start">
-          <StatBadge title="stars" count={repo.stargazers_count} />
+          <StatBadge title="Stars" count={repo.stargazers_count} />
         </span>
         <span className="mr-2 flex flex-row items-start justify-start">
-          <StatBadge title="forks" count={repo.forks} />
+          <StatBadge title="Forks" count={repo.forks} />
         </span>
       </div>
 
@@ -156,7 +177,7 @@ function GithubRepoCard({ repo }: GithubRepoCardProps) {
         rel="noreferrer"
         className="absolute right-3 top-2 flex flex-row items-center"
       >
-        <small className="underline">View</small>
+        <small className="underline">View on GitHub</small>
         <FaArrowRight className="ml-2 text-[12px]" />
       </a>
     </div>
@@ -165,13 +186,13 @@ function GithubRepoCard({ repo }: GithubRepoCardProps) {
 
 interface StatBadgeProps {
   count: number;
-  title: "stars" | "forks";
+  title: "Stars" | "Forks";
 }
 
 function StatBadge({ count, title }: StatBadgeProps) {
   return (
     <>
-      {title === "stars" ? (
+      {title === "Stars" ? (
         <FaStar className="text-green-200" />
       ) : (
         <FaGithub className="text-green-200" />

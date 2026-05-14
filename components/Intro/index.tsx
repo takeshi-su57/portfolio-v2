@@ -1,19 +1,22 @@
 import Link from "next/link";
-import { FaWandMagicSparkles } from "react-icons/fa6";
 import { resumeData } from "@/data/resume";
-import type { SkillCard } from "@/types";
 
 export default function Intro() {
+  const introBio =
+    resumeData.bio?.[0] ??
+    "I build production-ready software with clear ownership across frontend, backend, and cloud delivery.";
+
   return (
-    <div className="relative top-[50px] mb-[100px] h-auto w-full p-0">
+    <div className="mb-[100px] mt-[50px] h-auto w-full p-0">
       <div className="flex w-full flex-wrap-reverse flex-row items-start justify-between">
         <div className="container relative h-auto w-full p-[10px] md:w-[50%]">
-          <IntroCards data={resumeData.skills} />
+          <ImpactMetrics />
+          <ServiceAreas />
         </div>
 
-        <div className="relative top-[20px] mb-[30px] h-auto w-full p-[10px] md:mb-0 md:w-[45%]">
+        <div className="mb-[30px] h-auto w-full p-[10px] md:mb-0 md:w-[45%]">
           <p className="text-[12px] text-white-200">Introduce</p>
-          <div className="relative top-[20px]">
+          <div className="mt-[20px]">
             <h1 data-aos="zoom-in-up" className="mb-[20px] text-[35px] font-bold">
               {resumeData.greetingType}, I&apos;m {resumeData.fullName}.
             </h1>
@@ -26,7 +29,7 @@ export default function Intro() {
             </p>
             <br />
             <p data-aos="fade-up" className="mb-5 text-[14px] text-white-200">
-              {resumeData.bio[0]}
+              {introBio}
             </p>
 
             <Link
@@ -43,35 +46,36 @@ export default function Intro() {
   );
 }
 
-interface IntroCardsProps {
-  data: SkillCard[];
-}
-
-function IntroCards({ data }: IntroCardsProps) {
+function ImpactMetrics() {
   return (
-    <>
-      {data.map((skill) => (
+    <div className="grid grid-cols-1 gap-3 md:grid-cols-2">
+      {resumeData.impactMetrics.map((metric) => (
         <div
           data-aos="zoom-in-up"
-          key={skill.name}
-          className="relative mt-4 h-[120px] w-full rounded-[5px] bg-dark-200 p-[20px] transition-all hover:shadow-2xl"
+          key={metric.label}
+          className="relative mt-2 h-auto w-full rounded-[5px] bg-dark-200 p-[20px] transition-all hover:shadow-2xl"
         >
-          <div className="flex flex-col items-start justify-start">
-            <p className="m-0 font-extrabold text-green-100">{skill.name}</p>
-            <span className="pt-[10px] text-[12px] text-white-300">
-              {skill.description}
-            </span>
-          </div>
-
-          <div className="absolute bottom-[10px]">
-            <span className="text-[14px] font-bold text-white-200 underline">
-              {skill.projectsCompleted}+ Projects
-            </span>
-          </div>
-
-          <FaWandMagicSparkles className="absolute right-[10px] top-[10px] p-[5px] text-green-400" />
+          <p className="text-[32px] font-extrabold text-green-100">{metric.value}</p>
+          <p className="pt-[8px] text-[12px] text-white-300">{metric.label}</p>
         </div>
       ))}
-    </>
+    </div>
+  );
+}
+
+function ServiceAreas() {
+  return (
+    <div className="mt-6">
+      {resumeData.serviceAreas.map((service) => (
+        <div
+          data-aos="zoom-in-up"
+          key={service.title}
+          className="relative mt-3 h-auto w-full rounded-[5px] border border-dark-100 bg-dark-200 p-[18px] transition-all hover:border-green-300"
+        >
+          <p className="m-0 font-extrabold text-green-100">{service.title}</p>
+          <p className="pt-[8px] text-[12px] text-white-300">{service.description}</p>
+        </div>
+      ))}
+    </div>
   );
 }

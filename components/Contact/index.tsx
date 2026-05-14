@@ -38,13 +38,15 @@ export default function Contact() {
   return (
     <div className="h-auto w-screen bg-dark-300 p-2 md:p-5">
       <Container>
-        <div className="mb-[20px] flex h-auto w-full flex-col items-start justify-start py-[50px] md:py-5">
+        <section
+          id="contact"
+          className="mb-[20px] flex h-auto w-full flex-col items-start justify-start py-[50px] md:py-5"
+        >
           <h1 data-aos="fade-right" className="text-[30px] font-thin">
             Let&apos;s Make The Impossible{" "}
             <span className="font-extrabold text-green-200">Possible.</span>
           </h1>
           <br />
-          <a id="contact" />
           <p data-aos="fade-right" className="text-[20px]">
             Start by{" "}
             <button
@@ -55,7 +57,12 @@ export default function Contact() {
               saying hi
             </button>
           </p>
-        </div>
+          <p className="mt-3 max-w-[680px] text-[13px] text-white-300">
+            Founders, recruiters, and Web3/AI teams are welcome. Share your goal,
+            timeline, and current constraints, and I&apos;ll respond with a practical
+            delivery path.
+          </p>
+        </section>
       </Container>
 
       <ContactForm contactActive={contactActive} closeContactForm={closeContactForm} />
@@ -63,6 +70,7 @@ export default function Contact() {
       <div className="fixed bottom-20 right-5 z-[100] flex flex-col items-center justify-center md:bottom-10">
         <button
           type="button"
+          aria-label="Open contact form"
           className="flex scale-[.80] flex-col items-center justify-center rounded-[50%] bg-dark-400 p-[12px] transition-all hover:scale-[.95]"
           onClick={openContactForm}
         >
@@ -147,8 +155,10 @@ function ContactForm({ contactActive, closeContactForm }: ContactFormProps) {
   return (
     <div className="w-screen">
       <div
-        className={`fixed bottom-[90px] right-1 z-[999] w-[380px] rounded-md bg-dark-300 px-3 shadow-xl transition-all md:bottom-[20px] md:right-5 md:w-[350px] ${
-          contactActive ? "h-[100vh] max-h-[450px]" : "h-0 overflow-hidden"
+        className={`fixed bottom-[90px] left-2 right-2 z-[999] w-auto rounded-md bg-dark-300 px-3 shadow-xl transition-all md:bottom-[20px] md:left-auto md:right-5 md:w-[350px] ${
+          contactActive
+            ? "h-auto max-h-[calc(100vh-120px)] overflow-y-auto md:max-h-[450px]"
+            : "h-0 overflow-hidden"
         }`}
       >
         <div className="relative flex w-full flex-row items-start justify-start">
@@ -156,6 +166,7 @@ function ContactForm({ contactActive, closeContactForm }: ContactFormProps) {
           <button
             type="button"
             onClick={closeContactForm}
+            aria-label="Close contact form"
             className={`absolute right-[-5px] top-[-16px] rounded-[50%] bg-red-900 p-2 text-[35px] text-red-200 ${
               contactActive ? "flex" : "hidden"
             }`}
@@ -169,7 +180,11 @@ function ContactForm({ contactActive, closeContactForm }: ContactFormProps) {
           onSubmit={sendMessage}
           className="flex w-full flex-col items-start justify-start"
         >
+          <label htmlFor="contact-name" className="sr-only">
+            Full name
+          </label>
           <input
+            id="contact-name"
             type="text"
             name="name"
             className="mb-4 w-full rounded-md bg-dark-100 px-2 py-[12px] outline-none"
@@ -178,7 +193,11 @@ function ContactForm({ contactActive, closeContactForm }: ContactFormProps) {
             onChange={handleInput}
           />
 
+          <label htmlFor="contact-email" className="sr-only">
+            Email address
+          </label>
           <input
+            id="contact-email"
             type="email"
             name="email"
             className="mb-4 w-full rounded-md bg-dark-100 px-2 py-[12px] outline-none"
@@ -187,7 +206,11 @@ function ContactForm({ contactActive, closeContactForm }: ContactFormProps) {
             onChange={handleInput}
           />
 
+          <label htmlFor="contact-message" className="sr-only">
+            Message
+          </label>
           <textarea
+            id="contact-message"
             cols={30}
             rows={5}
             name="message"

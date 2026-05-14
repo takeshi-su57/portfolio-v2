@@ -1,25 +1,95 @@
 import type { ResumeContent } from "@/types";
 
-export const resumeData: ResumeContent = {
+export const resumeData = {
   fullName: "Takeshi Suzuki",
-  role: "Senior Software Engineer",
-  tagLine: "Building web and Web3 products that scale with confidence.",
+  role: "Senior Full-Stack Engineer (AI, Web3)",
+  tagLine: "Senior full-stack engineer shipping AI and Web3 products from concept to scale.",
   introTagline:
-    "Senior software engineer with 8+ years across SaaS, fintech, and decentralized products.",
+    "I help founders and product teams turn ambitious ideas into production software across SaaS, Web3, and AI.",
   subTitle:
-    "Problem-solver with a can-do attitude and a strong record of shipping under tight timelines.",
+    "Role-first execution across frontend and backend with measurable delivery outcomes.",
   profileSummary:
-    "A senior software engineer with 8+ years of experience, proficient in Web and Blockchain development. Always ready to build new solutions and offer a practical engineering perspective.",
-  yearsOfExperience: 8,
+    "Senior full-stack engineer with a delivery track record in AI-enabled workflows, decentralized applications, and product engineering.",
+  yearsOfExperience: 7,
   greetingType: "Hi",
   favoriteQuote:
-    "Has spent the last decade learning and using the latest software tools and patterns to build great apps.",
+    "I focus on practical engineering systems that reduce delivery risk, accelerate roadmap velocity, and keep quality high as products scale.",
   githubUsername: "takeshi-su57",
   socials: {
     linkedin: "https://www.linkedin.com/in/takeshi-suzuki-449636248/",
     github: "https://github.com/takeshi-su57",
     email: "takeshisuz57@gmail.com",
-    website: "https://www.tizz.finance/",
+    website: "https://takeshi-suzuki.vercel.app",
+  },
+  audiencePaths: [
+    {
+      key: "founders",
+      label: "For Founders",
+      href: "/#contact",
+      description:
+        "Ship roadmap-critical features with a senior engineer who can own product delivery end-to-end.",
+    },
+    {
+      key: "recruiters",
+      label: "For Recruiters",
+      href: "/about",
+      description:
+        "Review concise experience highlights, delivery metrics, and production stack depth across modern web platforms.",
+    },
+    {
+      key: "web3_ai_teams",
+      label: "For Web3 + AI Teams",
+      href: "/projects",
+      description:
+        "Explore decentralized trading, data-heavy SaaS, and AI-ready architecture work delivered in production.",
+    },
+  ],
+  impactMetrics: [
+    {
+      value: "7+",
+      label: "Years delivering production products",
+    },
+    {
+      value: "5+",
+      label: "Cross-functional teams supported",
+    },
+    {
+      value: "100+",
+      label: "Features shipped across web and Web3",
+    },
+    {
+      value: "20+",
+      label: "Major launches and milestones delivered",
+    },
+  ],
+  serviceAreas: [
+    {
+      title: "Product Engineering",
+      description:
+        "Full-stack product delivery with TypeScript, React, Next.js, and Nest.js for reliable roadmap execution.",
+    },
+    {
+      title: "AI Agent Workflows",
+      description:
+        "Design and implementation of AI-assisted workflows, orchestration layers, and integrations for team productivity.",
+    },
+    {
+      title: "Web3 / DApp Engineering",
+      description:
+        "Frontend and backend systems for on-chain products, wallet flows, protocol integrations, and real-time trading UX.",
+    },
+    {
+      title: "Cloud / DevOps Delivery",
+      description:
+        "Infrastructure setup, CI/CD pipelines, observability, and performance tuning on AWS-first deployment stacks.",
+    },
+  ],
+  seoProfile: {
+    defaultTitle: "Takeshi Suzuki | Senior Full-Stack Engineer",
+    titleTemplate: "%s | Takeshi Suzuki",
+    description:
+      "Senior full-stack engineer for SaaS, Web3, and AI products. Product-minded execution across frontend, backend, and cloud delivery.",
+    ogType: "website",
   },
   skills: [
     {
@@ -48,185 +118,162 @@ export const resumeData: ResumeContent = {
     },
   ],
   bio: [
-    "I am a senior software engineer focused on product-minded execution, clean architecture, and measurable business impact.",
-    "Across startups and scale-up teams, I have delivered platforms in Web2 and Web3, improved performance, and mentored teams through complex builds.",
-    "My stack spans TypeScript, Next.js, React, Nest.js, Node.js, PostgreSQL, MongoDB, Solidity, and cloud-native delivery.",
+    "I am a senior full-stack engineer focused on turning product strategy into shipped software with clear delivery ownership.",
+    "Across startup and scale-up teams, I have built SaaS and Web3 products, integrated AI-capable workflows, and improved release confidence under tight timelines.",
+    "My core stack spans TypeScript, Next.js, React, Nest.js, Node.js, PostgreSQL, MongoDB, Solidity, and cloud-native deployment systems.",
   ],
-  featuredProjects: [
-    {
-      title: "Tizz Trade",
-      projectUrl: "https://www.tizz.finance/",
-      description:
-        "Built user-centric pages for a decentralized leveraged trading platform and improved platform stability through proactive issue resolution.",
-      tags: ["Next.js", "Tailwind CSS", "Wagmi", "Viem", "Nest.js"],
-    },
-    {
-      title: "UrbanMix Portfolio Platform",
-      projectUrl: "https://www.urbanmix.tech/",
-      description:
-        "Led delivery of a real-estate project and portfolio management platform in six months to support Series A outcomes.",
-      tags: ["TypeScript", "React", "Three.js", "Terraform", "Firebase"],
-    },
-    {
-      title: "Biblionexus Crowdsourcing Platform",
-      projectUrl: "https://biblionexus.org/",
-      description:
-        "Implemented a Crowdsourcing-as-a-Service platform and improved deployment quality with CI/CD using GitHub Actions and Docker.",
-      tags: ["Nest.js", "React", "PostgreSQL", "GraphQL", "AWS"],
-    },
-    {
-      title: "Blast.gg",
-      projectUrl: "https://www.techgropse.com/",
-      description:
-        "Led engineering for a Web3-enabled tournament platform with automatic leaderboards, brackets, and challenges.",
-      tags: ["TypeScript", "React", "Nest.js", "MongoDB", "Redis"],
-    },
-    {
-      title: "Gains.trade Frontend",
-      projectUrl: "https://gains.trade/",
-      description:
-        "Built a high-performance decentralized trading experience and optimized real-time charting with TradingView and socket data feeds.",
-      tags: ["Next.js", "TanStack Query", "Wagmi", "GraphQL", "Web3"],
-    },
-    {
-      title: "Symbiosis Finance UI",
-      projectUrl: "https://symbiosis.finance/",
-      description:
-        "Implemented production-grade Next.js UI from Figma while optimizing Core Web Vitals and AMM swap experience.",
-      tags: ["Next.js", "Tailwind CSS", "Redux", "Ethers.js", "Web3 Modal"],
-    },
-    {
-      title: "BidOut Platform",
-      projectUrl: "https://bidout.app/",
-      description:
-        "Delivered admin and RFx platform experiences with Nuxt.js, Vue3, and TypeScript under a four-month delivery window.",
-      tags: ["Vue3", "Nuxt.js", "TypeScript", "Nest.js", "MongoDB"],
-    },
-    {
-      title: "Bonzo and Woofz",
-      projectUrl: "https://getbonzo.com/",
-      description:
-        "Maintained and expanded a core SaaS product and delivered companion mobile experiences across iOS and Android.",
-      tags: ["TypeScript", "Vue", "React Native", "Kotlin", "Expo"],
-    },
-  ],
+  featuredProjects: [],
   employmentHistory: [
     {
-      title: "Web3 Full Stack Engineer",
-      company: "Tizz Finance",
-      companyUrl: "https://www.tizz.finance/",
-      period: "February 2024 - Present",
+      title: "Senior Full-Stack Engineer / Contract Developer",
+      company: "Freelance / Contract Software Engineer",
+      companyUrl: "https://takeshi-suzuki.vercel.app",
+      period: "Oct 2024 - Present",
       highlights: [
-        "Built user-centric trading pages with Next.js, Tailwind CSS, TanStack Query, Wagmi, and RainbowKit.",
-        "Identified and resolved platform issues to improve reliability and user experience.",
-        "Supported backend and smart-contract teams on complex production debugging.",
+        "Delivered 5+ contract engagements for startups, nonprofits, and independent product teams across full-stack, Web3, and AI-assisted development.",
+        "Worked directly with founders and technical leaders to define scope, architect MVP features, and ship launch-ready software.",
+        "Owned delivery from requirements through React/Next.js interfaces, Node.js/NestJS/Express APIs, databases, CI/CD, and cloud deployment workflows.",
       ],
       technologies: [
         "TypeScript",
+        "React",
         "Next.js",
+        "Node.js",
         "Nest.js",
-        "Viem",
-        "Wagmi",
-        "Prisma",
+        "Express.js",
+        "Python",
+        "PostgreSQL",
+        "MySQL",
+        "MongoDB",
         "Redis",
-        "Hardhat",
+        "Docker",
+        "GitHub Actions",
+        "AWS",
+        "GCP",
+        "LangChain",
+        "LangGraph",
+        "RAG",
+        "MCP",
       ],
     },
     {
-      title: "Lead Software Engineer",
-      company: "UrbanMix.Tech",
-      companyUrl: "https://www.urbanmix.tech/",
-      period: "August 2023 - January 2024",
+      title: "Senior Full-Stack Engineer, Web3 / DApp Development",
+      company: "Webisoft",
+      companyUrl: "https://webisoft.com",
+      period: "May 2023 - Oct 2024",
       highlights: [
-        "Delivered a real estate portfolio management platform in six months.",
-        "Led agile planning, task assignment, reviews, and deployment.",
-        "Automated cloud setup with Terraform and improved visualization performance using Three.js.",
+        "Contributed to DApp development for DeFi ecosystems including Gains Network, Velodrome, and Uniswap V2 fork-based applications.",
+        "Integrated wallet-connected flows and smart contract interactions with viem and wagmi on EVM networks.",
+        "Built Web3 UX and blockchain indexer functionality to connect frontend experiences with on-chain data workflows.",
       ],
       technologies: [
         "TypeScript",
         "React",
-        "Tailwind CSS",
-        "Three.js",
-        "Terraform",
-        "Firebase",
-        "Stripe",
+        "Next.js",
+        "Node.js",
+        "EVM",
+        "Solidity",
+        "viem",
+        "wagmi",
+        "Docker",
+        "GitHub Actions",
+        "AWS",
+        "GCP",
       ],
     },
     {
-      title: "Full Stack Engineer",
-      company: "Biblionexus",
-      companyUrl: "https://biblionexus.org/",
-      period: "April 2023 - July 2023",
+      title: "Full-Stack Engineer, SaaS / Automation Products",
+      company: "Webisoft",
+      companyUrl: "https://webisoft.com",
+      period: "May 2022 - Apr 2023",
       highlights: [
-        "Implemented a crowdsourcing platform with Nest.js and React.",
-        "Managed AWS infrastructure and CI/CD pipelines using GitHub Actions and Docker.",
-        "Improved database response time through indexing and normalization strategies.",
+        "Developed features for GetBonzo and LeadAction across SMS and email automation product workflows.",
+        "Implemented 100+ backend endpoints and APIs for automation, user management, integrations, and data operations.",
+        "Built 20+ custom UI components and 17+ application pages while supporting CI/CD, containerized development, monitoring, and cloud deployment.",
       ],
       technologies: [
         "TypeScript",
         "React",
+        "Node.js",
+        "Express.js",
         "Nest.js",
         "PostgreSQL",
-        "GraphQL",
-        "AWS",
-      ],
-    },
-    {
-      title: "Lead Full Stack and Web3 Engineer",
-      company: "TechGropse",
-      companyUrl: "https://www.techgropse.com/",
-      period: "August 2022 - February 2023",
-      highlights: [
-        "Led development of a Web3 and traditional gaming platform with automated brackets and leaderboards.",
-        "Designed scalable MongoDB data structures and REST APIs.",
-        "Built a dashboard that improved tournament operations and user workflows.",
-      ],
-      technologies: [
-        "TypeScript",
-        "React",
-        "Nest.js",
-        "MongoDB",
-        "Mongoose",
-        "Redis",
-        "AWS",
-      ],
-    },
-    {
-      title: "Full Stack Engineer",
-      company: "HiloLabs",
-      companyUrl: "https://hilolabs.com/",
-      period: "February 2019 - September 2020",
-      highlights: [
-        "Led Bonzo platform engineering for 1.5 years, improving stability and UX.",
-        "Delivered Woofz across PWA, iOS, and Android using React Native and native integrations.",
-        "Integrated third-party services to enable subscriptions, messaging workflows, and automation.",
-      ],
-      technologies: [
-        "TypeScript",
-        "Vue",
-        "React Native",
-        "Express.js",
-        "MongoDB",
-        "AWS",
-        "Stripe",
-        "Twilio",
-      ],
-    },
-    {
-      title: "Junior Software Developer",
-      company: "Senda Japan Ltd",
-      companyUrl: "https://sendajapan.com/",
-      period: "August 2015 - January 2018",
-      highlights: [
-        "Contributed to multiple high-traffic web and mobile products across eCommerce and media.",
-        "Built features with Python, Django, Node.js, and React to support millions of users.",
-      ],
-      technologies: [
-        "Python",
-        "Django",
-        "Node.js",
-        "React",
         "MySQL",
+        "MongoDB",
+        "Redis",
+        "Docker",
+        "Kubernetes",
+        "k3d",
+        "Grafana",
+        "Prometheus",
+        "GitHub Actions",
+        "AWS",
+        "GCP",
+        "Terraform",
+      ],
+    },
+    {
+      title: "Senior Full-Stack Engineer",
+      company: "Innovature.ai",
+      companyUrl: "https://innovature.ai",
+      period: "May 2020 - May 2022",
+      highlights: [
+        "Owned feature development across frontend interfaces, backend business logic, APIs, database workflows, and production infrastructure.",
+        "Built and maintained CRUD REST APIs with Express.js, TypeScript, and MySQL for core product functionality.",
+        "Collaborated across design and engineering to translate requirements into maintainable features and improve product stability.",
+      ],
+      technologies: [
+        "TypeScript",
+        "JavaScript",
+        "React",
+        "Node.js",
+        "Express.js",
+        "MySQL",
+        "GraphQL",
+        "REST APIs",
+        "Docker",
+        "CI/CD",
+        "Cloud Infrastructure",
+      ],
+    },
+    {
+      title: "Frontend Engineer",
+      company: "Innovature.ai",
+      companyUrl: "https://innovature.ai",
+      period: "Nov 2018 - May 2020",
+      highlights: [
+        "Specialized in frontend development, building production pages and reusable components from Figma designs.",
+        "Implemented feature tickets and bug fixes through Agile workflows.",
+        "Translated design specs into responsive user-facing interfaces and improved UI consistency with design collaboration.",
+      ],
+      technologies: [
+        "TypeScript",
+        "JavaScript",
+        "React",
+        "HTML",
+        "CSS",
+        "Figma",
+        "Responsive UI",
+      ],
+    },
+    {
+      title: "Junior Software Engineer",
+      company: "Innovature.ai",
+      companyUrl: "https://innovature.ai",
+      period: "Feb 2018 - Nov 2018",
+      highlights: [
+        "Contributed to assigned frontend and backend development tasks across feature delivery, bug fixes, and maintenance.",
+        "Gained hands-on experience with TypeScript, Express.js, MySQL, frontend implementation, and REST API development.",
+        "Worked closely with senior engineers to learn production engineering practices and full-stack workflows.",
+      ],
+      technologies: [
+        "TypeScript",
+        "JavaScript",
+        "Express.js",
+        "MySQL",
+        "REST APIs",
+        "Git",
+        "Agile Development",
       ],
     },
   ],
@@ -235,4 +282,14 @@ export const resumeData: ResumeContent = {
     "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",
     "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg",
   ],
-};
+  coreCompetencies: [
+    "Python",
+    "Golang",
+    "NestJS",
+    "OpenAI API",
+    "Claude Code",
+    "Next.js",
+    "Tailwind CSS",
+    "TanStack Query",
+  ],
+} satisfies ResumeContent;

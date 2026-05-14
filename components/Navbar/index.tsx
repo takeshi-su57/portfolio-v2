@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import { FaGithub, FaLinkedin, FaEnvelope } from "react-icons/fa6";
+import { FaGithub, FaEnvelope } from "react-icons/fa6";
 import { FiHome, FiMail, FiPackage, FiUser } from "react-icons/fi";
 import { resumeData } from "@/data/resume";
 import type { NavPage } from "@/types";
@@ -35,16 +35,6 @@ export default function NavBar({ avatarUrl }: NavBarProps) {
 
       <div className="right relative hidden w-[50vmin] md:flex">
         <ul className="flex flex-row items-center justify-between">
-          <a
-            href={resumeData.socials.linkedin}
-            target="_blank"
-            rel="noreferrer"
-            className="flex w-[100px] flex-row items-center justify-center text-[17px] hover:text-white"
-          >
-            <FaLinkedin className="mr-[10px]" />
-            <small>LinkedIn</small>
-          </a>
-
           <a
             href={resumeData.socials.github}
             target="_blank"

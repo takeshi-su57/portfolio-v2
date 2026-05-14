@@ -4,7 +4,7 @@ import { FaArrowLeft } from "react-icons/fa6";
 import { Container, Footer, NavBar, Projects } from "@/components";
 import { ResponsiveNavbar } from "@/components/Navbar";
 import { resumeData } from "@/data/resume";
-import { getGithubProfile, getGithubRepos } from "@/lib/github";
+import { getGithubProfile } from "@/lib/github";
 
 export const metadata: Metadata = {
   title: "Projects",
@@ -12,10 +12,7 @@ export const metadata: Metadata = {
 };
 
 export default async function ProjectsPage() {
-  const [profile, repos] = await Promise.all([
-    getGithubProfile(resumeData.githubUsername),
-    getGithubRepos(resumeData.githubUsername),
-  ]);
+  const profile = await getGithubProfile(resumeData.githubUsername);
 
   return (
     <div>
@@ -31,7 +28,7 @@ export default async function ProjectsPage() {
           <br />
           <h1 className="text-[50px] font-bold">Projects</h1>
           <p className="text-[15px] text-white-300">
-            Product highlights and open-source work.
+            Selected product delivery across SaaS, Web3, and AI-enabled platforms.
           </p>
         </Container>
       </div>
@@ -39,17 +36,24 @@ export default async function ProjectsPage() {
       <div className="h-auto w-screen">
         <Container>
           <br />
-          <div className="w-full py-2">
-            <h2 className="px-4 text-[20px] text-white-200 md:px-0">
-              Featured Product Work
-            </h2>
-          </div>
-          <Projects
-            repos={repos}
-            featuredLimit={resumeData.featuredProjects.length}
-            showAllLink={false}
-            heading="Selected Work"
-          />
+          {resumeData.featuredProjects.length > 0 ? (
+            <>
+              <div className="w-full py-2">
+                <h2 className="px-4 text-[20px] text-white-200 md:px-0">
+                  Selected Product Work
+                </h2>
+              </div>
+              <Projects
+                repos={[]}
+                featuredLimit={resumeData.featuredProjects.length}
+                showAllLink={false}
+              />
+            </>
+          ) : (
+            <div className="px-4 py-8 text-white-300 md:px-0">
+              Portfolio project showcase is being refreshed.
+            </div>
+          )}
         </Container>
       </div>
       <Footer />

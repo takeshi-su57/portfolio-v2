@@ -217,6 +217,135 @@ a {
   animation: cycleC 10s linear infinite;
 }
 
+.header .orbitRing {
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.header .orbitRingOuter {
+  width: 470px;
+  height: 470px;
+  animation: orbitOuter 42s linear infinite;
+}
+
+.header .orbitRingMiddle {
+  width: 380px;
+  height: 380px;
+  animation: orbitMiddle 28s linear infinite reverse;
+}
+
+.header .orbitRingInner {
+  width: 300px;
+  height: 300px;
+  animation: orbitInner 21s linear infinite;
+}
+
+.header .orbitLogo {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: var(--bg2);
+  border: 1px solid rgb(100 244 172 / 0.35);
+  box-shadow: 0 0 15px rgb(12 12 12 / 0.9);
+}
+
+.header .orbitLogoOuter {
+  width: 64px;
+  height: 64px;
+  transform: rotate(var(--angle)) translateX(235px) rotate(calc(-1 * var(--angle)));
+  animation: pulseLogo 4.4s ease-in-out infinite;
+}
+
+.header .orbitLogoMiddle {
+  width: 56px;
+  height: 56px;
+  transform: rotate(var(--angle)) translateX(190px) rotate(calc(-1 * var(--angle)));
+  animation: pulseLogo 3.8s ease-in-out infinite;
+}
+
+.header .orbitLogoInner {
+  width: 48px;
+  height: 48px;
+  transform: rotate(var(--angle)) translateX(150px) rotate(calc(-1 * var(--angle)));
+  animation: pulseLogo 3.2s ease-in-out infinite;
+}
+
+.header .magicDots {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.header .magicDot {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: rgb(100 244 172 / 0.75);
+  box-shadow: 0 0 10px rgb(100 244 172 / 0.8);
+  transform: rotate(var(--dot-angle)) translateX(270px);
+  animation: magicFloat 4.8s ease-in-out infinite;
+  animation-delay: var(--dot-delay);
+}
+
+@keyframes orbitOuter {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes orbitMiddle {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes orbitInner {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes pulseLogo {
+  0%,
+  100% {
+    filter: drop-shadow(0 0 0 rgb(100 244 172 / 0.2));
+  }
+  50% {
+    filter: drop-shadow(0 0 10px rgb(100 244 172 / 0.5));
+  }
+}
+
+@keyframes magicFloat {
+  0%,
+  100% {
+    opacity: 0.3;
+    transform: rotate(var(--dot-angle)) translateX(258px) scale(0.8);
+  }
+  50% {
+    opacity: 1;
+    transform: rotate(var(--dot-angle)) translateX(282px) scale(1.2);
+  }
+}
+
 @keyframes cycleA {
   from {
     transform: rotate(0deg) translateX(20px) rotate(0deg);

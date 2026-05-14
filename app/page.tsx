@@ -16,7 +16,7 @@ export default async function HomePage() {
     >
       <Container>
         <Intro />
-        <Projects repos={githubRepos} />
+        <Projects repos={[]} />
       </Container>
       <Quote />
       <Contact />

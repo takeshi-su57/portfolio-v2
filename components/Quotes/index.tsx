@@ -8,10 +8,10 @@ export default function Quote() {
       <Container>
         <div className="mx-auto flex flex-col items-center justify-center text-center md:flex-row md:items-center md:justify-start md:px-0">
           <h1 data-aos="fade-right" className="text-[35px] font-bold md:mr-[50px]">
-            Professional Summary
+            How I Deliver
           </h1>
           <p data-aos="fade-left" className="text-[12px] text-white-200">
-            What drives my engineering work.
+            Clear ownership, pragmatic architecture, and measurable outcomes.
           </p>
         </div>
         <div id="quote-cont" className="relative mt-[100px] h-auto w-full p-2 md:p-0">

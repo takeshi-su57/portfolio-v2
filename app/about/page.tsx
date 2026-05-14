@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { FaArrowLeft } from "react-icons/fa6";
 import { Container, Footer, NavBar } from "@/components";
@@ -28,7 +29,9 @@ export default async function AboutPage() {
           </Link>
           <br />
           <h1 className="text-[50px] font-bold">About</h1>
-          <p className="text-[15px] text-white-300">Career story and focus.</p>
+          <p className="text-[15px] text-white-300">
+            Senior full-stack delivery across SaaS, Web3, and AI-enabled products.
+          </p>
         </Container>
       </div>
 
@@ -36,12 +39,15 @@ export default async function AboutPage() {
         <Container>
           <div className="flex h-auto w-full flex-col items-center justify-between p-5 md:flex-row">
             <div className="w-full md:w-[40%]">
-              <div
-                className="h-[450px] w-full rounded-md bg-cover bg-center bg-no-repeat md:w-[350px]"
-                style={{
-                  backgroundImage: `url(${avatarUrl})`,
-                }}
-              />
+              <div className="relative h-[450px] w-full overflow-hidden rounded-md md:w-[350px]">
+                <Image
+                  src={avatarUrl}
+                  alt={`${resumeData.fullName} profile photo`}
+                  fill
+                  sizes="(max-width: 768px) 100vw, 350px"
+                  className="object-cover object-center"
+                />
+              </div>
             </div>
 
             <div className="w-full md:w-[60%]">
@@ -67,7 +73,7 @@ export default async function AboutPage() {
           </div>
 
           <div className="pb-[50px]">
-            <h2 className="mb-4 text-[28px] font-bold">Employment History</h2>
+            <h2 className="mb-4 text-[28px] font-bold">Experience Highlights</h2>
             <div className="space-y-5">
               {resumeData.employmentHistory.map((item) => (
                 <article key={`${item.company}-${item.period}`} className="rounded-md bg-dark-200 p-4">
@@ -90,6 +96,9 @@ export default async function AboutPage() {
                       </li>
                     ))}
                   </ul>
+                  <p className="mt-4 text-[12px] text-white-300">
+                    Technologies: {item.technologies.join(", ")}
+                  </p>
                 </article>
               ))}
             </div>

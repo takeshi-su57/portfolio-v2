@@ -1,5 +1,5 @@
 import { AiFillMail } from "react-icons/ai";
-import { FaGithub, FaLinkedin } from "react-icons/fa6";
+import { FaGithub } from "react-icons/fa6";
 import { FiGlobe } from "react-icons/fi";
 import { Container } from "@/components";
 import { resumeData } from "@/data/resume";
@@ -20,9 +20,6 @@ export default function Footer() {
 
           <div className="right">
             <div className="socials flex flex-row items-center justify-center">
-              <SocialLink url={resumeData.socials.linkedin}>
-                <FaLinkedin />
-              </SocialLink>
               <SocialLink url={resumeData.socials.github}>
                 <FaGithub />
               </SocialLink>
