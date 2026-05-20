@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { FaGithub, FaEnvelope } from "react-icons/fa6";
-import { FiHome, FiMail, FiPackage, FiUser } from "react-icons/fi";
+import { FiMail, FiPackage, FiUser } from "react-icons/fi";
 import { resumeData } from "@/data/resume";
 import type { NavPage } from "@/types";
 
@@ -10,14 +10,12 @@ interface NavBarProps {
   activePage?: NavPage;
 }
 
-const navItems: { key: NavPage; label: string; href: string }[] = [
-  { key: "home", label: "Home", href: "/" },
-  { key: "about", label: "About", href: "/about" },
+const navItems: { key: Exclude<NavPage, "home">; label: string; href: string }[] = [
+  { key: "about", label: "About", href: "/#about-1" },
   { key: "projects", label: "Projects", href: "/projects" },
   { key: "contact", label: "Contact", href: "/#contact" },
 ];
-const mobileIconByKey: Record<NavPage, React.ComponentType<{ className?: string }>> = {
-  home: FiHome,
+const mobileIconByKey: Record<Exclude<NavPage, "home">, React.ComponentType<{ className?: string }>> = {
   about: FiUser,
   projects: FiPackage,
   contact: FiMail,
@@ -35,9 +33,12 @@ export default function NavBar({ avatarUrl, activePage }: NavBarProps) {
   return (
     <nav className="navbar relative flex h-auto w-full items-center justify-between py-5">
       <div className="left flex w-auto items-center justify-start">
-        <p className="mr-6 text-[15px] font-extrabold text-[var(--text)]">
+        <Link
+          href="/"
+          className="mr-6 text-[15px] font-extrabold text-[var(--text)] underline-offset-4 hover:underline"
+        >
           {resumeData.fullName.split(" ")[0]}
-        </p>
+        </Link>
 
         <ul className="relative hidden items-center gap-5 md:flex">
           {navItems.map((item) => (

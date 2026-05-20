@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import type { FeaturedProject } from "@/types";
 
-const fallbackProjectImage = "/images/projects/sonartrade/landing.png";
+const fallbackProjectImage = "/images/projects/fullsail/landing.png";
 
 interface ProjectGridProps {
   projects: FeaturedProject[];

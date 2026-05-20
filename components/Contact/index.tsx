@@ -1,9 +1,8 @@
 "use client";
 
-import { FormEvent, useMemo, useState } from "react";
+import { FormEvent, useEffect, useMemo, useState } from "react";
 import emailjs from "@emailjs/browser";
-import { AiFillMessage, AiOutlineClose } from "react-icons/ai";
-import { Container } from "@/components";
+import { AiOutlineClose } from "react-icons/ai";
 import {
   EMAILJS_PUBLIC_KEY,
   EMAILJS_SERVICE_ID,
@@ -35,9 +34,20 @@ export default function Contact() {
     setContactActive(false);
   }
 
+  useEffect(() => {
+    function handleOpenContact(): void {
+      setContactActive(true);
+    }
+
+    window.addEventListener("open-contact-modal", handleOpenContact as EventListener);
+    return () => {
+      window.removeEventListener("open-contact-modal", handleOpenContact as EventListener);
+    };
+  }, []);
+
   return (
-    <div className="h-auto w-screen bg-[var(--surface)] px-2 py-4 md:px-0 md:py-6">
-      <Container>
+    <div className="h-auto w-screen bg-[var(--surface)] py-4 md:py-6">
+      <div className="editorial-container">
         <section
           id="contact"
           className="mb-4 flex h-auto w-full flex-col items-start justify-start py-8 md:py-6"
@@ -65,20 +75,9 @@ export default function Contact() {
             delivery path.
           </p>
         </section>
-      </Container>
+      </div>
 
       <ContactForm contactActive={contactActive} closeContactForm={closeContactForm} />
-
-      <div className="fixed bottom-20 right-5 z-[100] flex flex-col items-center justify-center md:bottom-10">
-        <button
-          type="button"
-          aria-label="Open contact form"
-          className="flex scale-[.85] flex-col items-center justify-center rounded-full border border-[var(--line)] bg-[var(--surface)] p-3 text-[var(--accent)] shadow-sm transition-all hover:scale-100 hover:bg-[var(--line)]"
-          onClick={openContactForm}
-        >
-          <AiFillMessage className="text-[28px]" />
-        </button>
-      </div>
     </div>
   );
 }
@@ -157,19 +156,19 @@ function ContactForm({ contactActive, closeContactForm }: ContactFormProps) {
   return (
     <div className="w-screen">
       <div
-        className={`fixed bottom-[90px] left-2 right-2 z-[999] w-auto rounded-md border border-[var(--line)] bg-[var(--surface)] px-3 shadow-xl transition-all md:bottom-[20px] md:left-auto md:right-5 md:w-[360px] ${
+        className={`fixed bottom-[94px] left-3 right-3 z-[999] w-auto rounded-xl transition-all md:bottom-[112px] md:left-auto md:right-6 md:w-[390px] ${
           contactActive
-            ? "h-auto max-h-[calc(100vh-120px)] overflow-y-auto md:max-h-[450px]"
-            : "h-0 overflow-hidden"
+            ? "h-auto max-h-[calc(100vh-140px)] overflow-y-auto border border-[var(--line)] bg-[var(--surface)] px-4 py-3 opacity-100 shadow-[0_18px_50px_rgba(18,16,13,0.14)]"
+            : "h-0 overflow-hidden border-0 bg-transparent p-0 opacity-0 shadow-none pointer-events-none"
         }`}
       >
-        <div className="relative flex w-full flex-row items-start justify-start">
-          <h3 className="py-4 text-[20px] font-semibold text-[var(--text)]">Contact Me</h3>
+        <div className="relative flex w-full flex-row items-start justify-start pb-2 pt-1">
+          <h3 className="py-2 text-[34px] font-semibold leading-none text-[var(--text)] md:text-[30px]">Contact Me</h3>
           <button
             type="button"
             onClick={closeContactForm}
             aria-label="Close contact form"
-            className={`absolute right-[-5px] top-[-16px] rounded-full border border-[var(--line)] bg-[var(--surface)] p-2 text-[32px] text-[var(--muted)] ${
+            className={`absolute right-0 top-0 rounded-full border border-[var(--line)] bg-[var(--surface)] p-2 text-[32px] text-[var(--muted)] transition-colors hover:bg-[var(--line)] ${
               contactActive ? "flex" : "hidden"
             }`}
           >
@@ -189,7 +188,7 @@ function ContactForm({ contactActive, closeContactForm }: ContactFormProps) {
             id="contact-name"
             type="text"
             name="name"
-            className="mb-4 w-full rounded-md border border-[var(--line)] bg-white px-3 py-3 text-[var(--text)] outline-none"
+            className="mb-4 w-full rounded-md border border-[var(--line)] bg-white px-4 py-3 text-[17px] text-[var(--text)] outline-none placeholder:text-[16px] placeholder:font-normal placeholder:text-[#9aa3ad]"
             placeholder="Full Name"
             value={userInput.name}
             onChange={handleInput}
@@ -202,7 +201,7 @@ function ContactForm({ contactActive, closeContactForm }: ContactFormProps) {
             id="contact-email"
             type="email"
             name="email"
-            className="mb-4 w-full rounded-md border border-[var(--line)] bg-white px-3 py-3 text-[var(--text)] outline-none"
+            className="mb-4 w-full rounded-md border border-[var(--line)] bg-white px-4 py-3 text-[17px] text-[var(--text)] outline-none placeholder:text-[16px] placeholder:font-normal placeholder:text-[#9aa3ad]"
             placeholder="johndoe@mail.com"
             value={userInput.email}
             onChange={handleInput}
@@ -216,7 +215,7 @@ function ContactForm({ contactActive, closeContactForm }: ContactFormProps) {
             cols={30}
             rows={5}
             name="message"
-            className="mb-3 h-full w-full resize-none rounded-md border border-[var(--line)] bg-white px-3 py-3 text-[var(--text)] outline-none"
+            className="mb-4 h-full w-full resize-none rounded-md border border-[var(--line)] bg-white px-4 py-3 text-[17px] text-[var(--text)] outline-none placeholder:text-[16px] placeholder:font-normal placeholder:text-[#9aa3ad]"
             placeholder="Message"
             onChange={handleInput}
             value={userInput.message}
@@ -224,7 +223,7 @@ function ContactForm({ contactActive, closeContactForm }: ContactFormProps) {
 
           <button
             type="submit"
-            className="w-full rounded-md border border-[var(--line)] bg-[var(--surface)] px-2 py-3 text-center text-[var(--text)] transition-all hover:bg-[var(--line)]"
+            className="w-full rounded-md border border-[var(--line)] bg-[var(--surface)] px-2 py-3 text-center text-[17px] font-medium text-[var(--text)] transition-all hover:bg-[var(--line)]"
           >
             {loading ? <span className="text-[var(--accent)]">Sending message...</span> : "Send Message"}
           </button>

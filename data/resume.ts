@@ -3,7 +3,8 @@ import type { ResumeContent } from "@/types";
 export const resumeData = {
   fullName: "Takeshi Suzuki",
   role: "Senior Full-Stack Engineer (AI, Web3)",
-  tagLine: "Senior full-stack engineer shipping AI and Web3 products from concept to scale.",
+  tagLine:
+    "Senior full-stack engineer shipping AI and Web3 products from concept to scale.",
   introTagline:
     "I help founders and product teams turn ambitious ideas into production software across SaaS, Web3, and AI.",
   subTitle:
@@ -136,7 +137,7 @@ export const resumeData = {
     {
       title: "Sonar.Trade",
       imageUrl: "/images/projects/sonartrade/landing.png",
-      projectUrl: "#",
+      projectUrl: "https://sonar.trade/",
       description:
         "Extended an on-chain trading automation platform to support Solana alongside EVM while revamping UX and backend strategy orchestration.",
       outcome:
@@ -155,7 +156,8 @@ export const resumeData = {
     },
     {
       title: "Klyro",
-      projectUrl: "#",
+      imageUrl: "/images/projects/klyro/landing.png",
+      projectUrl: "http://klyro.security/",
       description:
         "Helped bootstrap an AI-powered IGA connector platform to reduce enterprise onboarding time to SailPoint and legacy applications.",
       outcome:
@@ -164,7 +166,8 @@ export const resumeData = {
     },
     {
       title: "Urbanmix",
-      projectUrl: "#",
+      imageUrl: "/images/projects/urbanmix/landing.png",
+      projectUrl: "https://www.urbanmix.tech/",
       description:
         "Built core real-estate management product surfaces with React, Firebase, and data visualization support for 3D-oriented workflows.",
       outcome:
