@@ -1,4 +1,4 @@
-import { Header, NavBar } from "@/components";
+import { NavBar } from "@/components";
 import { ResponsiveNavbar } from "@/components/Navbar";
 import type { NavPage } from "@/types";
 
@@ -6,20 +6,20 @@ interface LayoutProps {
   children: React.ReactNode;
   activePage: NavPage;
   avatarUrl?: string;
-  repoCount: number;
 }
 
 export default function Layout({
   children,
   activePage,
   avatarUrl,
-  repoCount,
 }: LayoutProps) {
   return (
-    <div className="h-screen w-screen">
-      <Header avatarUrl={avatarUrl} repoCount={repoCount}>
-        <NavBar avatarUrl={avatarUrl} />
-      </Header>
+    <div className="min-h-screen w-full bg-[var(--surface)] pb-[calc(4.5rem+env(safe-area-inset-bottom))] text-[var(--text)] md:pb-0">
+      <header className="sticky top-0 z-40 border-b border-[var(--line)] bg-[var(--surface)] backdrop-blur">
+        <div className="editorial-container">
+          <NavBar avatarUrl={avatarUrl} activePage={activePage} />
+        </div>
+      </header>
       {children}
       <ResponsiveNavbar activePage={activePage} />
     </div>

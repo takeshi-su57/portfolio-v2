@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { FaArrowLeft } from "react-icons/fa6";
-import { Container, Footer, NavBar, Projects } from "@/components";
-import { ResponsiveNavbar } from "@/components/Navbar";
+import { EditorialHeading, Footer, Layout, ProjectGrid, Section } from "@/components";
 import { resumeData } from "@/data/resume";
 import { getGithubProfile } from "@/lib/github";
 
@@ -15,49 +14,38 @@ export default async function ProjectsPage() {
   const profile = await getGithubProfile(resumeData.githubUsername);
 
   return (
-    <div>
-      <Container>
-        <NavBar avatarUrl={profile?.avatar_url} />
-      </Container>
-
-      <div className="relative flex h-[35vh] w-full flex-col items-start justify-start bg-dark-400 p-3">
-        <Container className="relative">
-          <Link href="/" aria-label="Back to home">
-            <FaArrowLeft className="cursor-pointer rounded-[4px] bg-dark-100 px-3 py-1 text-[35px] text-white-200" />
+    <Layout activePage="projects" avatarUrl={profile?.avatar_url}>
+      <main className="bg-[var(--surface)] text-[var(--text)]">
+        <Section className="border-t-0 !pb-12 !pt-20 md:!pt-24">
+          <Link
+            href="/"
+            aria-label="Back to home"
+            className="mb-6 inline-flex items-center gap-2 text-[13px] text-[var(--muted)] hover:text-[var(--text)]"
+          >
+            <FaArrowLeft className="text-[12px]" />
+            Back to Home
           </Link>
-          <br />
-          <h1 className="text-[50px] font-bold">Projects</h1>
-          <p className="text-[15px] text-white-300">
-            Selected product delivery across SaaS, Web3, and AI-enabled platforms.
-          </p>
-        </Container>
-      </div>
+          <EditorialHeading
+            as="h1"
+            eyebrow="Projects"
+            title="Selected Product Work"
+            description="Delivery across SaaS, Web3, and AI-enabled platforms."
+          />
+        </Section>
 
-      <div className="h-auto w-screen">
-        <Container>
-          <br />
+        <Section className="!pt-12 md:!pt-16">
           {resumeData.featuredProjects.length > 0 ? (
-            <>
-              <div className="w-full py-2">
-                <h2 className="px-4 text-[20px] text-white-200 md:px-0">
-                  Selected Product Work
-                </h2>
-              </div>
-              <Projects
-                repos={[]}
-                featuredLimit={resumeData.featuredProjects.length}
-                showAllLink={false}
-              />
-            </>
+            <ProjectGrid projects={resumeData.featuredProjects} />
           ) : (
-            <div className="px-4 py-8 text-white-300 md:px-0">
+            <div className="py-8 text-[var(--muted)]">
               Portfolio project showcase is being refreshed.
             </div>
           )}
-        </Container>
-      </div>
-      <Footer />
-      <ResponsiveNavbar activePage="projects" contactHref="/#contact" />
-    </div>
+        </Section>
+      </main>
+      <footer className="border-t border-[var(--line)]">
+        <Footer />
+      </footer>
+    </Layout>
   );
 }

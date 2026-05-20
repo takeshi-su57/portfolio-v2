@@ -7,3 +7,6 @@ export { default as Intro } from "./Intro";
 export { default as Projects } from "./Projects";
 export { default as Quote } from "./Quotes";
 export { default as Contact } from "./Contact";
+export { default as Section } from "./Theme/Section";
+export { default as EditorialHeading } from "./Theme/EditorialHeading";
+export { default as ProjectGrid } from "./Theme/ProjectGrid";

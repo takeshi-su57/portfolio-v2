@@ -18,6 +18,13 @@
 }
 
 :root {
+  --bg: #f7f3ec;
+  --surface: #fffdf9;
+  --text: #1b1a18;
+  --muted: #6d685f;
+  --accent: #9d6c42;
+  --line: #ded6ca;
+
   --dark1: #0c0c0c8c;
   --bg1: #202022;
   --bg2: #2d2e32;
@@ -53,13 +60,69 @@ body {
   width: 100%;
   overflow-x: hidden;
   font-family: var(--poppin), sans-serif;
-  color: var(--white1);
-  background: var(--bg1);
+  background: var(--bg);
 }
 
 a {
   color: inherit;
   text-decoration: none;
+}
+
+.editorial-container {
+  margin-inline: auto;
+  width: min(1120px, calc(100% - 2rem));
+}
+
+.editorial-section {
+  padding-block: clamp(2.75rem, 5.5vw, 5.5rem);
+  border-top: 1px solid var(--line);
+}
+
+.editorial-eyebrow {
+  margin: 0;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.editorial-title {
+  margin: 0.6rem 0 0;
+  max-width: 18ch;
+  font-size: clamp(1.9rem, 4.2vw, 3.35rem);
+  line-height: 1.08;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.editorial-description {
+  margin: 1rem 0 0;
+  max-width: 62ch;
+  font-size: clamp(0.98rem, 1.55vw, 1.13rem);
+  line-height: 1.72;
+  color: var(--muted);
+}
+
+@media (max-width: 640px) {
+  .editorial-title {
+    max-width: 12.5ch;
+    line-height: 1.12;
+  }
+
+  .editorial-description {
+    margin-top: 0.85rem;
+    line-height: 1.68;
+  }
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
 }
 
 .navbar .right ul a:hover > .mail {

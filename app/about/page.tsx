@@ -1,9 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import Link from "next/link";
-import { FaArrowLeft } from "react-icons/fa6";
-import { Container, Footer, NavBar } from "@/components";
-import { ResponsiveNavbar } from "@/components/Navbar";
+import { EditorialHeading, Footer, Layout, Section } from "@/components";
 import { resumeData } from "@/data/resume";
 import { getGithubProfile } from "@/lib/github";
 
@@ -17,96 +14,99 @@ export default async function AboutPage() {
   const avatarUrl = profile?.avatar_url ?? "/images/avatar/avatar.png";
 
   return (
-    <div>
-      <Container>
-        <NavBar avatarUrl={avatarUrl} />
-      </Container>
+    <Layout activePage="about" avatarUrl={avatarUrl}>
+      <main className="bg-[var(--surface)] text-[var(--text)]">
+        <Section className="border-t-0 !pb-12 !pt-20 md:!pt-24">
+          <EditorialHeading
+            as="h1"
+            eyebrow="About"
+            title={`Hi, I'm ${resumeData.fullName}`}
+            description={resumeData.profileSummary}
+          />
+        </Section>
 
-      <div className="relative flex h-[35vh] w-full flex-col items-start justify-start bg-dark-400 p-3">
-        <Container className="relative">
-          <Link href="/" aria-label="Back to home">
-            <FaArrowLeft className="cursor-pointer rounded-[4px] bg-dark-100 px-3 py-1 text-[35px] text-white-200" />
-          </Link>
-          <br />
-          <h1 className="text-[50px] font-bold">About</h1>
-          <p className="text-[15px] text-white-300">
-            Senior full-stack delivery across SaaS, Web3, and AI-enabled products.
-          </p>
-        </Container>
-      </div>
-
-      <div className="h-auto w-screen">
-        <Container>
-          <div className="flex h-auto w-full flex-col items-center justify-between p-5 md:flex-row">
-            <div className="w-full md:w-[40%]">
-              <div className="relative h-[450px] w-full overflow-hidden rounded-md md:w-[350px]">
+        <Section className="!py-12">
+          <div className="grid gap-10 lg:grid-cols-[minmax(0,360px)_minmax(0,1fr)] lg:gap-14">
+            <figure className="mx-auto w-full max-w-[360px] lg:mx-0">
+              <div className="relative aspect-[4/5] w-full overflow-hidden border border-[var(--line)] bg-white">
                 <Image
                   src={avatarUrl}
                   alt={`${resumeData.fullName} profile photo`}
                   fill
-                  sizes="(max-width: 768px) 100vw, 350px"
+                  sizes="(max-width: 768px) 100vw, 360px"
                   className="object-cover object-center"
                 />
               </div>
-            </div>
+              <figcaption className="mt-4 border-l-2 border-[var(--accent)] pl-4 text-[13px] leading-6 text-[var(--muted)]">
+                {resumeData.introTagline}
+              </figcaption>
+            </figure>
 
-            <div className="w-full md:w-[60%]">
-              <div className="relative top-[20px] mb-[30px] h-auto w-full p-[10px] md:top-0 md:mb-0">
-                <p className="text-[12px] text-white-200">About</p>
-                <div className="relative top-[20px]">
-                  <h1 className="mb-[20px] text-[35px] font-bold">
-                    {resumeData.greetingType}, I&apos;m {resumeData.fullName}
-                  </h1>
-                  <br />
-                  <p className="border-l-[5px] border-l-green-200 bg-dark-400 p-2 px-5 text-[15px] italic text-white-200">
-                    {resumeData.introTagline}
+            <ul className="space-y-4" aria-label="Biography">
+              {resumeData.bio.map((paragraph, index) => (
+                <li
+                  key={`${index}-${paragraph}`}
+                  className="list-none border border-[var(--line)] bg-[var(--surface)] p-5 sm:p-6"
+                >
+                  <p className="text-[15px] leading-7 text-[var(--text)]">{paragraph}</p>
+                  <p className="mt-3 text-[12px] uppercase tracking-[0.08em] text-[var(--muted)]">
+                    Narrative {index + 1}
                   </p>
-                  <br />
-                  {resumeData.bio.map((paragraph) => (
-                    <p key={paragraph} className="mb-5 text-[14px] text-white-200">
-                      {paragraph}
-                    </p>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div className="pb-[50px]">
-            <h2 className="mb-4 text-[28px] font-bold">Experience Highlights</h2>
-            <div className="space-y-5">
-              {resumeData.employmentHistory.map((item) => (
-                <article key={`${item.company}-${item.period}`} className="rounded-md bg-dark-200 p-4">
-                  <h3 className="text-[20px] font-semibold">
-                    {item.title} -{" "}
-                    <a
-                      className="text-green-200 underline"
-                      href={item.companyUrl}
-                      target="_blank"
-                      rel="noreferrer"
-                    >
-                      {item.company}
-                    </a>
-                  </h3>
-                  <p className="mb-3 text-[13px] text-white-300">{item.period}</p>
-                  <ul className="list-disc pl-4">
-                    {item.highlights.map((highlight) => (
-                      <li key={highlight} className="mb-2 text-[14px] text-white-200">
-                        {highlight}
-                      </li>
-                    ))}
-                  </ul>
-                  <p className="mt-4 text-[12px] text-white-300">
-                    Technologies: {item.technologies.join(", ")}
-                  </p>
-                </article>
+                </li>
               ))}
-            </div>
+            </ul>
           </div>
-        </Container>
+        </Section>
+
+        <Section className="!pt-12">
+          <div className="max-w-4xl">
+            <EditorialHeading
+              as="h2"
+              eyebrow="Timeline"
+              title="Experience Highlights"
+              description="Selected delivery history with scope, outcomes, and stack coverage."
+            />
+            <ol className="mt-8 border-l border-[var(--line)]">
+              {resumeData.employmentHistory.map((item) => (
+                <li key={`${item.company}-${item.period}`} className="relative pb-10 pl-6 sm:pl-8">
+                  <span
+                    aria-hidden="true"
+                    className="absolute -left-[5px] top-[10px] h-[10px] w-[10px] rounded-full bg-[var(--accent)]"
+                  />
+                  <article className="border border-[var(--line)] bg-[var(--surface)] p-5 sm:p-6">
+                    <h3 className="text-[18px] font-semibold leading-7 text-[var(--text)]">
+                      {item.title}{" "}
+                      <span className="text-[var(--muted)]">
+                        at{" "}
+                        <a
+                          className="underline decoration-[var(--accent)] decoration-1 underline-offset-2"
+                          href={item.companyUrl}
+                          target="_blank"
+                          rel="noreferrer"
+                        >
+                          {item.company}
+                        </a>
+                      </span>
+                    </h3>
+                    <p className="mt-2 text-[13px] text-[var(--muted)]">{item.period}</p>
+                    <ul className="mt-4 list-disc space-y-2 pl-5 text-[14px] leading-7 text-[var(--text)]">
+                      {item.highlights.map((highlight) => (
+                        <li key={highlight}>{highlight}</li>
+                      ))}
+                    </ul>
+                    <p className="mt-5 border-t border-[var(--line)] pt-3 text-[12px] leading-6 text-[var(--muted)]">
+                      Technologies: {item.technologies.join(", ")}
+                    </p>
+                  </article>
+                </li>
+              ))}
+            </ol>
+          </div>
+        </Section>
+      </main>
+      <div className="border-t border-[var(--line)]">
+        <Footer />
       </div>
-      <Footer />
-      <ResponsiveNavbar activePage="about" contactHref="/#contact" />
-    </div>
+    </Layout>
   );
 }

@@ -122,7 +122,56 @@ export const resumeData = {
     "Across startup and scale-up teams, I have built SaaS and Web3 products, integrated AI-capable workflows, and improved release confidence under tight timelines.",
     "My core stack spans TypeScript, Next.js, React, Nest.js, Node.js, PostgreSQL, MongoDB, Solidity, and cloud-native deployment systems.",
   ],
-  featuredProjects: [],
+  featuredProjects: [
+    {
+      title: "FullSail",
+      imageUrl: "/images/projects/fullsail/landing.png",
+      projectUrl: "https://fullsail.finance/",
+      description:
+        "Built a Ve(3,3)-inspired DEX product on Sui, owning frontend, backend APIs, and on-chain integration for swap, liquidity, and governance flows.",
+      outcome:
+        "Shipped production-ready multi-surface DEX experience on Sui with full-stack delivery ownership.",
+      tags: ["Next.js", "NestJS", "Sui", "GraphQL", "AWS ECS"],
+    },
+    {
+      title: "Sonar.Trade",
+      imageUrl: "/images/projects/sonartrade/landing.png",
+      projectUrl: "#",
+      description:
+        "Extended an on-chain trading automation platform to support Solana alongside EVM while revamping UX and backend strategy orchestration.",
+      outcome:
+        "Enabled multi-chain strategy execution with compatible v1 behavior and upgraded product usability.",
+      tags: ["Next.js", "NestJS", "Solana", "PostgreSQL", "Prisma"],
+    },
+    {
+      title: "Tizz",
+      imageUrl: "/images/projects/tizz/trade.png",
+      projectUrl: "#",
+      description:
+        "Delivered perp trading UI and custom Botanix indexer with real-time event handling where subgraph support was not available.",
+      outcome:
+        "Launched responsive perp UX and reliable off-chain indexing for high-frequency on-chain updates.",
+      tags: ["Next.js", "NestJS", "Viem", "Botanix", "Redis"],
+    },
+    {
+      title: "Klyro",
+      projectUrl: "#",
+      description:
+        "Helped bootstrap an AI-powered IGA connector platform to reduce enterprise onboarding time to SailPoint and legacy applications.",
+      outcome:
+        "Contributed across MVP architecture, frontend ownership, and API delivery during rapid R&D expansion.",
+      tags: ["React", "Golang", "LangGraph", "PostgreSQL", "ArgoCD"],
+    },
+    {
+      title: "Urbanmix",
+      projectUrl: "#",
+      description:
+        "Built core real-estate management product surfaces with React, Firebase, and data visualization support for 3D-oriented workflows.",
+      outcome:
+        "Delivered production features quickly in a new Firebase-heavy stack and supported early business momentum.",
+      tags: ["React", "Firebase", "D3.js", "MUI", "Cloud Functions"],
+    },
+  ],
   employmentHistory: [
     {
       title: "Senior Full-Stack Engineer / Contract Developer",

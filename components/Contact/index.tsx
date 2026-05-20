@@ -36,28 +36,30 @@ export default function Contact() {
   }
 
   return (
-    <div className="h-auto w-screen bg-dark-300 p-2 md:p-5">
+    <div className="h-auto w-screen bg-[var(--surface)] px-2 py-4 md:px-0 md:py-6">
       <Container>
         <section
           id="contact"
-          className="mb-[20px] flex h-auto w-full flex-col items-start justify-start py-[50px] md:py-5"
+          className="mb-4 flex h-auto w-full flex-col items-start justify-start py-8 md:py-6"
         >
-          <h1 data-aos="fade-right" className="text-[30px] font-thin">
+          <p className="text-[12px] font-semibold uppercase tracking-[0.08em] text-[var(--accent)]">
+            Contact
+          </p>
+          <h2 data-aos="fade-right" className="mt-2 text-[32px] font-semibold leading-tight text-[var(--text)] md:text-[40px]">
             Let&apos;s Make The Impossible{" "}
-            <span className="font-extrabold text-green-200">Possible.</span>
-          </h1>
-          <br />
-          <p data-aos="fade-right" className="text-[20px]">
+            <span className="text-[var(--accent)]">Possible.</span>
+          </h2>
+          <p data-aos="fade-right" className="mt-3 text-[18px] text-[var(--text)] md:text-[20px]">
             Start by{" "}
             <button
               type="button"
-              className="cursor-pointer text-green-200 underline"
+              className="cursor-pointer text-[var(--accent)] underline underline-offset-2"
               onClick={openContactForm}
             >
               saying hi
             </button>
           </p>
-          <p className="mt-3 max-w-[680px] text-[13px] text-white-300">
+          <p className="mt-4 max-w-[680px] text-[14px] leading-7 text-[var(--muted)]">
             Founders, recruiters, and Web3/AI teams are welcome. Share your goal,
             timeline, and current constraints, and I&apos;ll respond with a practical
             delivery path.
@@ -71,10 +73,10 @@ export default function Contact() {
         <button
           type="button"
           aria-label="Open contact form"
-          className="flex scale-[.80] flex-col items-center justify-center rounded-[50%] bg-dark-400 p-[12px] transition-all hover:scale-[.95]"
+          className="flex scale-[.85] flex-col items-center justify-center rounded-full border border-[var(--line)] bg-[var(--surface)] p-3 text-[var(--accent)] shadow-sm transition-all hover:scale-100 hover:bg-[var(--line)]"
           onClick={openContactForm}
         >
-          <AiFillMessage className="text-[30px] text-green-200" />
+          <AiFillMessage className="text-[28px]" />
         </button>
       </div>
     </div>
@@ -155,19 +157,19 @@ function ContactForm({ contactActive, closeContactForm }: ContactFormProps) {
   return (
     <div className="w-screen">
       <div
-        className={`fixed bottom-[90px] left-2 right-2 z-[999] w-auto rounded-md bg-dark-300 px-3 shadow-xl transition-all md:bottom-[20px] md:left-auto md:right-5 md:w-[350px] ${
+        className={`fixed bottom-[90px] left-2 right-2 z-[999] w-auto rounded-md border border-[var(--line)] bg-[var(--surface)] px-3 shadow-xl transition-all md:bottom-[20px] md:left-auto md:right-5 md:w-[360px] ${
           contactActive
             ? "h-auto max-h-[calc(100vh-120px)] overflow-y-auto md:max-h-[450px]"
             : "h-0 overflow-hidden"
         }`}
       >
         <div className="relative flex w-full flex-row items-start justify-start">
-          <h1 className="py-4 text-[20px]">Contact Me</h1>
+          <h3 className="py-4 text-[20px] font-semibold text-[var(--text)]">Contact Me</h3>
           <button
             type="button"
             onClick={closeContactForm}
             aria-label="Close contact form"
-            className={`absolute right-[-5px] top-[-16px] rounded-[50%] bg-red-900 p-2 text-[35px] text-red-200 ${
+            className={`absolute right-[-5px] top-[-16px] rounded-full border border-[var(--line)] bg-[var(--surface)] p-2 text-[32px] text-[var(--muted)] ${
               contactActive ? "flex" : "hidden"
             }`}
           >
@@ -187,7 +189,7 @@ function ContactForm({ contactActive, closeContactForm }: ContactFormProps) {
             id="contact-name"
             type="text"
             name="name"
-            className="mb-4 w-full rounded-md bg-dark-100 px-2 py-[12px] outline-none"
+            className="mb-4 w-full rounded-md border border-[var(--line)] bg-white px-3 py-3 text-[var(--text)] outline-none"
             placeholder="Full Name"
             value={userInput.name}
             onChange={handleInput}
@@ -200,7 +202,7 @@ function ContactForm({ contactActive, closeContactForm }: ContactFormProps) {
             id="contact-email"
             type="email"
             name="email"
-            className="mb-4 w-full rounded-md bg-dark-100 px-2 py-[12px] outline-none"
+            className="mb-4 w-full rounded-md border border-[var(--line)] bg-white px-3 py-3 text-[var(--text)] outline-none"
             placeholder="johndoe@mail.com"
             value={userInput.email}
             onChange={handleInput}
@@ -214,7 +216,7 @@ function ContactForm({ contactActive, closeContactForm }: ContactFormProps) {
             cols={30}
             rows={5}
             name="message"
-            className="mb-3 h-full w-full resize-none rounded-md bg-dark-100 px-2 py-2 outline-none"
+            className="mb-3 h-full w-full resize-none rounded-md border border-[var(--line)] bg-white px-3 py-3 text-[var(--text)] outline-none"
             placeholder="Message"
             onChange={handleInput}
             value={userInput.message}
@@ -222,9 +224,9 @@ function ContactForm({ contactActive, closeContactForm }: ContactFormProps) {
 
           <button
             type="submit"
-            className="w-full rounded-md bg-dark-200 px-2 py-3 text-center transition-all hover:bg-dark-400"
+            className="w-full rounded-md border border-[var(--line)] bg-[var(--surface)] px-2 py-3 text-center text-[var(--text)] transition-all hover:bg-[var(--line)]"
           >
-            {loading ? <span className="text-green-200">Sending message...</span> : "Send Message"}
+            {loading ? <span className="text-[var(--accent)]">Sending message...</span> : "Send Message"}
           </button>
         </form>
       </div>
