@@ -11,7 +11,7 @@ export const resumeData = {
     "Role-first execution across frontend and backend with measurable delivery outcomes.",
   profileSummary:
     "Strongest in fast-moving teams where one engineer needs to own product delivery from architecture to production.",
-  yearsOfExperience: 7,
+  yearsOfExperience: 8,
   greetingType: "Hi",
   favoriteQuote:
     "I connect product UX, business logic, blockchain data, AI workflows, and infrastructure into one reliable production system.",
@@ -47,7 +47,7 @@ export const resumeData = {
   ],
   impactMetrics: [
     {
-      value: "7+",
+      value: "8+",
       label: "Years delivering production products",
     },
     {
@@ -64,7 +64,7 @@ export const resumeData = {
     },
   ],
   deliverySnapshot: [
-    { value: "7+", label: "Years building production software" },
+    { value: "8+", label: "Years building production software" },
     { value: "5+", label: "Contract engagements delivered" },
     { value: "100+", label: "Backend endpoints shipped" },
     { value: "20+", label: "Reusable UI components built" },
