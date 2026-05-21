@@ -43,19 +43,37 @@ export default async function HomePage() {
                 Hi, I&apos;m {resumeData.fullName}.
               </p>
               <p className="mt-4 max-w-[62ch] text-[15px] leading-8 text-[var(--muted)]">
-                Senior full-stack engineer with a delivery track record in
-                AI-enabled workflows, decentralized applications, and product
-                engineering.
+                {resumeData.introTagline}
               </p>
               <p className="mt-4 max-w-[62ch] text-[15px] leading-8 text-[var(--muted)]">
-                Product teams and founders partner with me to turn ambitious
-                ideas into production software across SaaS, Web3, and AI.
+                {resumeData.profileSummary}
               </p>
-              <p className="mt-4 max-w-[62ch] text-[15px] leading-8 text-[var(--muted)]">
-                Delivery spans startup and scale-up environments where roadmap
-                speed, release confidence, and engineering quality all need to
-                move together.
-              </p>
+              <blockquote className="mt-4 max-w-[62ch] border-l-2 border-[var(--line)] pl-4 text-[15px] leading-8 text-[var(--text)]">
+                {resumeData.favoriteQuote}
+              </blockquote>
+              <div className="mt-6 flex flex-wrap gap-3">
+                <a
+                  href="#projects"
+                  className="inline-flex items-center rounded-sm border border-[var(--line)] px-4 py-2 text-[13px] text-[var(--text)] transition-colors hover:bg-[var(--line)]"
+                >
+                  View Projects
+                </a>
+                <a
+                  href="/CV/resume.pdf"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex items-center rounded-sm border border-[var(--line)] px-4 py-2 text-[13px] text-[var(--text)] transition-colors hover:bg-[var(--line)]"
+                >
+                  Download Resume
+                </a>
+                <button
+                  id="open-contact-modal-cta"
+                  type="button"
+                  className="inline-flex items-center rounded-sm border border-[var(--line)] px-4 py-2 text-[13px] text-[var(--text)] transition-colors hover:bg-[var(--line)]"
+                >
+                  Contact Me
+                </button>
+              </div>
             </div>
           </div>
         </Section>
@@ -63,21 +81,21 @@ export default async function HomePage() {
         <Section id="about-2" className="!py-6 md:!py-7">
           <EditorialHeading
             as="h2"
-            eyebrow="Skills"
-            title="Core Skills"
-            description="Technical strengths most used in production delivery."
+            eyebrow="Snapshot"
+            title="Delivery Snapshot"
+            description="Recent proof points from production delivery ownership."
           />
-          <ul className="mt-6 grid gap-3 md:grid-cols-2">
-            {resumeData.skills.map((skill) => (
+          <ul className="mt-6 grid gap-3 md:grid-cols-2 lg:grid-cols-3">
+            {resumeData.deliverySnapshot.map((item) => (
               <li
-                key={skill.name}
+                key={`${item.value}-${item.label}`}
                 className="list-none border border-[var(--line)] bg-[var(--surface)] p-4"
               >
-                <p className="text-[15px] font-semibold text-[var(--text)]">
-                  {skill.name}
+                <p className="text-[20px] font-semibold text-[var(--text)]">
+                  {item.value}
                 </p>
                 <p className="mt-2 text-[14px] leading-7 text-[var(--muted)]">
-                  {skill.description}
+                  {item.label}
                 </p>
               </li>
             ))}
@@ -85,6 +103,41 @@ export default async function HomePage() {
         </Section>
 
         <Section id="about-3" className="!pt-12">
+          <EditorialHeading
+            as="h2"
+            eyebrow="Ownership"
+            title="What I Can Own End-to-End"
+            description="Delivery areas I lead from architecture and implementation through production reliability."
+          />
+          <ul className="mt-6 grid gap-3 md:grid-cols-2">
+            {resumeData.ownershipAreas.map((area) => (
+              <li
+                key={area.title}
+                className="list-none border border-[var(--line)] bg-[var(--surface)] p-4"
+              >
+                <p className="text-[15px] font-semibold text-[var(--text)]">
+                  {area.title}
+                </p>
+                <p className="mt-2 text-[14px] leading-7 text-[var(--muted)]">
+                  {area.description}
+                </p>
+              </li>
+            ))}
+          </ul>
+        </Section>
+
+        <Section id="projects" className="!pt-12 md:!pt-16">
+          <EditorialHeading
+            eyebrow="Selected Work"
+            title="Featured Projects"
+            description="A concise sample of recent full-stack delivery across SaaS, AI, and Web3."
+          />
+          <div className="mt-8">
+            <ProjectGrid projects={resumeData.featuredProjects} limit={3} />
+          </div>
+        </Section>
+
+        <Section id="about-4" className="!pt-12">
           <EditorialHeading
             as="h2"
             eyebrow="Timeline"
@@ -122,17 +175,63 @@ export default async function HomePage() {
           </ol>
         </Section>
 
-        <Section id="projects" className="!pt-12 md:!pt-16">
+        <Section id="about-5" className="!pt-12">
           <EditorialHeading
-            eyebrow="Selected Work"
-            title="Featured Projects"
-            description="A concise sample of recent full-stack delivery across SaaS, AI, and Web3."
+            as="h2"
+            eyebrow="Stack"
+            title="Technical Stack"
+            description="Grouped by delivery layer for fast role and project-fit review."
           />
-          <div className="mt-8">
-            <ProjectGrid projects={resumeData.featuredProjects} limit={3} />
-          </div>
+          <ul className="mt-6 grid gap-3 md:grid-cols-2">
+            {resumeData.technicalStackGroups.map((group) => (
+              <li
+                key={group.group}
+                className="list-none border border-[var(--line)] bg-[var(--surface)] p-4"
+              >
+                <p className="text-[15px] font-semibold text-[var(--text)]">
+                  {group.group}
+                </p>
+                <ul className="mt-3 flex flex-wrap gap-2">
+                  {group.items.map((item) => (
+                    <li
+                      key={`${group.group}-${item}`}
+                      className="list-none border border-[var(--line)] px-2 py-1 text-[12px] text-[var(--muted)]"
+                    >
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </li>
+            ))}
+          </ul>
+        </Section>
+
+        <Section id="about-6" className="!pt-12 !pb-14 md:!pb-16">
+          <EditorialHeading
+            as="h2"
+            eyebrow="Availability"
+            title="Available For"
+            description="Collaboration scopes where I can contribute quickly and own delivery quality."
+          />
+          <ul className="mt-6 grid gap-3 md:grid-cols-2">
+            {resumeData.availableFor.map((item) => (
+              <li
+                key={item.label}
+                className="list-none border border-[var(--line)] bg-[var(--surface)] p-4 text-[14px] leading-7 text-[var(--text)]"
+              >
+                {item.label}
+              </li>
+            ))}
+          </ul>
         </Section>
       </main>
+      <script
+        id="contact-modal-cta-script"
+        dangerouslySetInnerHTML={{
+          __html:
+            "(() => { const init = () => { const btn = document.getElementById('open-contact-modal-cta'); if (!btn || btn.dataset.bound === 'true') return; btn.dataset.bound = 'true'; btn.addEventListener('click', () => { window.dispatchEvent(new CustomEvent('open-contact-modal')); }); }; if (document.readyState === 'loading') { document.addEventListener('DOMContentLoaded', init, { once: true }); } else { init(); } })();",
+        }}
+      />
 
       <div className="border-t border-[var(--line)]">
         <Contact />
