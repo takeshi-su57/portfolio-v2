@@ -2,19 +2,19 @@ import type { ResumeContent } from "@/types";
 
 export const resumeData = {
   fullName: "Takeshi Suzuki",
-  role: "Senior Full-Stack Engineer (AI, Web3)",
+  role: "Senior Full-Stack Engineer for Web3, AI, and Production Product Teams",
   tagLine:
     "Senior full-stack engineer shipping AI and Web3 products from concept to scale.",
   introTagline:
-    "I help founders and product teams turn ambitious ideas into production software across SaaS, Web3, and AI.",
+    "I help founders and engineering teams turn complex ideas into shipped software: frontend experiences, backend APIs, blockchain integrations, AI workflows, CI/CD, and cloud infrastructure.",
   subTitle:
     "Role-first execution across frontend and backend with measurable delivery outcomes.",
   profileSummary:
-    "Senior full-stack engineer with a delivery track record in AI-enabled workflows, decentralized applications, and product engineering.",
+    "Strongest in fast-moving teams where one engineer needs to own product delivery from architecture to production.",
   yearsOfExperience: 7,
   greetingType: "Hi",
   favoriteQuote:
-    "I focus on practical engineering systems that reduce delivery risk, accelerate roadmap velocity, and keep quality high as products scale.",
+    "I connect product UX, business logic, blockchain data, AI workflows, and infrastructure into one reliable production system.",
   githubUsername: "takeshi-su57",
   socials: {
     linkedin: "https://www.linkedin.com/in/takeshi-suzuki-449636248/",
@@ -62,6 +62,100 @@ export const resumeData = {
       value: "20+",
       label: "Major launches and milestones delivered",
     },
+  ],
+  deliverySnapshot: [
+    { value: "7+", label: "Years building production software" },
+    { value: "5+", label: "Contract engagements delivered" },
+    { value: "100+", label: "Backend endpoints shipped" },
+    { value: "20+", label: "Reusable UI components built" },
+    {
+      value: "Sui / EVM / Solana / Botanix",
+      label: "Web3 delivery coverage",
+    },
+  ],
+  ownershipAreas: [
+    {
+      title: "Product Engineering",
+      description:
+        "Turn unclear requirements into production features, reusable UI systems, and maintainable delivery workflows.",
+    },
+    {
+      title: "Web3 Systems",
+      description:
+        "Own wallet flows, contract interactions, indexers, event pipelines, and multi-chain integrations across Sui, EVM, Solana, and Botanix.",
+    },
+    {
+      title: "Backend and Data",
+      description:
+        "Build NestJS and Express APIs with PostgreSQL, MongoDB, Redis, Prisma, and event-driven workflows.",
+    },
+    {
+      title: "Frontend Architecture",
+      description:
+        "Design responsive product interfaces with React, Next.js, TypeScript, and Tailwind.",
+    },
+    {
+      title: "AI-Native Engineering",
+      description:
+        "Integrate Claude Code, Codex, LangChain, LangGraph, MCP, and RAG workflows for practical automation.",
+    },
+    {
+      title: "Infrastructure and DevOps",
+      description:
+        "Set up Dockerized workflows, CI/CD, cloud deployments, and production monitoring with Grafana and Prometheus.",
+    },
+  ],
+  technicalStackGroups: [
+    {
+      group: "Frontend",
+      items: ["React", "Next.js", "TypeScript", "Tailwind CSS", "wagmi"],
+    },
+    {
+      group: "Backend",
+      items: ["Node.js", "NestJS", "Express", "GraphQL", "REST"],
+    },
+    {
+      group: "Data",
+      items: ["PostgreSQL", "MongoDB", "Redis", "MySQL", "Prisma"],
+    },
+    {
+      group: "Web3",
+      items: [
+        "Sui",
+        "EVM",
+        "Solana",
+        "Botanix",
+        "viem",
+        "wallet integrations",
+        "indexers",
+      ],
+    },
+    {
+      group: "AI",
+      items: ["Claude Code", "Codex", "LangChain", "LangGraph", "MCP", "RAG"],
+    },
+    {
+      group: "Infrastructure",
+      items: [
+        "Docker",
+        "GitHub Actions",
+        "AWS",
+        "GCP",
+        "Terraform",
+        "Kubernetes",
+        "Grafana",
+        "Prometheus",
+      ],
+    },
+  ],
+  availableFor: [
+    { label: "Senior full-stack engineering roles" },
+    { label: "Web3 product engineering" },
+    { label: "DApp frontend/backend development" },
+    { label: "Blockchain indexer and data pipeline work" },
+    { label: "AI workflow and agent development" },
+    { label: "Contract or fractional product engineering" },
+    { label: "Open-source collaboration with funded teams" },
   ],
   serviceAreas: [
     {
@@ -128,8 +222,13 @@ export const resumeData = {
       title: "FullSail",
       imageUrl: "/images/projects/fullsail/landing.png",
       projectUrl: "https://fullsail.finance/",
+      caseStudyPath: "/projects/fullsail",
       description:
-        "Built a Ve(3,3)-inspired DEX product on Sui, owning frontend, backend APIs, and on-chain integration for swap, liquidity, and governance flows.",
+        "Delivered a Ve(3,3)-inspired Sui DEX from product surfaces to backend and on-chain integration, including swap, liquidity, and governance workflows.",
+      context:
+        "Sui-based DEX focused on sustainable liquidity incentives, voting, and emissions design.",
+      challenge:
+        "Translate advanced DeFi mechanics into wallet-friendly UX while preserving transaction reliability.",
       outcome:
         "Shipped production-ready multi-surface DEX experience on Sui with full-stack delivery ownership.",
       tags: ["Next.js", "NestJS", "Sui", "GraphQL", "AWS ECS"],
@@ -138,8 +237,13 @@ export const resumeData = {
       title: "Sonar.Trade",
       imageUrl: "/images/projects/sonartrade/landing.png",
       projectUrl: "https://sonar.trade/",
+      caseStudyPath: "/projects/sonar",
       description:
-        "Extended an on-chain trading automation platform to support Solana alongside EVM while revamping UX and backend strategy orchestration.",
+        "Expanded an on-chain trading automation platform from EVM-only architecture to dual EVM+Solana execution while modernizing UX and strategy orchestration.",
+      context:
+        "Algorithmic trading product requiring multi-chain parity and strategy execution reliability.",
+      challenge:
+        "Add Solana support without breaking established EVM behavior or degrading automation performance.",
       outcome:
         "Enabled multi-chain strategy execution with compatible v1 behavior and upgraded product usability.",
       tags: ["Next.js", "NestJS", "Solana", "PostgreSQL", "Prisma"],
@@ -147,9 +251,14 @@ export const resumeData = {
     {
       title: "Tizz",
       imageUrl: "/images/projects/tizz/trade.png",
-      projectUrl: "#",
+      projectUrl: "/projects/tizz",
+      caseStudyPath: "/projects/tizz",
       description:
-        "Delivered perp trading UI and custom Botanix indexer with real-time event handling where subgraph support was not available.",
+        "Built perp trading interfaces and a custom Botanix indexing pipeline to support real-time event ingestion where subgraph tooling was unavailable.",
+      context:
+        "Perp trading product with custom Botanix indexing requirements.",
+      challenge:
+        "No subgraph support, requiring reliable event ingestion, reconciliation, and sync handling.",
       outcome:
         "Launched responsive perp UX and reliable off-chain indexing for high-frequency on-chain updates.",
       tags: ["Next.js", "NestJS", "Viem", "Botanix", "Redis"],
@@ -329,6 +438,101 @@ export const resumeData = {
       ],
     },
   ],
+  projectCaseStudies: {
+    fullsail: {
+      overview:
+        "FullSail is a Sui-based Ve(3,3)-inspired DEX focused on sustainable liquidity, voting, and emissions mechanics.",
+      role: "Owned frontend product surfaces, backend API integration, and on-chain interaction flows for swap, liquidity, and governance.",
+      problem:
+        "Translate complex DeFi mechanics into reliable UX while handling wallet and transaction-state complexity.",
+      architecture: [
+        "Next.js frontend",
+        "NestJS API",
+        "GraphQL data layer",
+        "Sui RPC and contract interaction",
+        "AWS ECS deployment",
+      ],
+      keyFeatures: [
+        "Swap and liquidity flows",
+        "Governance and voting screens",
+        "Wallet-connected transaction handling",
+      ],
+      challenges: [
+        "Sui object model integration",
+        "Transaction state reliability",
+        "Synchronizing product state with on-chain updates",
+      ],
+      tradeoffs: [
+        "Separated chain-specific data adapters from UI logic",
+        "Balanced live updates with API caching to reduce UX jitter",
+      ],
+      outcome:
+        "Shipped a production-ready DEX experience with complete swap, liquidity, and governance surfaces.",
+      stack: ["Next.js", "NestJS", "Sui", "GraphQL", "AWS ECS"],
+    },
+    sonar: {
+      overview:
+        "Sonar.Trade is an automated trading platform that expanded from EVM-only execution into multi-chain strategy support with Solana integration.",
+      role: "Owned full-stack delivery across frontend UX upgrades, backend strategy orchestration updates, and cross-chain data integration.",
+      problem:
+        "Enable Solana-compatible strategy execution while preserving backward-compatible behavior for existing EVM users.",
+      architecture: [
+        "Next.js trading dashboard",
+        "NestJS strategy API",
+        "PostgreSQL + Prisma strategy persistence",
+        "EVM + Solana execution adapters",
+        "Cloud deployment with CI/CD",
+      ],
+      keyFeatures: [
+        "Dual-chain strategy execution",
+        "Improved strategy configuration UX",
+        "Backward-compatible v1 strategy handling",
+      ],
+      challenges: [
+        "Normalizing chain-specific execution semantics",
+        "Maintaining strategy reliability under async market updates",
+        "Delivering UX improvements without breaking existing flows",
+      ],
+      tradeoffs: [
+        "Used adapter abstraction for chain differences at cost of additional orchestration complexity",
+        "Prioritized compatibility and operator trust over aggressive feature expansion",
+      ],
+      outcome:
+        "Delivered stable multi-chain automation with better usability and preserved v1 trust from existing users.",
+      stack: ["Next.js", "NestJS", "Solana", "PostgreSQL", "Prisma"],
+    },
+    tizz: {
+      overview:
+        "Tizz is a perp trading product on Botanix that required custom indexing infrastructure to support real-time product behavior.",
+      role: "Built trading-facing frontend experiences and implemented backend indexing/event-processing workflows for on-chain sync.",
+      problem:
+        "Subgraph support was unavailable, so product reliability depended on a custom event ingestion and reconciliation pipeline.",
+      architecture: [
+        "Next.js perp trading frontend",
+        "NestJS backend services",
+        "Custom Botanix event indexer",
+        "Redis-backed queueing and cache",
+        "Viem-based contract and event interaction",
+      ],
+      keyFeatures: [
+        "Responsive perp trading UI",
+        "Near real-time event processing",
+        "Indexer-driven position and market state updates",
+      ],
+      challenges: [
+        "Designing reliable indexing without native subgraph infrastructure",
+        "Handling chain reorg-like inconsistencies and sync drift",
+        "Keeping UX state aligned with rapid on-chain event volume",
+      ],
+      tradeoffs: [
+        "Accepted higher operational ownership in exchange for custom indexer control",
+        "Prioritized data consistency and recovery flows over minimal backend complexity",
+      ],
+      outcome:
+        "Launched a production-ready perp trading experience with dependable off-chain indexing for high-frequency chain activity.",
+      stack: ["Next.js", "NestJS", "Viem", "Botanix", "Redis"],
+    },
+  },
   techStackIcons: [
     "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg",
     "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",
