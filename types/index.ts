@@ -32,6 +32,37 @@ export interface ServiceArea {
   description: string;
 }
 
+export interface DeliverySnapshotItem {
+  value: string;
+  label: string;
+}
+
+export interface OwnershipArea {
+  title: string;
+  description: string;
+}
+
+export interface TechnicalStackGroup {
+  group: string;
+  items: string[];
+}
+
+export interface AvailabilityItem {
+  label: string;
+}
+
+export interface CaseStudySection {
+  overview: string;
+  role: string;
+  problem: string;
+  architecture: string[];
+  keyFeatures: string[];
+  challenges: string[];
+  tradeoffs: string[];
+  outcome: string;
+  stack: string[];
+}
+
 export interface SeoProfile {
   defaultTitle: string;
   titleTemplate: string;
@@ -45,6 +76,9 @@ export interface FeaturedProject {
   projectUrl: string;
   description: string;
   outcome?: string;
+  caseStudyPath?: string;
+  context?: string;
+  challenge?: string;
   tags: string[];
 }
 
@@ -79,6 +113,11 @@ export interface ResumeContent {
   employmentHistory: EmploymentItem[];
   techStackIcons: string[];
   coreCompetencies: string[];
+  deliverySnapshot: DeliverySnapshotItem[];
+  ownershipAreas: OwnershipArea[];
+  technicalStackGroups: TechnicalStackGroup[];
+  availableFor: AvailabilityItem[];
+  projectCaseStudies: Record<string, CaseStudySection>;
 }
 
 export interface GithubRepo {
