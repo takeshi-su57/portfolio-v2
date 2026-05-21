@@ -9,6 +9,7 @@ import {
   EMAILJS_TEMPLATE_ID,
   hasEmailJsConfig,
 } from "@/config";
+import { resumeData } from "@/data/resume";
 import { Notification, validateEmail } from "@/helpers";
 
 interface ContactInputs {
@@ -56,23 +57,69 @@ export default function Contact() {
             Contact
           </p>
           <h2 data-aos="fade-right" className="mt-2 text-[32px] font-semibold leading-tight text-[var(--text)] md:text-[40px]">
-            Let&apos;s Make The Impossible{" "}
+            Let&apos;s Ship What Matters{" "}
             <span className="text-[var(--accent)]">Possible.</span>
           </h2>
           <p data-aos="fade-right" className="mt-3 text-[18px] text-[var(--text)] md:text-[20px]">
-            Start by{" "}
+            Need a senior engineer who can scope clearly and deliver reliably?{" "}
             <button
               type="button"
               className="cursor-pointer text-[var(--accent)] underline underline-offset-2"
               onClick={openContactForm}
             >
-              saying hi
+              Open the contact form
             </button>
           </p>
           <p className="mt-4 max-w-[680px] text-[14px] leading-7 text-[var(--muted)]">
-            Founders, recruiters, and Web3/AI teams are welcome. Share your goal,
-            timeline, and current constraints, and I&apos;ll respond with a practical
-            delivery path.
+            Share your objective, timeline, and current blockers. I&apos;ll reply with a
+            practical delivery plan, realistic next steps, and where I can add the
+            most leverage fastest.
+          </p>
+          <p className="mt-3 max-w-[680px] text-[14px] leading-7 text-[var(--muted)]">
+            Prefer direct channels:
+          </p>
+          <ul className="mt-2 flex flex-wrap items-center gap-x-4 gap-y-2 text-[14px]">
+            <li>
+              <a
+                href={`mailto:${resumeData.socials.email}`}
+                className="text-[var(--accent)] underline underline-offset-2"
+              >
+                Email
+              </a>
+            </li>
+            <li>
+              <a
+                href={resumeData.socials.github}
+                target="_blank"
+                rel="noreferrer"
+                className="text-[var(--accent)] underline underline-offset-2"
+              >
+                GitHub
+              </a>
+            </li>
+            <li>
+              <a
+                href={resumeData.socials.linkedin}
+                target="_blank"
+                rel="noreferrer"
+                className="text-[var(--accent)] underline underline-offset-2"
+              >
+                LinkedIn
+              </a>
+            </li>
+            <li>
+              <a
+                href="/CV/resume.pdf"
+                target="_blank"
+                rel="noreferrer"
+                className="text-[var(--accent)] underline underline-offset-2"
+              >
+                Resume PDF
+              </a>
+            </li>
+          </ul>
+          <p className="mt-2 max-w-[680px] text-[13px] leading-6 text-[var(--muted)]">
+            You can also use the contact form for detailed project briefs.
           </p>
         </section>
       </div>

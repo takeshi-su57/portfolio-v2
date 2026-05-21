@@ -2,13 +2,13 @@
 
 import { AiFillMail } from "react-icons/ai";
 import { FaGithub } from "react-icons/fa6";
-import { FiGlobe } from "react-icons/fi";
+import { FiFileText, FiGlobe } from "react-icons/fi";
 import { AiFillMessage } from "react-icons/ai";
 import { resumeData } from "@/data/resume";
 
 export default function Footer() {
   return (
-    <div id="footer" className="relative w-screen bg-[var(--surface)] px-3 py-8 md:py-10">
+    <div id="footer" className="relative w-screen bg-[var(--surface)] py-8 md:py-10">
       <div className="editorial-container">
         <div className="relative flex flex-col items-start justify-between gap-6 md:flex-row md:items-center">
           <div className="left flex flex-col gap-1 md:flex-row md:items-center">
@@ -20,6 +20,7 @@ export default function Footer() {
             </small>
           </div>
         </div>
+        <Credit />
       </div>
       <div className="fixed bottom-6 right-4 z-[80] flex flex-col items-center gap-2 rounded-xl border border-[var(--line)] bg-[var(--surface)]/92 p-2 shadow-sm backdrop-blur md:right-6">
         <button
@@ -36,11 +37,13 @@ export default function Footer() {
         <SocialLink url={`mailto:${resumeData.socials.email}`} label="Email">
           <AiFillMail />
         </SocialLink>
+        <SocialLink url="/CV/resume.pdf" label="Resume PDF">
+          <FiFileText />
+        </SocialLink>
         <SocialLink url={resumeData.socials.website} label="Website">
           <FiGlobe />
         </SocialLink>
       </div>
-      <Credit />
     </div>
   );
 }
@@ -67,7 +70,7 @@ function SocialLink({ url, label, children }: SocialLinkProps) {
 
 function Credit() {
   return (
-    <div className="mt-8 flex w-full flex-row items-center justify-start pt-2 md:justify-center">
+    <div className="mt-8 flex w-full flex-row items-center justify-start pt-2">
       <span className="py-2 text-[12px] text-[var(--muted)]">
         Crafted with precision by {resumeData.fullName}
       </span>
