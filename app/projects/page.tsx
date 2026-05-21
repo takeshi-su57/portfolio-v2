@@ -28,8 +28,8 @@ export default async function ProjectsPage() {
           <EditorialHeading
             as="h1"
             eyebrow="Projects"
-            title="Selected Product Work"
-            description="Delivery across SaaS, Web3, and AI-enabled platforms."
+            title="Selected Case Studies"
+            description="Case-study snapshots of shipped work across SaaS, Web3, and AI-enabled products."
           />
         </Section>
 
@@ -38,7 +38,7 @@ export default async function ProjectsPage() {
             <ProjectGrid projects={resumeData.featuredProjects} />
           ) : (
             <div className="py-8 text-[var(--muted)]">
-              Portfolio project showcase is being refreshed.
+              Case-study highlights are currently being refreshed.
             </div>
           )}
         </Section>
