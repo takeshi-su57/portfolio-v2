@@ -10,3 +10,4 @@ export { default as Contact } from "./Contact";
 export { default as Section } from "./Theme/Section";
 export { default as EditorialHeading } from "./Theme/EditorialHeading";
 export { default as ProjectGrid } from "./Theme/ProjectGrid";
+export { default as ContactCtaButton } from "./Theme/ContactCtaButton";

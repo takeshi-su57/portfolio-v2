@@ -1,4 +1,5 @@
 import {
+  ContactCtaButton,
   Contact,
   EditorialHeading,
   Footer,
@@ -13,6 +14,8 @@ import Image from "next/image";
 export default async function HomePage() {
   const githubProfile = await getGithubProfile(resumeData.githubUsername);
   const avatarUrl = githubProfile?.avatar_url ?? "/images/avatar/avatar.png";
+  const ctaClassName =
+    "inline-flex items-center rounded-sm border border-[var(--line)] px-4 py-2 text-[13px] text-[var(--text)] transition-colors hover:bg-[var(--line)]";
 
   return (
     <Layout activePage="home" avatarUrl={avatarUrl}>
@@ -54,7 +57,7 @@ export default async function HomePage() {
               <div className="mt-6 flex flex-wrap gap-3">
                 <a
                   href="#projects"
-                  className="inline-flex items-center rounded-sm border border-[var(--line)] px-4 py-2 text-[13px] text-[var(--text)] transition-colors hover:bg-[var(--line)]"
+                  className={ctaClassName}
                 >
                   View Projects
                 </a>
@@ -62,17 +65,11 @@ export default async function HomePage() {
                   href="/CV/resume.pdf"
                   target="_blank"
                   rel="noreferrer"
-                  className="inline-flex items-center rounded-sm border border-[var(--line)] px-4 py-2 text-[13px] text-[var(--text)] transition-colors hover:bg-[var(--line)]"
+                  className={ctaClassName}
                 >
                   Download Resume
                 </a>
-                <button
-                  id="open-contact-modal-cta"
-                  type="button"
-                  className="inline-flex items-center rounded-sm border border-[var(--line)] px-4 py-2 text-[13px] text-[var(--text)] transition-colors hover:bg-[var(--line)]"
-                >
-                  Contact Me
-                </button>
+                <ContactCtaButton className={ctaClassName} />
               </div>
             </div>
           </div>
@@ -225,14 +222,6 @@ export default async function HomePage() {
           </ul>
         </Section>
       </main>
-      <script
-        id="contact-modal-cta-script"
-        dangerouslySetInnerHTML={{
-          __html:
-            "(() => { const init = () => { const btn = document.getElementById('open-contact-modal-cta'); if (!btn || btn.dataset.bound === 'true') return; btn.dataset.bound = 'true'; btn.addEventListener('click', () => { window.dispatchEvent(new CustomEvent('open-contact-modal')); }); }; if (document.readyState === 'loading') { document.addEventListener('DOMContentLoaded', init, { once: true }); } else { init(); } })();",
-        }}
-      />
-
       <div className="border-t border-[var(--line)]">
         <Contact />
       </div>
