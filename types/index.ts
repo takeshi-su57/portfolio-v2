@@ -63,6 +63,8 @@ export interface CaseStudySection {
   stack: string[];
 }
 
+export type CaseStudyKey = "fullsail" | "sonar" | "tizz";
+
 export interface SeoProfile {
   defaultTitle: string;
   titleTemplate: string;
@@ -76,7 +78,7 @@ export interface FeaturedProject {
   projectUrl: string;
   description: string;
   outcome?: string;
-  caseStudyPath?: string;
+  caseStudyPath?: `/projects/${CaseStudyKey}`;
   context?: string;
   challenge?: string;
   tags: string[];
@@ -113,11 +115,11 @@ export interface ResumeContent {
   employmentHistory: EmploymentItem[];
   techStackIcons: string[];
   coreCompetencies: string[];
-  deliverySnapshot: DeliverySnapshotItem[];
-  ownershipAreas: OwnershipArea[];
-  technicalStackGroups: TechnicalStackGroup[];
-  availableFor: AvailabilityItem[];
-  projectCaseStudies: Record<string, CaseStudySection>;
+  deliverySnapshot?: DeliverySnapshotItem[];
+  ownershipAreas?: OwnershipArea[];
+  technicalStackGroups?: TechnicalStackGroup[];
+  availableFor?: AvailabilityItem[];
+  projectCaseStudies?: Record<CaseStudyKey, CaseStudySection>;
 }
 
 export interface GithubRepo {
