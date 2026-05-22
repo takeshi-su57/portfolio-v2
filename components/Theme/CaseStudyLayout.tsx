@@ -5,8 +5,15 @@ export interface CaseStudyMetaItem {
   value: ReactNode;
 }
 
+function stableNodeText(value: ReactNode): string {
+  if (typeof value === "string" || typeof value === "number" || typeof value === "boolean") {
+    return String(value);
+  }
+  return "";
+}
+
 interface CaseStudyLayoutProps extends ComponentPropsWithoutRef<"section"> {
-  metadata: CaseStudyMetaItem[];
+  metadata: readonly CaseStudyMetaItem[];
   railTitle?: string;
   railFooter?: ReactNode;
   contentClassName?: string;
@@ -36,7 +43,7 @@ export default function CaseStudyLayout({
             </p>
             <dl className="mt-4 space-y-4">
               {metadata.map((item) => (
-                <div key={item.label}>
+                <div key={`metadata-${item.label}-${stableNodeText(item.value)}`}>
                   <dt className="text-[11px] uppercase tracking-[0.08em] text-[var(--muted)]">{item.label}</dt>
                   <dd className="mt-1 text-[13px] leading-relaxed text-[var(--text)]">{item.value}</dd>
                 </div>
