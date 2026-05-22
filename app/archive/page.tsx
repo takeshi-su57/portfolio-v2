@@ -9,20 +9,20 @@ export const metadata: Metadata = {
 };
 
 const archiveColumns = [
+  { key: "proof", label: "Proof", className: "min-w-[160px]" },
   { key: "year", label: "Year", className: "w-[92px]" },
   { key: "title", label: "Project" },
   { key: "type", label: "Type" },
   { key: "role", label: "Role" },
   { key: "stack", label: "Stack", className: "min-w-[220px]" },
   { key: "status", label: "Status", className: "w-[120px]" },
-  { key: "proof", label: "Proof", className: "min-w-[160px]" },
 ];
 
 export default async function ArchivePage() {
   const profile = await getGithubProfile(resumeData.githubUsername);
 
-  const archiveRows = resumeData.projectArchive.map((project) => ({
-    id: `${project.year}-${project.title.toLowerCase().replace(/[^a-z0-9]+/g, "-")}`,
+  const archiveRows = resumeData.projectArchive.map((project, index) => ({
+    id: `${project.year}-${project.title.toLowerCase().replace(/[^a-z0-9]+/g, "-")}-${index}`,
     href: project.proofHref || project.caseStudyPath || project.projectUrl,
     values: {
       year: project.year,
