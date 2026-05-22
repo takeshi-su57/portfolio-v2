@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { FaGithub, FaEnvelope } from "react-icons/fa6";
-import { FiMail, FiPackage, FiUser } from "react-icons/fi";
+import { FiArchive, FiBookOpen, FiMail, FiPackage, FiUser } from "react-icons/fi";
 import { resumeData } from "@/data/resume";
 import type { NavPage } from "@/types";
 
@@ -13,11 +13,15 @@ interface NavBarProps {
 const navItems: { key: Exclude<NavPage, "home">; label: string; href: string }[] = [
   { key: "about", label: "About", href: "/#about-1" },
   { key: "projects", label: "Projects", href: "/projects" },
+  { key: "notes", label: "Notes", href: "/notes" },
+  { key: "archive", label: "Archive", href: "/archive" },
   { key: "contact", label: "Contact", href: "/#contact" },
 ];
 const mobileIconByKey: Record<Exclude<NavPage, "home">, React.ComponentType<{ className?: string }>> = {
   about: FiUser,
   projects: FiPackage,
+  notes: FiBookOpen,
+  archive: FiArchive,
   contact: FiMail,
 };
 
