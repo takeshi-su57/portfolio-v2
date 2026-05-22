@@ -27,21 +27,22 @@ export default async function NotesPage() {
             {resumeData.engineeringNotes.map((note) => (
               <EngineeringNoteCard
                 key={note.slug}
-                title={note.category}
+                title={note.title}
                 note={
                   <div>
                     <p>{note.excerpt}</p>
                     <p className="mt-3">
                       <Link
                         href={`/notes/${note.slug}`}
+                        aria-label={`Read note: ${note.title}`}
                         className="text-[var(--text)] underline underline-offset-4"
                       >
-                        Read note
+                        Read note: {note.title}
                       </Link>
                     </p>
                   </div>
                 }
-                meta={`${note.publishedAt} - ${note.readTime}`}
+                meta={`${note.category} - ${note.publishedAt} - ${note.readTime}`}
               />
             ))}
           </div>

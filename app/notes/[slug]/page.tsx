@@ -4,7 +4,7 @@ import { resumeData } from "@/data/resume";
 import { getGithubProfile } from "@/lib/github";
 
 type NotePageProps = {
-  params: Promise<{ slug: string }>;
+  params: { slug: string };
 };
 
 export function generateStaticParams() {
@@ -14,7 +14,7 @@ export function generateStaticParams() {
 }
 
 export default async function NoteDetailPage({ params }: NotePageProps) {
-  const { slug } = await params;
+  const { slug } = params;
   const note = resumeData.engineeringNotes.find((entry) => entry.slug === slug);
 
   if (!note) {
