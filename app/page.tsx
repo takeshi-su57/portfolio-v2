@@ -37,17 +37,8 @@ export default async function HomePage() {
       <main className="bg-[var(--surface)] text-[var(--text)]">
         <Section className="border-t-0 !pb-8 !pt-10 md:!pb-9 md:!pt-12">
           <RevealWrapper>
-            <EditorialHeading
-              as="h1"
-              eyebrow="Position"
-              title={resumeData.role}
-            />
-          </RevealWrapper>
-        </Section>
-
-        <Section id="about-1" className="!py-6 md:!py-7">
-          <RevealWrapper delayMs={30}>
-            <div className="grid items-start gap-4 lg:grid-cols-[minmax(0,190px)_minmax(0,1fr)] lg:gap-8">
+            <EditorialHeading as="h1" eyebrow="Position" title={resumeData.role} />
+            <div className="mt-8 grid items-start gap-4 lg:grid-cols-[minmax(0,190px)_minmax(0,1fr)] lg:gap-8">
               <figure className="mx-auto w-full max-w-[190px] lg:mx-0">
                 <div className="relative aspect-[3/4] w-full overflow-hidden border border-[var(--line)] bg-white">
                   <Image
@@ -73,10 +64,7 @@ export default async function HomePage() {
                   {resumeData.favoriteQuote}
                 </blockquote>
                 <div className="mt-6 flex flex-wrap gap-3">
-                  <a
-                    href="#projects"
-                    className={ctaClassName}
-                  >
+                  <a href="#projects" className={ctaClassName}>
                     View Projects
                   </a>
                   <a
@@ -287,26 +275,6 @@ export default async function HomePage() {
           </RevealWrapper>
         </Section>
 
-        <Section id="about-6" className="!pt-12 !pb-14 md:!pb-16">
-          <RevealWrapper delayMs={120}>
-            <EditorialHeading
-              as="h2"
-              eyebrow="Availability"
-              title="Available For"
-              description="Collaboration scopes where I can contribute quickly and own delivery quality."
-            />
-            <ul className="mt-6 grid gap-3 md:grid-cols-2">
-              {resumeData.availableFor.map((item) => (
-                <li
-                  key={item.label}
-                  className="list-none border border-[var(--line)] bg-[var(--surface)] p-4 text-[14px] leading-7 text-[var(--text)]"
-                >
-                  {item.label}
-                </li>
-              ))}
-            </ul>
-          </RevealWrapper>
-        </Section>
       </main>
       <div className="border-t border-[var(--line)]">
         <Contact />
