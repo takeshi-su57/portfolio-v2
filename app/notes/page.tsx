@@ -1,0 +1,55 @@
+import Link from "next/link";
+import {
+  EditorialHeading,
+  EngineeringNoteCard,
+  Footer,
+  Layout,
+  Section,
+} from "@/components";
+import { resumeData } from "@/data/resume";
+import { getGithubProfile } from "@/lib/github";
+
+export default async function NotesPage() {
+  const githubProfile = await getGithubProfile(resumeData.githubUsername);
+  const avatarUrl = githubProfile?.avatar_url ?? "/images/avatar/avatar.png";
+
+  return (
+    <Layout activePage="notes" avatarUrl={avatarUrl}>
+      <main className="bg-[var(--surface)] text-[var(--text)]">
+        <Section className="border-t-0 !pb-12 !pt-20 md:!pt-24">
+          <EditorialHeading
+            as="h1"
+            eyebrow="Notes"
+            title="Engineering Notes"
+            description="Short writing on product engineering decisions, trade-offs, and production lessons."
+          />
+          <div className="mt-8 grid gap-3 md:grid-cols-2 lg:grid-cols-3">
+            {resumeData.engineeringNotes.map((note) => (
+              <EngineeringNoteCard
+                key={note.slug}
+                title={note.category}
+                note={
+                  <div>
+                    <p>{note.excerpt}</p>
+                    <p className="mt-3">
+                      <Link
+                        href={`/notes/${note.slug}`}
+                        className="text-[var(--text)] underline underline-offset-4"
+                      >
+                        Read note
+                      </Link>
+                    </p>
+                  </div>
+                }
+                meta={`${note.publishedAt} - ${note.readTime}`}
+              />
+            ))}
+          </div>
+        </Section>
+      </main>
+      <div className="border-t border-[var(--line)]">
+        <Footer />
+      </div>
+    </Layout>
+  );
+}
