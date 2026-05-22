@@ -91,7 +91,7 @@ const engineeringNotes = [
       "Operating model for using AI coding assistants in production engineering workflows.",
     tags: ["AI", "Engineering Workflow", "Delivery"],
   },
-] as const;
+];
 
 const projectArchive = [
   {
@@ -162,7 +162,7 @@ const projectArchive = [
     status: "Production",
     projectUrl: "https://www.urbanmix.tech/",
   },
-] as const;
+];
 
 export const resumeData = {
   fullName: "Takeshi Suzuki",
@@ -425,7 +425,7 @@ export const resumeData = {
         "No subgraph support, requiring reliable event ingestion, reconciliation, and sync handling.",
       outcome:
         "Launched responsive perp UX and reliable off-chain indexing for high-frequency on-chain updates.",
-      tags: ["Next.js", "NestJS", "Viem", "Botanix", "Redis"],
+      tags: ["Next.js", "NestJS", "viem", "Botanix", "Redis"],
     },
     {
       title: "Klyro",
@@ -786,7 +786,7 @@ export const resumeData = {
         "custom-blockchain-indexers-without-subgraphs",
         "reliable-transaction-ux-web3",
       ],
-      stack: ["Next.js", "NestJS", "Viem", "Botanix", "Redis"],
+      stack: ["Next.js", "NestJS", "viem", "Botanix", "Redis"],
     },
   },
   techStackIcons: [

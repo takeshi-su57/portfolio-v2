@@ -52,10 +52,11 @@ export interface AvailabilityItem {
 }
 
 export interface CaseStudyMeta {
-  timeline?: string;
-  team?: string;
-  audience?: string;
-  status?: string;
+  role: string;
+  timeline: string;
+  clientType: string;
+  stack: string[];
+  links: { label: string; href: string }[];
 }
 
 export interface CaseStudySection {
