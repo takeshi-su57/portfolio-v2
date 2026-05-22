@@ -1,10 +1,12 @@
+import Link from "next/link";
 import { notFound } from "next/navigation";
+import { FaArrowLeft } from "react-icons/fa6";
 import { EditorialHeading, Footer, Layout, Section } from "@/components";
 import { resumeData } from "@/data/resume";
 import { getGithubProfile } from "@/lib/github";
 
 type NotePageProps = {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 };
 
 export function generateStaticParams() {
@@ -14,7 +16,7 @@ export function generateStaticParams() {
 }
 
 export default async function NoteDetailPage({ params }: NotePageProps) {
-  const { slug } = params;
+  const { slug } = await params;
   const note = resumeData.engineeringNotes.find((entry) => entry.slug === slug);
 
   if (!note) {
@@ -28,6 +30,14 @@ export default async function NoteDetailPage({ params }: NotePageProps) {
     <Layout activePage="notes" avatarUrl={avatarUrl}>
       <main className="bg-[var(--surface)] text-[var(--text)]">
         <Section className="border-t-0 !pb-8 !pt-20 md:!pt-24">
+          <Link
+            href="/notes"
+            aria-label="Back to notes"
+            className="mb-6 inline-flex items-center gap-2 text-[13px] text-[var(--muted)] hover:text-[var(--text)]"
+          >
+            <FaArrowLeft className="text-[12px]" />
+            Back to Notes
+          </Link>
           <EditorialHeading
             as="h1"
             eyebrow={note.category}

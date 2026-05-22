@@ -1,4 +1,6 @@
-﻿import type { Metadata } from "next";
+import type { Metadata } from "next";
+import Link from "next/link";
+import { FaArrowLeft } from "react-icons/fa6";
 import { ArchiveTable, EditorialHeading, Footer, Layout, Section } from "@/components";
 import { resumeData } from "@/data/resume";
 import { getGithubProfile } from "@/lib/github";
@@ -39,6 +41,14 @@ export default async function ArchivePage() {
     <Layout activePage="archive" avatarUrl={profile?.avatar_url}>
       <main className="bg-[var(--surface)] text-[var(--text)]">
         <Section className="border-t-0 !pb-12 !pt-20 md:!pt-24">
+          <Link
+            href="/"
+            aria-label="Back to home"
+            className="mb-6 inline-flex items-center gap-2 text-[13px] text-[var(--muted)] hover:text-[var(--text)]"
+          >
+            <FaArrowLeft className="text-[12px]" />
+            Back to Home
+          </Link>
           <EditorialHeading
             as="h1"
             eyebrow="Archive"

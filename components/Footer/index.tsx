@@ -27,7 +27,7 @@ export default function Footer() {
           type="button"
           aria-label="Open contact form"
           onClick={() => window.dispatchEvent(new CustomEvent("open-contact-modal"))}
-          className="mr-2 inline-flex items-center justify-center rounded-md border border-[var(--line)] p-2 text-[var(--muted)] no-underline transition-colors hover:bg-[var(--line)] hover:text-[var(--text)]"
+          className="inline-flex h-9 w-9 items-center justify-center rounded-md border border-[var(--line)] text-[var(--muted)] no-underline transition-colors hover:bg-[var(--line)] hover:text-[var(--text)]"
         >
           <AiFillMessage />
         </button>
@@ -61,7 +61,7 @@ function SocialLink({ url, label, children }: SocialLinkProps) {
       target="_blank"
       rel="noreferrer"
       aria-label={label}
-      className="mr-2 inline-flex items-center justify-center rounded-md border border-[var(--line)] p-2 text-[var(--muted)] no-underline transition-colors hover:bg-[var(--line)] hover:text-[var(--text)]"
+      className="inline-flex h-9 w-9 items-center justify-center rounded-md border border-[var(--line)] text-[var(--muted)] no-underline transition-colors hover:bg-[var(--line)] hover:text-[var(--text)]"
     >
       {children}
     </a>

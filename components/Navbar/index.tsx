@@ -1,7 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import { FaGithub, FaEnvelope } from "react-icons/fa6";
-import { FiArchive, FiBookOpen, FiMail, FiPackage, FiUser } from "react-icons/fi";
+import { FiArchive, FiBookOpen, FiMail, FiPackage } from "react-icons/fi";
 import { resumeData } from "@/data/resume";
 import type { NavPage } from "@/types";
 
@@ -10,15 +9,13 @@ interface NavBarProps {
   activePage?: NavPage;
 }
 
-const navItems: { key: Exclude<NavPage, "home">; label: string; href: string }[] = [
-  { key: "about", label: "About", href: "/#about-1" },
+const navItems: { key: Exclude<NavPage, "home" | "about">; label: string; href: string }[] = [
   { key: "projects", label: "Projects", href: "/projects" },
   { key: "notes", label: "Notes", href: "/notes" },
   { key: "archive", label: "Archive", href: "/archive" },
   { key: "contact", label: "Contact", href: "/#contact" },
 ];
-const mobileIconByKey: Record<Exclude<NavPage, "home">, React.ComponentType<{ className?: string }>> = {
-  about: FiUser,
+const mobileIconByKey: Record<Exclude<NavPage, "home" | "about">, React.ComponentType<{ className?: string }>> = {
   projects: FiPackage,
   notes: FiBookOpen,
   archive: FiArchive,
@@ -43,7 +40,9 @@ export default function NavBar({ avatarUrl, activePage }: NavBarProps) {
         >
           {resumeData.fullName.split(" ")[0]}
         </Link>
+      </div>
 
+      <div className="right relative hidden md:flex">
         <ul className="relative hidden items-center gap-5 md:flex">
           {navItems.map((item) => (
             <li key={item.key}>
@@ -56,31 +55,6 @@ export default function NavBar({ avatarUrl, activePage }: NavBarProps) {
               </Link>
             </li>
           ))}
-        </ul>
-      </div>
-
-      <div className="right relative hidden md:flex">
-        <ul className="flex flex-row items-center gap-2">
-          <li>
-            <a
-              href={resumeData.socials.github}
-              target="_blank"
-              rel="noreferrer"
-              className="flex flex-row items-center justify-center rounded-md px-3 py-2 text-[15px] text-[var(--muted)] transition-colors hover:bg-[var(--line)] hover:text-[var(--text)]"
-            >
-              <FaGithub className="mr-2" />
-              <small>GitHub</small>
-            </a>
-          </li>
-          <li>
-            <a
-              href={`mailto:${resumeData.socials.email}`}
-              className="flex flex-row items-center justify-center rounded-md px-3 py-2 text-[15px] text-[var(--muted)] transition-colors hover:bg-[var(--line)] hover:text-[var(--text)]"
-            >
-              <FaEnvelope className="mr-2" />
-              <small>Email</small>
-            </a>
-          </li>
         </ul>
       </div>
 

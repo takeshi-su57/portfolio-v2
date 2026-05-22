@@ -33,7 +33,8 @@ const engineeringNotes = [
   },
   {
     slug: "custom-blockchain-indexers-without-subgraphs",
-    title: "Building Custom Blockchain Indexers When Subgraphs Are Not Available",
+    title:
+      "Building Custom Blockchain Indexers When Subgraphs Are Not Available",
     excerpt:
       "A practical architecture for replay-safe blockchain indexing when hosted subgraph infrastructure does not exist.",
     category: "Blockchain Data Infrastructure",
@@ -166,7 +167,7 @@ const projectArchive = [
 
 export const resumeData = {
   fullName: "Takeshi Suzuki",
-  role: "Senior Full-Stack Engineer for Web3, AI, and Production Product Teams",
+  role: "Senior Full-Stack Engineer for Web3, AI",
   tagLine:
     "Senior full-stack engineer shipping AI and Web3 products from concept to scale.",
   introTagline:

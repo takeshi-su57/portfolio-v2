@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { FaArrowLeft } from "react-icons/fa6";
 import {
   EditorialHeading,
   EngineeringNoteCard,
@@ -17,6 +18,14 @@ export default async function NotesPage() {
     <Layout activePage="notes" avatarUrl={avatarUrl}>
       <main className="bg-[var(--surface)] text-[var(--text)]">
         <Section className="border-t-0 !pb-12 !pt-20 md:!pt-24">
+          <Link
+            href="/"
+            aria-label="Back to home"
+            className="mb-6 inline-flex items-center gap-2 text-[13px] text-[var(--muted)] hover:text-[var(--text)]"
+          >
+            <FaArrowLeft className="text-[12px]" />
+            Back to Home
+          </Link>
           <EditorialHeading
             as="h1"
             eyebrow="Notes"
