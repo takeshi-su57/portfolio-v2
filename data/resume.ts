@@ -1,5 +1,169 @@
 import type { ResumeContent } from "@/types";
 
+const engineeringNotes = [
+  {
+    slug: "reliable-transaction-ux-web3",
+    title: "Designing Reliable Transaction UX for Web3 Products",
+    excerpt:
+      "A production playbook for reducing failed-wallet anxiety with deterministic states and explicit recovery paths.",
+    category: "Web3 Product Engineering",
+    publishedAt: "2026-03-14",
+    readTime: "11 min read",
+    body: [
+      {
+        heading: "Why transaction UX breaks",
+        content:
+          "Most failures happen between wallet signatures, RPC finality, and ambiguous product messaging rather than in smart contract logic.",
+      },
+      {
+        heading: "State model and retries",
+        content:
+          "I model each transaction as draft, signature-requested, signed, broadcasted, confirmed, and reconciled. Each state has deterministic copy and retry rules.",
+      },
+      {
+        heading: "Production results",
+        content:
+          "Clear state transitions and recoverable actions reduced support load and made swap/vote flows more trustworthy for non-technical users.",
+      },
+    ],
+    relatedProjectKeys: ["fullsail", "sonar"],
+    summary:
+      "How I design transaction flows that stay clear and recoverable under real chain and wallet failures.",
+    tags: ["Web3", "UX", "Reliability", "State Machines"],
+  },
+  {
+    slug: "custom-blockchain-indexers-without-subgraphs",
+    title: "Building Custom Blockchain Indexers When Subgraphs Are Not Available",
+    excerpt:
+      "A practical architecture for replay-safe blockchain indexing when hosted subgraph infrastructure does not exist.",
+    category: "Blockchain Data Infrastructure",
+    publishedAt: "2026-02-06",
+    readTime: "13 min read",
+    body: [
+      {
+        heading: "Constraint first",
+        content:
+          "When no subgraph exists, correctness depends on ingestion guarantees, cursor checkpoints, and deterministic replay.",
+      },
+      {
+        heading: "Indexer design",
+        content:
+          "I separate event ingestion from projections, use idempotent handlers, and persist block-level checkpoints for safe backfills and incident recovery.",
+      },
+      {
+        heading: "Operational controls",
+        content:
+          "Lag dashboards, reconciliation audits, and dead-letter queues keep trader-facing state accurate despite provider instability.",
+      },
+    ],
+    relatedProjectKeys: ["tizz"],
+    summary:
+      "Blueprint for indexer-backed products on chains where subgraph tooling is unavailable.",
+    tags: ["Indexers", "Web3", "Data Pipelines", "Observability"],
+  },
+  {
+    slug: "ai-coding-tools-in-production-workflows",
+    title: "How I Use AI Coding Tools in Real Production Workflows",
+    excerpt:
+      "How I integrate AI tooling into delivery workflows without sacrificing test confidence, review quality, or accountability.",
+    category: "AI Engineering Workflow",
+    publishedAt: "2026-01-22",
+    readTime: "9 min read",
+    body: [
+      {
+        heading: "Where AI helps most",
+        content:
+          "AI accelerates structured work like service scaffolds, tests, and refactor proposals when requirements and acceptance criteria are explicit.",
+      },
+      {
+        heading: "Guardrails",
+        content:
+          "Every AI-generated change is mapped to a ticket, reviewed by humans, and validated by lint/build plus deterministic tests for critical paths.",
+      },
+      {
+        heading: "Founder-level impact",
+        content:
+          "Teams ship faster while keeping ownership with engineers and product leaders, treating AI as acceleration rather than authority.",
+      },
+    ],
+    relatedProjectKeys: ["fullsail", "sonar", "tizz"],
+    summary:
+      "Operating model for using AI coding assistants in production engineering workflows.",
+    tags: ["AI", "Engineering Workflow", "Delivery"],
+  },
+] as const;
+
+const projectArchive = [
+  {
+    year: "2025",
+    title: "Tizz",
+    type: "Perpetual DEX",
+    role: "Senior Full-Stack Engineer",
+    stack: ["Next.js", "NestJS", "Botanix", "viem", "Redis"],
+    proofLabel: "Product case study",
+    proofHref: "/projects/tizz",
+    caseStudyPath: "/projects/tizz",
+    summary:
+      "Built perp trading UX and custom Botanix indexing to keep position and market state reliable.",
+    status: "Production",
+    projectUrl: "/projects/tizz",
+  },
+  {
+    year: "2024",
+    title: "Sonar.Trade",
+    type: "Algorithmic Trading Platform",
+    role: "Senior Full-Stack Engineer",
+    stack: ["Next.js", "NestJS", "Solana", "PostgreSQL", "Prisma"],
+    proofLabel: "Live platform",
+    proofHref: "https://sonar.trade/",
+    caseStudyPath: "/projects/sonar",
+    summary:
+      "Expanded strategy automation from EVM-only behavior to multi-chain EVM plus Solana execution.",
+    status: "Production",
+    projectUrl: "https://sonar.trade/",
+  },
+  {
+    year: "2024",
+    title: "FullSail",
+    type: "Sui DeFi DEX",
+    role: "Senior Full-Stack Engineer",
+    stack: ["Next.js", "NestJS", "Sui", "GraphQL", "AWS ECS"],
+    proofLabel: "Live product",
+    proofHref: "https://fullsail.finance/",
+    caseStudyPath: "/projects/fullsail",
+    summary:
+      "Delivered swap, liquidity, and governance surfaces for a Ve(3,3)-inspired DEX.",
+    status: "Production",
+    projectUrl: "https://fullsail.finance/",
+  },
+  {
+    year: "2025",
+    title: "Klyro",
+    type: "AI + Identity Governance",
+    role: "Founding Product Engineer (Contract)",
+    stack: ["React", "Golang", "LangGraph", "PostgreSQL", "ArgoCD"],
+    proofLabel: "Company site",
+    proofHref: "http://klyro.security/",
+    summary:
+      "Supported MVP architecture and delivery for AI-assisted IGA connector workflows.",
+    status: "MVP",
+    projectUrl: "http://klyro.security/",
+  },
+  {
+    year: "2023",
+    title: "Urbanmix",
+    type: "PropTech SaaS",
+    role: "Full-Stack Engineer",
+    stack: ["React", "Firebase", "D3.js", "MUI", "Cloud Functions"],
+    proofLabel: "Company site",
+    proofHref: "https://www.urbanmix.tech/",
+    summary:
+      "Built real-estate product features and visualization-heavy interfaces on Firebase.",
+    status: "Production",
+    projectUrl: "https://www.urbanmix.tech/",
+  },
+] as const;
+
 export const resumeData = {
   fullName: "Takeshi Suzuki",
   role: "Senior Full-Stack Engineer for Web3, AI, and Production Product Teams",
@@ -438,11 +602,25 @@ export const resumeData = {
       ],
     },
   ],
+  engineeringNotes,
+  projectArchive,
   projectCaseStudies: {
     fullsail: {
       overview:
         "FullSail is a Sui-based Ve(3,3)-inspired DEX focused on sustainable liquidity, voting, and emissions mechanics.",
       role: "Owned frontend product surfaces, backend API integration, and on-chain interaction flows for swap, liquidity, and governance.",
+      metadata: {
+        role: "Senior Full-Stack Engineer",
+        timeline: "Q2 2024 - Q4 2024",
+        clientType: "Web3 DeFi startup",
+        stack: ["Next.js", "NestJS", "Sui", "GraphQL", "AWS ECS"],
+        links: [
+          { label: "Live product", href: "https://fullsail.finance/" },
+          { label: "Case study", href: "/projects/fullsail" },
+        ],
+      },
+      realScenario:
+        "The launch deadline required stable swap, LP, and vote flows for a marketing window while wallet failure handling was still inconsistent.",
       problem:
         "Translate complex DeFi mechanics into reliable UX while handling wallet and transaction-state complexity.",
       architecture: [
@@ -457,6 +635,12 @@ export const resumeData = {
         "Governance and voting screens",
         "Wallet-connected transaction handling",
       ],
+      ownedScopeChecklist: [
+        "Implemented deterministic transaction states across swap/liquidity/vote flows",
+        "Integrated Sui-specific contract interaction adapters across product surfaces",
+        "Built recoverable wallet error and timeout handling paths",
+        "Coordinated release QA for launch-critical governance interactions",
+      ],
       challenges: [
         "Sui object model integration",
         "Transaction state reliability",
@@ -468,12 +652,34 @@ export const resumeData = {
       ],
       outcome:
         "Shipped a production-ready DEX experience with complete swap, liquidity, and governance surfaces.",
+      outcomes: [
+        "Launched campaign-critical DeFi flows on schedule",
+        "Reduced support incidents tied to unclear transaction states",
+        "Improved release confidence for founder-facing launch milestones",
+      ],
+      buildNext: [
+        "Add governance and emissions analytics panels for operators",
+        "Instrument proactive wallet/RPC health telemetry",
+      ],
+      relatedNoteSlugs: ["reliable-transaction-ux-web3"],
       stack: ["Next.js", "NestJS", "Sui", "GraphQL", "AWS ECS"],
     },
     sonar: {
       overview:
         "Sonar.Trade is an automated trading platform that expanded from EVM-only execution into multi-chain strategy support with Solana integration.",
       role: "Owned full-stack delivery across frontend UX upgrades, backend strategy orchestration updates, and cross-chain data integration.",
+      metadata: {
+        role: "Senior Full-Stack Engineer",
+        timeline: "Q1 2024 - Q3 2024",
+        clientType: "Algorithmic trading product team",
+        stack: ["Next.js", "NestJS", "Solana", "PostgreSQL", "Prisma"],
+        links: [
+          { label: "Live platform", href: "https://sonar.trade/" },
+          { label: "Case study", href: "/projects/sonar" },
+        ],
+      },
+      realScenario:
+        "The business needed Solana expansion while preserving trusted EVM strategy behavior already used in live automated trading.",
       problem:
         "Enable Solana-compatible strategy execution while preserving backward-compatible behavior for existing EVM users.",
       architecture: [
@@ -488,6 +694,12 @@ export const resumeData = {
         "Improved strategy configuration UX",
         "Backward-compatible v1 strategy handling",
       ],
+      ownedScopeChecklist: [
+        "Designed adapter boundaries for EVM and Solana execution differences",
+        "Extended strategy orchestration APIs for multi-chain lifecycle management",
+        "Updated configuration UX with stronger operator guardrails",
+        "Protected legacy strategy behavior during rollout with compatibility checks",
+      ],
       challenges: [
         "Normalizing chain-specific execution semantics",
         "Maintaining strategy reliability under async market updates",
@@ -499,12 +711,37 @@ export const resumeData = {
       ],
       outcome:
         "Delivered stable multi-chain automation with better usability and preserved v1 trust from existing users.",
+      outcomes: [
+        "Enabled production multi-chain strategy execution across EVM and Solana",
+        "Maintained backward-compatible behavior for existing operators",
+        "Reduced strategy misconfiguration risk with clearer setup constraints",
+      ],
+      buildNext: [
+        "Add pre-trade simulation previews for strategy validation",
+        "Expand operations dashboards for chain latency and failure patterns",
+      ],
+      relatedNoteSlugs: [
+        "reliable-transaction-ux-web3",
+        "ai-coding-tools-in-production-workflows",
+      ],
       stack: ["Next.js", "NestJS", "Solana", "PostgreSQL", "Prisma"],
     },
     tizz: {
       overview:
         "Tizz is a perp trading product on Botanix that required custom indexing infrastructure to support real-time product behavior.",
       role: "Built trading-facing frontend experiences and implemented backend indexing/event-processing workflows for on-chain sync.",
+      metadata: {
+        role: "Senior Full-Stack Engineer",
+        timeline: "Q4 2024 - Q1 2025",
+        clientType: "Perpetuals trading startup",
+        stack: ["Next.js", "NestJS", "Botanix", "viem", "Redis"],
+        links: [
+          { label: "Case study", href: "/projects/tizz" },
+          { label: "Project surface", href: "/projects/tizz" },
+        ],
+      },
+      realScenario:
+        "Botanix had no hosted subgraph path, but traders still required near real-time position accuracy and replay-safe recovery during provider lag.",
       problem:
         "Subgraph support was unavailable, so product reliability depended on a custom event ingestion and reconciliation pipeline.",
       architecture: [
@@ -519,6 +756,12 @@ export const resumeData = {
         "Near real-time event processing",
         "Indexer-driven position and market state updates",
       ],
+      ownedScopeChecklist: [
+        "Implemented block-scanning indexer with persistent cursor checkpoints",
+        "Built idempotent event handlers and replay-safe projections",
+        "Added reconciliation jobs for drift and recovery",
+        "Integrated indexer outputs into trader-facing market and position views",
+      ],
       challenges: [
         "Designing reliable indexing without native subgraph infrastructure",
         "Handling chain reorg-like inconsistencies and sync drift",
@@ -530,6 +773,19 @@ export const resumeData = {
       ],
       outcome:
         "Launched a production-ready perp trading experience with dependable off-chain indexing for high-frequency chain activity.",
+      outcomes: [
+        "Shipped live perp UX backed by custom indexing infrastructure",
+        "Improved data correctness through replay and reconciliation safeguards",
+        "Established maintainable operations for high-frequency chain ingestion",
+      ],
+      buildNext: [
+        "Introduce anomaly detection for index lag and projection drift",
+        "Add downstream exports for strategy analytics and risk reporting",
+      ],
+      relatedNoteSlugs: [
+        "custom-blockchain-indexers-without-subgraphs",
+        "reliable-transaction-ux-web3",
+      ],
       stack: ["Next.js", "NestJS", "Viem", "Botanix", "Redis"],
     },
   },
