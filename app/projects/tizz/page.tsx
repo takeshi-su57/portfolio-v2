@@ -6,6 +6,7 @@ import { FaArrowLeft } from "react-icons/fa6";
 import {
   ArchitectureSection,
   BuildNextSection,
+  CaseStudySection,
   CaseStudyLayout,
   ChallengesSection,
   EditorialHeading,
@@ -61,6 +62,8 @@ export default async function TizzCaseStudyPage() {
             <Link
               key={entry.href}
               href={entry.href}
+              target={entry.href.startsWith("http") ? "_blank" : undefined}
+              rel={entry.href.startsWith("http") ? "noreferrer" : undefined}
               className="inline-flex items-center border border-[var(--line)] px-2 py-1 text-[11px] uppercase tracking-[0.08em] text-[var(--muted)] hover:text-[var(--text)]"
             >
               {entry.label}
@@ -134,6 +137,22 @@ export default async function TizzCaseStudyPage() {
             intro={caseStudy.role}
             items={caseStudy.ownedScopeChecklist}
           />
+
+          <CaseStudySection
+            title="Key Features"
+            intro="Core product capabilities delivered for launch readiness"
+          >
+            <ul className="space-y-2 text-[14px] leading-relaxed text-[var(--text)]">
+              {caseStudy.keyFeatures.map((feature, index) => (
+                <li
+                  key={`key-feature-${index}-${feature}`}
+                  className="pl-5 before:mr-2 before:ml-[-1.25rem] before:text-[var(--accent)] before:content-['•']"
+                >
+                  {feature}
+                </li>
+              ))}
+            </ul>
+          </CaseStudySection>
 
           <ArchitectureSection
             title="Architecture"
