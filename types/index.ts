@@ -69,9 +69,8 @@ export interface CaseStudySection {
   ownedScopeChecklist?: string[];
   challenges: string[];
   tradeoffs: string[];
-  // Migration intent: `outcomeSummary` is canonical; `outcome` is legacy backward-compat.
-  outcomeSummary: string;
-  outcome?: string;
+  outcome: string;
+  // Optional detailed bullets; `outcome` remains the canonical summary.
   outcomes?: string[];
   buildNext?: string[];
   relatedNoteSlugs?: string[];
