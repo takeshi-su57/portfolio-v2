@@ -1,8 +1,23 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { FaArrowLeft } from "react-icons/fa6";
-import { EditorialHeading, Footer, Layout, Section } from "@/components";
+import {
+  ArchitectureSection,
+  BuildNextSection,
+  CaseStudyLayout,
+  ChallengesSection,
+  EditorialHeading,
+  Footer,
+  Layout,
+  OwnedChecklistSection,
+  OutcomesSection,
+  RelatedNotesSection,
+  ScenarioSection,
+  Section,
+  TradeoffsSection,
+} from "@/components";
 import { resumeData } from "@/data/resume";
 import { getGithubProfile } from "@/lib/github";
 
@@ -19,6 +34,56 @@ export default async function SonarCaseStudyPage() {
   if (!caseStudy) {
     notFound();
   }
+
+  const projectCard = resumeData.featuredProjects.find((project) => project.title === "Sonar.Trade");
+
+  const relatedNotes = (caseStudy.relatedNoteSlugs ?? [])
+    .map((slug) => resumeData.engineeringNotes.find((note) => note.slug === slug))
+    .filter((note): note is (typeof resumeData.engineeringNotes)[number] => Boolean(note));
+
+  const metadataItems = [
+    { label: "Role", value: caseStudy.metadata.role },
+    { label: "Timeline", value: caseStudy.metadata.timeline },
+    { label: "Client", value: caseStudy.metadata.clientType },
+    {
+      label: "Stack",
+      value: (
+        <span className="text-[12px] leading-relaxed text-[var(--muted)]">
+          {caseStudy.metadata.stack.join(" - ")}
+        </span>
+      ),
+    },
+    {
+      label: "Links",
+      value: (
+        <div className="flex flex-wrap gap-2">
+          {caseStudy.metadata.links.map((entry) => (
+            <Link
+              key={entry.href}
+              href={entry.href}
+              className="inline-flex items-center border border-[var(--line)] px-2 py-1 text-[11px] uppercase tracking-[0.08em] text-[var(--muted)] hover:text-[var(--text)]"
+            >
+              {entry.label}
+            </Link>
+          ))}
+        </div>
+      ),
+    },
+  ];
+
+  const tradeoffDecisions = caseStudy.tradeoffs.map((item) => {
+    const [decision, reason] = item.split(" while ");
+    return {
+      decision: decision ?? item,
+      reason: reason ? `while ${reason}` : "Balanced delivery constraints to maximize launch reliability.",
+    };
+  });
+
+  const outcomeMetrics = caseStudy.outcomes.map((item, index) => ({
+    label: `Outcome ${index + 1}`,
+    value: item,
+    detail: caseStudy.outcome,
+  }));
 
   return (
     <Layout activePage="projects" avatarUrl={profile?.avatar_url}>
@@ -40,88 +105,91 @@ export default async function SonarCaseStudyPage() {
           />
         </Section>
 
-        <Section className="!py-6 md:!py-7">
-          <EditorialHeading as="h2" title="Overview" />
-          <p className="mt-4 max-w-[70ch] text-[15px] leading-8 text-[var(--muted)]">
-            {caseStudy.overview}
-          </p>
-        </Section>
+        <CaseStudyLayout metadata={metadataItems}>
+          <ScenarioSection
+            title="Real Scenario"
+            intro={`${caseStudy.overview} ${caseStudy.problem}`}
+            narrative={caseStudy.realScenario}
+          />
 
-        <Section className="!py-6 md:!py-7">
-          <EditorialHeading as="h2" title="My Role" />
-          <p className="mt-4 max-w-[70ch] text-[15px] leading-8 text-[var(--muted)]">
-            {caseStudy.role}
-          </p>
-        </Section>
+          {projectCard?.imageUrl ? (
+            <section className="space-y-4">
+              <h2 className="editorial-title text-[clamp(1.45rem,2vw,2rem)]">Product Snapshot</h2>
+              <div className="overflow-hidden rounded-md border border-[var(--line)] bg-[var(--surface)]">
+                <Image
+                  src={projectCard.imageUrl}
+                  alt="Sonar.Trade dashboard and strategy management surfaces"
+                  width={1600}
+                  height={900}
+                  className="h-auto w-full"
+                  sizes="(max-width: 1024px) 100vw, 900px"
+                  priority
+                />
+              </div>
+            </section>
+          ) : null}
 
-        <Section className="!py-6 md:!py-7">
-          <EditorialHeading as="h2" title="Problem" />
-          <p className="mt-4 max-w-[70ch] text-[15px] leading-8 text-[var(--muted)]">
-            {caseStudy.problem}
-          </p>
-        </Section>
+          <OwnedChecklistSection
+            title="Owned Scope"
+            intro={caseStudy.role}
+            items={caseStudy.ownedScopeChecklist}
+          />
 
-        <Section className="!py-6 md:!py-7">
-          <EditorialHeading as="h2" title="Architecture Flow" />
-          <ul className="mt-4 grid gap-3 md:grid-cols-2">
-            {caseStudy.architecture.map((item) => (
-              <li
-                key={item}
-                className="list-none border border-[var(--line)] bg-[var(--surface)] p-4 text-[14px] leading-7 text-[var(--text)]"
-              >
-                {item}
-              </li>
-            ))}
-          </ul>
-        </Section>
+          <ArchitectureSection
+            title="Architecture"
+            intro="System boundaries and delivery structure"
+            bullets={caseStudy.architecture}
+          />
 
-        <Section className="!py-6 md:!py-7">
-          <EditorialHeading as="h2" title="Key Features Built" />
-          <ul className="mt-4 list-disc space-y-2 pl-5 text-[15px] leading-8 text-[var(--text)]">
-            {caseStudy.keyFeatures.map((item) => (
-              <li key={item}>{item}</li>
-            ))}
-          </ul>
-        </Section>
+          <ChallengesSection
+            title="Challenges"
+            intro="Main technical risks during implementation"
+            items={caseStudy.challenges}
+          />
 
-        <Section className="!py-6 md:!py-7">
-          <EditorialHeading as="h2" title="Technical Challenges" />
-          <ul className="mt-4 list-disc space-y-2 pl-5 text-[15px] leading-8 text-[var(--text)]">
-            {caseStudy.challenges.map((item) => (
-              <li key={item}>{item}</li>
-            ))}
-          </ul>
-        </Section>
+          <TradeoffsSection
+            title="Tradeoffs"
+            intro="Key implementation decisions and rationale"
+            decisions={tradeoffDecisions}
+          />
 
-        <Section className="!py-6 md:!py-7">
-          <EditorialHeading as="h2" title="Decisions and Tradeoffs" />
-          <ul className="mt-4 list-disc space-y-2 pl-5 text-[15px] leading-8 text-[var(--text)]">
-            {caseStudy.tradeoffs.map((item) => (
-              <li key={item}>{item}</li>
-            ))}
-          </ul>
-        </Section>
+          <OutcomesSection
+            title="Outcomes"
+            intro="Delivery impact from launch through stabilization"
+            metrics={outcomeMetrics}
+          />
 
-        <Section className="!py-6 md:!py-7">
-          <EditorialHeading as="h2" title="Outcome" />
-          <p className="mt-4 max-w-[70ch] text-[15px] leading-8 text-[var(--muted)]">
-            {caseStudy.outcome}
-          </p>
-        </Section>
+          <BuildNextSection
+            title="Build Next"
+            intro="High-leverage improvements identified post-launch"
+            items={caseStudy.buildNext}
+          />
 
-        <Section className="!pt-6 !pb-14 md:!pt-7 md:!pb-16">
-          <EditorialHeading as="h2" title="Stack" />
-          <ul className="mt-4 flex flex-wrap gap-2">
-            {caseStudy.stack.map((item) => (
-              <li
-                key={item}
-                className="list-none border border-[var(--line)] px-2 py-1 text-[12px] text-[var(--muted)]"
-              >
-                {item}
-              </li>
-            ))}
-          </ul>
-        </Section>
+          <RelatedNotesSection
+            title="Related Notes"
+            intro="Engineering notes connected to this delivery"
+            notes={
+              relatedNotes.length > 0
+                ? relatedNotes.map((note) => (
+                    <Link
+                      key={note.slug}
+                      href={`/notes/${note.slug}`}
+                      className="group block"
+                      aria-label={`Read note: ${note.title}`}
+                    >
+                      <span className="text-[11px] uppercase tracking-[0.08em] text-[var(--muted)]">
+                        {note.category}
+                      </span>
+                      <span className="mt-1 block text-[15px] text-[var(--text)] group-hover:text-[var(--accent)]">
+                        {note.title}
+                      </span>
+                      <span className="mt-1 block text-[13px] text-[var(--muted)]">{note.excerpt}</span>
+                    </Link>
+                  ))
+                : [<span key="none">No related notes linked yet.</span>]
+            }
+          />
+        </CaseStudyLayout>
       </main>
 
       <footer className="border-t border-[var(--line)]">
