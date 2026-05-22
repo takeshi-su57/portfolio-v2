@@ -51,15 +51,28 @@ export interface AvailabilityItem {
   label: string;
 }
 
+export interface CaseStudyMeta {
+  timeline?: string;
+  team?: string;
+  audience?: string;
+  status?: string;
+}
+
 export interface CaseStudySection {
   overview: string;
   role: string;
+  metadata?: CaseStudyMeta;
+  realScenario?: string;
   problem: string;
   architecture: string[];
   keyFeatures: string[];
+  ownedScopeChecklist?: string[];
   challenges: string[];
   tradeoffs: string[];
   outcome: string;
+  outcomes?: string[];
+  buildNext?: string[];
+  relatedNoteSlugs?: string[];
   stack: string[];
 }
 
@@ -93,6 +106,22 @@ export interface EmploymentItem {
   technologies: string[];
 }
 
+export interface EngineeringNote {
+  slug: string;
+  title: string;
+  summary: string;
+  publishedAt: string;
+  tags: string[];
+}
+
+export interface ProjectArchiveItem {
+  title: string;
+  summary: string;
+  status?: string;
+  stack?: string[];
+  projectUrl?: string;
+}
+
 export interface ResumeContent {
   fullName: string;
   role: string;
@@ -120,6 +149,8 @@ export interface ResumeContent {
   technicalStackGroups?: TechnicalStackGroup[];
   availableFor?: AvailabilityItem[];
   projectCaseStudies?: Record<CaseStudyKey, CaseStudySection>;
+  engineeringNotes?: EngineeringNote[];
+  projectArchive?: ProjectArchiveItem[];
 }
 
 export interface GithubRepo {
