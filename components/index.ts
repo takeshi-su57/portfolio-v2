@@ -11,3 +11,8 @@ export { default as Section } from "./Theme/Section";
 export { default as EditorialHeading } from "./Theme/EditorialHeading";
 export { default as ProjectGrid } from "./Theme/ProjectGrid";
 export { default as ContactCtaButton } from "./Theme/ContactCtaButton";
+export { default as RevealWrapper } from "./Theme/RevealWrapper";
+export { default as BestFitPills } from "./Theme/BestFitPills";
+export { default as EngineeringNoteCard } from "./Theme/EngineeringNoteCard";
+export { default as ArchivePreview } from "./Theme/ArchivePreview";
+export { default as ArchiveTable } from "./Theme/ArchiveTable";
