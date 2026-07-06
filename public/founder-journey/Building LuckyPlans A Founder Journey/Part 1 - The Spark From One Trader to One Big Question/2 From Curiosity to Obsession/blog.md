@@ -1,240 +1,147 @@
 # From Curiosity to Obsession
 
-At the beginning, it was not a startup idea.
+The first trader gave me the spark.
 
-It was not a roadmap, a pitch deck, or some carefully designed product thesis. It was just a question that appeared after I saw one trader on a leaderboard.
+But sparks are cheap.
 
-He had a huge realized profit.
-The trading history was public.
-The data was sitting there on-chain.
+Every builder has a private graveyard of ideas that once felt exciting for one evening, maybe one weekend, and then quietly disappeared into a notes app with a confident title and no future.
 
-And the question was almost too simple:
+LuckyPlans could have become one of those ideas.
 
-**“Wait… can I just copy him?”**
+At first, it was just a question:
 
-That was the spark.
+**“Can I copy a profitable on-chain trader?”**
 
-At first, I treated it like many other developer ideas. Interesting for a moment, maybe worth writing down, probably something that would disappear after a few days once normal work returned and reality reminded me that “simple ideas” usually come with hidden monsters inside.
+Interesting, yes. Practical, maybe. Dangerous, probably. But still only a question.
 
-I have had many ideas like that before. Some feel exciting for a few hours. Some survive a weekend. Some even make it into a note file with a very confident title like `future-billion-dollar-idea.md`, which is usually how you know it will never be opened again.
+The reason it did not disappear was that the question kept growing.
 
-But this one stayed.
+The more I worked around perp DEX products, smart contract events, and public trading data, the more the idea followed me. I started seeing trading activity differently. A leaderboard was no longer only a ranking page. A trader address was no longer only a wallet. An event log was no longer only backend noise.
 
-That was the first sign that it was different.
+It started to look like raw material.
 
-## The Question Kept Coming Back
+And once an idea changes how you see the environment around you, it becomes much harder to ignore.
 
-I did not immediately start building after seeing that trader. At that time, I was still doing my normal work: writing frontend code, integrating smart contracts, shipping features, and trying to behave like a responsible engineer instead of someone being haunted by a leaderboard.
+## The Market Already Existed
 
-But the question kept returning.
+When I started researching properly, I learned the obvious thing founders always learn slightly later than their ego prefers:
 
-When I saw trading events, I thought about it.
-When I looked at on-chain data, I thought about it.
-When I checked leaderboards, I thought about it.
+Other people had already thought about copy trading.
 
-The more I worked around perp DEX products, the more natural the question felt:
+Binance had copy trading. Copin.io was tracking on-chain traders. Other platforms had leaderboards, trader profiles, win rates, realized PnL, and follower-style systems.
 
-**If the data is public, why can’t I build something around it?**
+For a moment, that was disappointing.
 
-That was the part that made it more than a random money idea.
+There is a specific founder feeling when you think you discovered a new continent, then open Google and find airports, hotels, and three competitors with better logos.
 
-Yes, the profit number was exciting. I will not pretend I was sitting there thinking only about pure infrastructure beauty. I am human. A trader with massive realized profit gets your attention very quickly.
+But the disappointment did not last long.
 
-But the real hook was technical.
-
-Could a system watch public trader behavior?
-Could it understand position changes?
-Could it follow those actions automatically?
-Could it turn visible on-chain activity into something structured and usable?
-
-That was the puzzle.
-
-And I like technical puzzles, especially when they sit close to a real product opportunity.
-
-At that stage, the idea was still rough, but it had already started changing shape. It was no longer only:
-
-**“Can I make money from copying this trader?”**
-
-It was becoming:
-
-**“Can this kind of system actually exist?”**
-
-That question is much harder to ignore.
-
-## The Second Check Made It Harder to Walk Away
-
-A few months later, I checked the same trader again.
-
-Part of me expected the story to be over. Maybe the first result had been a lucky window. Maybe the trader had slowed down. Maybe the market had simply been kind for a short period and the leaderboard had made it look more impressive than it really was.
-
-But when I checked again, he was still there.
-
-Still active.
-Still profitable.
-Still building a larger history.
-
-His total profit was getting close to **$1M USDC**.
-
-That changed the weight of the idea.
-
-Before that, I thought:
-
-**“This is interesting.”**
-
-After that, the thought became:
-
-**“Okay… maybe there is something here.”**
-
-It was no longer just a screenshot moment. The history was growing. The data was still public. The same question became louder, and this time it came with a more painful version attached:
-
-**“What would have happened if I had started copying earlier?”**
-
-That is a dangerous question for a builder, because it creates both regret and motivation at the same time. Regret says, “You missed it.” Motivation says, “Build the thing so you do not miss it again.”
-
-Not always a healthy combination, but very effective.
-
-I started imagining a system that could monitor traders, detect their actions, and follow them automatically. In my mind, the first version still looked almost embarrassingly simple:
-
-Find strong traders.
-Watch public events.
-Copy positions.
-Repeat.
-
-Of course, later I would learn that every word in that sentence contains a small software company worth of complexity. But at that moment, I was still in the clean stage of imagination, where the system has no edge cases, no RPC failures, no weird trader behavior, and no reason to ruin your sleep.
-
-That stage is beautiful.
-
-Completely unrealistic, but beautiful.
-
-## The Copy Trading Rabbit Hole
-
-Once the idea refused to leave, I started researching it properly. That was when I attached the correct name to what I had been thinking about:
-
-**copy trading.**
-
-And of course, I quickly learned that I was not the first person to have this idea.
-
-Binance already had copy trading. Copin.io was tracking on-chain traders. Other platforms had leaderboards, trader profiles, win rates, realized PnL, and follower-style systems. The market was not empty.
-
-At first, that was a little disappointing.
-
-There is a very specific founder feeling when you think you have discovered something new, search for it, and immediately find many people already doing a version of it. The ego takes a small, professional punch.
-
-For a moment, I thought:
-
-**“Oh. So this already exists.”**
-
-But after looking more carefully, the discovery did not kill the idea. It made it more interesting.
-
-Because the existence of those products meant the market was real. People already understood the concept. Users already wanted to follow traders. Platforms had already proven that copy trading was not some strange thought I invented after staring at a leaderboard for too long.
+The existence of those products actually made the idea more interesting. It meant the market was real. Users understood the concept. People already wanted to follow traders. Copy trading was not just a strange thought I had after staring too long at a leaderboard.
 
 That mattered.
 
-But I also felt that the existing products were not exactly what I wanted to build.
+The question changed from:
 
-Most copy trading experiences were centered around the action of copying: find a trader, check the stats, click follow, and let the system mirror trades. That simplicity is powerful, and I understand why it works from a user experience perspective.
+**“Is this idea new?”**
 
-But the more I looked at it, the more I became interested in what happens before the copy button.
+to:
+
+**“What is still missing?”**
+
+That was a much better question.
+
+## The Problem Was Before the Copy Button
+
+Most copy trading products were easy to understand.
+
+Find a trader.
+Check the stats.
+Click follow.
+Copy the trades.
+
+That simplicity is powerful. I understand why products are designed that way.
+
+But the more I looked at the space, the more I became interested in the part before the follow button.
 
 How do you discover enough traders?
-How do you compare them beyond surface numbers?
-How do you know if a trader is still active?
-How do you avoid trusting one impressive chart too quickly?
-How do you organize multiple traders into a structured idea instead of blindly following one person?
-How do you test the idea before putting real money behind it?
+How do you compare them beyond one attractive number?
+How do you know if a trader is still active or only historically impressive?
+How do you avoid confusing one beautiful chart with a repeatable edge?
+How do you test an idea before putting real money behind it?
 
-Those questions were more interesting to me than the copy action itself.
+That was where LuckyPlans started to feel different.
 
-## The Problem Was Not Copying. It Was Choosing.
+The hard part was not only copying.
 
-At that stage, I did not have a complete answer. I also did not fully understand the risk yet. That would come later, and unfortunately, it would come with invoices.
+The hard part was choosing what deserved to be copied.
 
-But I could already feel that the hardest part was not simply copying a trade.
+A copy button is simple. A decision system is not.
 
-The harder part was deciding **what deserved to be copied**.
+And in trading, the difference between those two can become very expensive very quickly.
 
-A trader could have high profit, but that alone might not be enough. A trader could have a strong win rate, but that number could hide position sizing, market timing, or risk behavior that is not obvious from a leaderboard. A trader could look amazing for months and still carry a hidden pattern that eventually turns into one large loss.
+## From One Trader to a System
 
-I could not explain all of that clearly yet, but I could feel the fragility.
-
-The original idea was exciting:
+The original idea was emotionally simple:
 
 **“Copy a good trader.”**
 
-The deeper question was more serious:
+But the deeper product question was more useful:
 
 **“What makes a trader good enough to copy?”**
 
-That question changed everything.
+That question opened the rabbit hole.
 
-Because once you ask it properly, the product is no longer just a mirror. It becomes a decision system.
+Profit alone was not enough. Win rate alone was not enough. A high leaderboard rank was not enough. A trader could look impressive from far away and still carry risks that only appear when you study the behavior more carefully.
 
-Maybe the answer was not one trader.
+At that point, I did not have a full risk framework yet. I did not know all the painful lessons that would arrive later with excellent timing and terrible manners.
+
+But I could already feel the fragility of relying on one trader.
+
+Maybe the answer was not one follow.
+
 Maybe it needed multiple traders.
 Maybe different ratios mattered.
 Maybe users needed plans instead of single follows.
 Maybe simulation had to come before execution.
-Maybe a leaderboard needed to show more than the top few winners.
+Maybe the leaderboard needed to become a discovery system, not just a trophy shelf.
 
-I did not have the final shape yet, but the direction was becoming clearer.
+That was the moment LuckyPlans stopped being a copy idea and started becoming a product idea.
 
-The product I wanted was not only about copying actions. It was about exploring, organizing, and testing copy trading ideas.
-
-That felt much more durable.
-
-## Research Became Fuel
+## Why the Idea Stayed
 
 This was when curiosity turned into obsession.
 
-The more I researched, the more questions appeared, and every question gave the idea more weight.
+Not because I had all the answers.
 
-I studied existing platforms and how they presented traders. I looked at what information they surfaced and what information was missing. I checked how they framed trust, performance, risk, and trader discovery. I started thinking less like someone who wanted to copy a winning trader and more like someone trying to design a better decision process around public trading data.
+Actually, the opposite.
 
-That was an important shift.
+The more I researched, the more questions appeared. But they were the right kind of questions: technical, financial, product-driven, and difficult enough to be interesting.
 
-I was no longer asking only:
+I studied how existing platforms presented traders. I looked at what they showed, what they ignored, and where trust was being compressed into a few attractive metrics. I started thinking less like someone trying to copy a winner and more like someone trying to build a better decision layer around public trading behavior.
 
-**“Can I copy him?”**
+That was the real shift.
 
-I was asking:
+LuckyPlans was no longer only asking:
 
-**“Can I build a better way to understand who should be copied, how they should be grouped, and whether the idea should be trusted at all?”**
+**“Can I copy this trader?”**
 
-That question felt bigger, and honestly, much more interesting.
+It was asking:
 
-A copy button is simple.
+**“Can I help users understand, organize, and test copy trading ideas before they trust them?”**
 
-A system that helps users reason before copying is a real product.
+That question had more weight.
 
-That was the first time LuckyPlans started to feel like something with a direction beyond the original spark.
-
-## When an Idea Refuses to Leave
-
-I think this was the phase where LuckyPlans moved from imagination into real research.
-
-I was not building the full system yet, but I was collecting clues. Existing copy trading products showed me that demand existed. On-chain data showed me that trader behavior could be observed. Leaderboards showed me that public performance could attract attention. The gaps in those experiences showed me where my own product instinct was pointing.
-
-And most importantly, the idea kept returning.
-
-That matters more than people think.
-
-A lot of ideas are exciting when they are new. Very few remain interesting after you discover competitors, complexity, risk, and uncertainty. LuckyPlans kept pulling me back even after I realized the space already existed and the problem was harder than my first question made it sound.
-
-That persistence made the idea feel real.
-
-Not validated yet.
-Not proven.
-Not safe.
-
-But real enough to keep studying.
+It also had more future.
 
 ## The Rabbit Hole Was Open
 
-By the end of this phase, I had more questions than answers, but I also had enough conviction to continue.
+By the end of this phase, I still had more questions than answers.
 
-I knew copy trading already existed. I knew the market was real. I knew users understood the general concept. I also knew that I did not want to build only another simple “follow this trader” product.
+But I had enough conviction to continue.
 
-I wanted to explore something more structured:
+I knew copy trading already existed. I knew the market was real. I knew users understood the basic concept. I also knew I did not want to build only another “follow this trader” product.
+
+The direction became clearer:
 
 Trader discovery.
 Multiple-trader planning.
@@ -242,12 +149,12 @@ Public data analysis.
 Simulation before trust.
 A better way to organize copy trading ideas before execution.
 
-At that point, I could not define LuckyPlans perfectly. The product was still blurry around the edges. But the direction was there, and for a builder, that is often where the real work begins.
+The first trader created the spark.
 
-The first spark came from one trader.
+The research made it harder to walk away.
 
-The obsession came from realizing that the trader was only the entrance to a much deeper problem.
+But the obsession came from realizing that the trader was only the entrance.
 
-Once I entered that rabbit hole, I wanted to know how far it went.
+The real product was the system behind the decision.
 
 That was when LuckyPlans stopped being a funny question in my head and became something I needed to research seriously.

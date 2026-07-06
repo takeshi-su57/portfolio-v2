@@ -2,228 +2,185 @@
 
 After the first copy trading proof of concept worked, I had a new problem.
 
-I could copy a trader.
+The system could copy a trader.
 
-That was exciting, but also not enough.
+Great.
 
-A copy trading system without trader discovery is like a search engine with one result. Technically useful, emotionally impressive for about five minutes, and then immediately a product problem.
+But which trader?
 
-The next question was obvious:
+A copy trading engine without trader discovery is like a search engine with one result. Technically functional, briefly exciting, and then immediately useless for real decision-making.
 
-**How do I find enough traders worth studying?**
+That pushed me toward one of the most important early LuckyPlans features: the leaderboard.
 
-That question pushed LuckyPlans toward one of its most important early features: the leaderboard.
+At first, I thought it would be simple. A table, a ranking, maybe some filters. Very innocent. Almost suspiciously innocent.
 
-At first, I thought the leaderboard would be a product page. A table, a ranking, a clean way to show profitable traders.
+But for LuckyPlans, the leaderboard was not just a product page. It was the beginning of trader discovery.
 
-That was too small.
+The copy engine gave the system hands.
 
-For LuckyPlans, the leaderboard was not decoration. It was not a marketing screen. It was the beginning of trader discovery, and trader discovery was the foundation for everything that came after: bots, plans, simulations, strategy ideas, and eventually copy trading decisions.
+The leaderboard gave it eyes.
 
-The copy engine could move.
+## Top 10 Was Not Enough
 
-Now the system needed eyes.
+Existing perp DEX leaderboards were useful, but they were too narrow for what I wanted.
 
-## Top 10 Was Not a Product Surface
+A top 10 leaderboard is fine if the goal is to show impressive traders. It works as a highlight reel.
 
-Existing perp DEX leaderboards were useful, but they were not built for the kind of system I wanted to create.
+But LuckyPlans needed more than highlights.
 
-Gains Network, for example, showed a limited group of top traders. That makes sense if the goal is to highlight impressive performance. A top 10 leaderboard is clean, simple, and easy to understand.
+I wanted to study many traders, not only the obvious winners. I needed enough history to ask better questions:
 
-But LuckyPlans needed more than a highlight reel.
+Who is consistent?
+Who is still active?
+Who had one lucky period?
+Who performs across different windows?
+Who looks good at first glance but weaker after inspection?
 
-The original idea had already moved beyond copying one famous trader. I wanted to build plans from multiple traders, with different weights, different behaviors, and eventually different strategy assumptions.
+Those questions matter because LuckyPlans was never meant to blindly follow one famous address. The plan model needed a broader trader universe.
 
-For that, I needed a wider trader universe.
+So I decided to build my own leaderboard.
 
-Not only the obvious winners.
-Not only the top 10.
-Not only the people already sitting under the spotlight.
+That was the moment a “simple table” became a data infrastructure problem.
 
-I needed enough historical data to ask better questions.
+Classic software moment: you start with a table and somehow end up designing a pipeline.
 
-Who is consistent? Who is still active? Who had one lucky period and then disappeared? Who performs well across different windows? Who might be useful inside a multi-trader plan? Who looks good at first glance but becomes much less attractive when you inspect the history?
+## Indexing the Raw History
 
-Those are not questions a small leaderboard can answer.
-
-So I decided to build my own.
-
-This was the moment the leaderboard stopped being a table and became infrastructure.
-
-## The Only Real Source Was On-Chain History
-
-If I wanted a real leaderboard, I needed real history.
+The only source I trusted was on-chain history.
 
 Not screenshots.
-Not API summaries I could not fully verify.
-Not someone else’s small ranking.
+Not summaries.
+Not someone else’s limited ranking.
 
-The source had to be on-chain events.
+If LuckyPlans needed a real leaderboard, it had to process real trade events.
 
-So I made a simple but heavy decision: fetch all trade history events from the smart contract deployment date to the present.
+So I started fetching trade history from the smart contract deployment date to the present. At that time, Gains Network activity existed across multiple chains, including Polygon, Base, Arbitrum, and ApeChain.
 
-At that time, Gains Network activity existed across multiple chains, including Polygon, Base, Arbitrum, and ApeChain. That meant the problem was not “query some trades and sort them.”
+That turned the leaderboard into a multi-chain indexing problem.
 
-It became a multi-chain indexing problem.
+Different chains. Different block ranges. Different RPC behavior. Different event histories. Different sync states.
 
-Different chains.
-Different block ranges.
-Different RPC behavior.
-Different contracts.
-Different event histories.
-Different sync states.
+Very peaceful work, if your definition of peace includes checking logs and wondering why one chain decided to develop a personality today.
 
-Very friendly. Very relaxing. Exactly the kind of thing you start when you think, “This should just be a leaderboard.”
+In the beginning, I followed the Gains Network event type system because it was practical. Before designing a perfect internal model, I needed to capture the raw truth.
 
-In the beginning, I did not try to invent a perfect abstraction. I followed the Gains Network event type system first because it was the practical choice. Before designing a beautiful internal model, I needed to capture the raw truth.
+Fetch events. Decode them. Store them. Calculate trader performance.
 
-The first job was straightforward in concept:
+Simple sentence.
 
-Fetch the events, decode them, store them, and calculate trader performance.
+Large amount of pain hiding inside it.
 
-Straightforward in concept is doing a lot of work in that sentence.
+## The First Build: 10GB, 10 Hours
 
-## The First Build Was Painful
+The first full historical build worked.
 
-The first historical build worked, but it was heavy.
+That was good.
 
-The trade history database grew to almost **10GB**.
+It was also painful.
 
-Building the leaderboard from historical logs took almost **10 hours**.
+The trade history database grew to almost **10GB**, and building the leaderboard from historical logs took almost **10 hours**.
 
-At first, I was happy because the system was finally collecting real data. The database was filling. The calculations were running. The leaderboard was no longer an idea; it was becoming visible.
+At first, I was happy. The data was there. The leaderboard existed. LuckyPlans had started turning on-chain history into something usable.
 
-Then the engineering reality arrived, as it always does, usually without knocking.
+Then the obvious problem arrived:
 
-A leaderboard that takes 10 hours to rebuild is not a leaderboard. It is a scheduled emotional event.
+A leaderboard that takes 10 hours to rebuild is not really a leaderboard.
 
-For LuckyPlans, this was not acceptable. The leaderboard was not just a page users might open sometimes. It was part of the product’s source of truth. It would support trader discovery, influence plan creation, and eventually become part of the research and simulation workflow.
+It is a scheduled emotional event.
 
-It needed to be fresh.
+For LuckyPlans, that was not acceptable. The leaderboard was not decoration. It would support trader discovery, plan creation, simulation, and eventually strategy research. It needed to stay fresh.
 
-If I wanted to update it daily, rebuilding everything from zero every time was not a strategy. It was a slow-motion confession that I had built the wrong process.
+Rebuilding everything from zero every time was not a strategy.
 
-The first version proved that the data could be processed.
+It was a confession.
 
-The second challenge was making it usable.
+The first version proved the data could be processed.
 
-## The Feature Became a Data Problem
-
-This was where the leaderboard became much more interesting technically.
-
-I had to stop thinking about it as a frontend feature and start treating it as a data pipeline.
-
-The real questions were not about table design. They were about state, history, and incremental computation.
-
-How do I process full historical data once and avoid doing it again? How do I prevent duplicate logs? How do I support multiple chains without losing track of sync progress? How do I calculate trader performance by day? How do I create leaderboard snapshots efficiently? How do I update rankings without scanning the entire history every time?
-
-The naive approach was easy: rebuild from the beginning every day.
-
-The naive approach also took 10 hours.
-
-So I spent around three days thinking through a better design. The key question became:
-
-**What actually changes each day?**
-
-That question unlocked the solution.
-
-Most of the historical data did not change. Yesterday’s closed trades did not need to be rediscovered. Last month’s events did not need to be reprocessed. The system only needed to understand what happened since the previous snapshot and apply those changes correctly.
-
-That sounds obvious after the fact.
-
-Most good optimizations do.
-
-Before the fact, they hide behind a 10-hour job and make you question your career choices.
+Now I had to make it usable.
 
 ## The Dynamic Leaderboard
 
-The solution was a dynamic leaderboard system.
+The key question was simple:
 
-The first full build still had to be heavy. There was no shortcut around processing the historical data once. If I wanted a complete foundation, I had to pay the initial cost.
+**What actually changes each day?**
 
-But after that, the system no longer needed to ask:
+Most historical data does not change. Yesterday’s closed trades do not need to be rediscovered. Last month’s events do not need to be reprocessed just because today exists.
 
-**“What happened from the beginning of time?”**
+So I redesigned the leaderboard around incremental updates.
 
-It only needed to ask:
+The first full build still had to be heavy. There was no way around processing the complete history once. But after that, the system only needed to ask:
 
-**“What changed since the last snapshot?”**
+**What changed since the last snapshot?**
 
 That changed everything.
 
-The system could carry forward previous leaderboard values, apply new daily activity, update accumulated performance, and save the next snapshot. Instead of rebuilding history every time, LuckyPlans could maintain history intelligently.
+LuckyPlans could carry forward previous leaderboard values, apply new daily activity, update accumulated performance, and save the next snapshot.
 
 The result was a major improvement:
 
-From almost **10 hours** to less than **3 minutes**.
+**From almost 10 hours to less than 3 minutes.**
 
-That was not just a performance win. It changed what the product could become.
+That was not just a performance win. It changed what the product could support.
 
 A 10-hour leaderboard is something you tolerate.
+
 A 3-minute leaderboard is something you can build on.
 
-Now LuckyPlans could support daily trader rankings. It could expose a much wider trader universe. It could keep the data layer fresh enough to support discovery, simulation, and eventually strategy research.
+Now LuckyPlans could maintain daily rankings, expose a broader trader universe, and keep the data fresh enough for discovery and simulation.
 
-The system had moved from batch pain to usable infrastructure.
+The leaderboard had moved from batch pain to usable infrastructure.
 
-That felt like a real breakthrough.
+## Why It Mattered
 
-## Why the Leaderboard Mattered
+This feature made LuckyPlans more than a copy trading executor.
 
-Looking back, the leaderboard was one of the first features that made LuckyPlans feel bigger than a copy trading executor.
-
-The executor answered one question:
+The executor answered:
 
 **Can the system copy a trade?**
 
-The leaderboard answered a better question:
+The leaderboard answered:
 
-**Who should the system even study?**
+**Who should the system study first?**
 
-That made it foundational.
+That was a much better product question.
 
-It gave LuckyPlans memory. It turned scattered on-chain events into structured history. It created a way to explore trader behavior beyond the obvious top performers. It gave the product a discovery layer instead of forcing everything to depend on one exciting address.
+The leaderboard gave LuckyPlans memory. It turned scattered on-chain events into structured trader history. It created a discovery layer beyond the top few winners. It became the foundation for comparing behavior, building plans, and eventually testing ideas before real execution.
 
-That mattered because the long-term idea was never supposed to be blind following.
+That was the important shift.
 
-The real product direction was more careful:
+LuckyPlans was not supposed to say:
 
-Observe first.
-Measure first.
-Compare first.
-Then build a plan.
+**“This trader looks profitable. Follow him.”**
 
-The leaderboard became the first serious step in that direction.
+It needed to say:
 
-It took public event logs and turned them into something closer to trading intelligence.
+**“Here is the data. Here is the behavior. Now we can compare.”**
 
-Not perfect intelligence. Not final proof. But a structured starting point.
+That is a very different product.
 
-And that starting point was essential.
+Less magical.
+
+Much more useful.
 
 ## The Lesson
 
-This feature taught me that simple product ideas often hide serious data problems.
-
-A leaderboard sounds easy from the outside.
+A leaderboard sounds simple from the outside.
 
 Rank traders by profit.
 Show a table.
-Add some filters.
+Add filters.
 Done.
 
-But for LuckyPlans, the leaderboard required multi-chain indexing, historical event processing, database design, daily snapshots, duplicate protection, incremental updates, and enough performance work to keep the system usable.
+In reality, LuckyPlans needed multi-chain indexing, historical event processing, database design, snapshot logic, duplicate protection, and incremental updates just to make that table reliable.
 
 That was the real work.
 
-And solving it changed the project.
+And solving it changed the product.
 
-After the dynamic leaderboard, LuckyPlans was no longer just a copy trading proof of concept. It had a data layer. It had history. It had a source of truth. It had the beginning of trader discovery.
+After the dynamic leaderboard, LuckyPlans had more than an executor. It had a data layer, a history layer, and the beginning of trader discovery.
 
 The copy engine proved LuckyPlans could react.
 
-The leaderboard helped LuckyPlans understand what to react to.
+The leaderboard helped LuckyPlans understand what was worth reacting to.
 
-That was a very different kind of progress.
-
-And going from 10 hours to 3 minutes made the product feel less like a personal experiment and more like something that could actually scale.
+Going from **10 hours to 3 minutes** made the system feel less like a side experiment and more like infrastructure that could actually grow.
