@@ -185,16 +185,16 @@ export default async function TizzCaseStudyPage() {
           />
 
           <RelatedNotesSection
-            title="Related Notes"
-            intro="Engineering notes connected to this delivery"
+            title="Related Blogs"
+            intro="Founder journey chapters connected to this delivery"
             notes={
               relatedNotes.length > 0
                 ? relatedNotes.map((note) => (
                     <Link
                       key={note.slug}
-                      href={`/notes/${note.slug}`}
+                      href="/blogs"
                       className="group block"
-                      aria-label={`Read note: ${note.title}`}
+                      aria-label="Open the blog archive"
                     >
                       <span className="text-[11px] uppercase tracking-[0.08em] text-[var(--muted)]">
                         {note.category}

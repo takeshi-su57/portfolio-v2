@@ -9,7 +9,6 @@ import {
   EMAILJS_TEMPLATE_ID,
   hasEmailJsConfig,
 } from "@/config";
-import { resumeData } from "@/data/resume";
 import { Notification, validateEmail } from "@/helpers";
 
 interface ContactInputs {
@@ -40,9 +39,15 @@ export default function Contact() {
       setContactActive(true);
     }
 
-    window.addEventListener("open-contact-modal", handleOpenContact as EventListener);
+    window.addEventListener(
+      "open-contact-modal",
+      handleOpenContact as EventListener,
+    );
     return () => {
-      window.removeEventListener("open-contact-modal", handleOpenContact as EventListener);
+      window.removeEventListener(
+        "open-contact-modal",
+        handleOpenContact as EventListener,
+      );
     };
   }, []);
 
@@ -56,11 +61,17 @@ export default function Contact() {
           <p className="text-[12px] font-semibold uppercase tracking-[0.08em] text-[var(--accent)]">
             Contact
           </p>
-          <h2 data-aos="fade-right" className="mt-2 text-[32px] font-semibold leading-tight text-[var(--text)] md:text-[40px]">
+          <h2
+            data-aos="fade-right"
+            className="mt-2 text-[32px] font-semibold leading-tight text-[var(--text)] md:text-[40px]"
+          >
             Let&apos;s Ship What Matters{" "}
             <span className="text-[var(--accent)]">Possible.</span>
           </h2>
-          <p data-aos="fade-right" className="mt-3 text-[18px] text-[var(--text)] md:text-[20px]">
+          <p
+            data-aos="fade-right"
+            className="mt-3 text-[18px] text-[var(--text)] md:text-[20px]"
+          >
             Need a senior engineer who can scope clearly and deliver reliably?{" "}
             <button
               type="button"
@@ -71,60 +82,17 @@ export default function Contact() {
             </button>
           </p>
           <p className="mt-4 max-w-[680px] text-[14px] leading-7 text-[var(--muted)]">
-            Share your objective, timeline, and current blockers. I&apos;ll reply with a
-            practical delivery plan, realistic next steps, and where I can add the
-            most leverage fastest.
-          </p>
-          <p className="mt-3 max-w-[680px] text-[14px] leading-7 text-[var(--muted)]">
-            Prefer direct channels:
-          </p>
-          <ul className="mt-2 flex flex-wrap items-center gap-x-4 gap-y-2 text-[14px]">
-            <li>
-              <a
-                href={`mailto:${resumeData.socials.email}`}
-                className="text-[var(--accent)] underline underline-offset-2"
-              >
-                Email
-              </a>
-            </li>
-            <li>
-              <a
-                href={resumeData.socials.github}
-                target="_blank"
-                rel="noreferrer"
-                className="text-[var(--accent)] underline underline-offset-2"
-              >
-                GitHub
-              </a>
-            </li>
-            <li>
-              <a
-                href={resumeData.socials.linkedin}
-                target="_blank"
-                rel="noreferrer"
-                className="text-[var(--accent)] underline underline-offset-2"
-              >
-                LinkedIn
-              </a>
-            </li>
-            <li>
-              <a
-                href="/CV/resume.pdf"
-                target="_blank"
-                rel="noreferrer"
-                className="text-[var(--accent)] underline underline-offset-2"
-              >
-                Resume PDF
-              </a>
-            </li>
-          </ul>
-          <p className="mt-2 max-w-[680px] text-[13px] leading-6 text-[var(--muted)]">
-            You can also use the contact form for detailed project briefs.
+            Share your objective, timeline, and current blockers. I&apos;ll
+            reply with a practical delivery plan, realistic next steps, and
+            where I can add the most leverage fastest.
           </p>
         </section>
       </div>
 
-      <ContactForm contactActive={contactActive} closeContactForm={closeContactForm} />
+      <ContactForm
+        contactActive={contactActive}
+        closeContactForm={closeContactForm}
+      />
     </div>
   );
 }
@@ -210,7 +178,9 @@ function ContactForm({ contactActive, closeContactForm }: ContactFormProps) {
         }`}
       >
         <div className="relative flex w-full flex-row items-start justify-start pb-2 pt-1">
-          <h3 className="py-2 text-[34px] font-semibold leading-none text-[var(--text)] md:text-[30px]">Contact Me</h3>
+          <h3 className="py-2 text-[34px] font-semibold leading-none text-[var(--text)] md:text-[30px]">
+            Contact Me
+          </h3>
           <button
             type="button"
             onClick={closeContactForm}
@@ -272,7 +242,11 @@ function ContactForm({ contactActive, closeContactForm }: ContactFormProps) {
             type="submit"
             className="w-full rounded-md border border-[var(--line)] bg-[var(--surface)] px-2 py-3 text-center text-[17px] font-medium text-[var(--text)] transition-all hover:bg-[var(--line)]"
           >
-            {loading ? <span className="text-[var(--accent)]">Sending message...</span> : "Send Message"}
+            {loading ? (
+              <span className="text-[var(--accent)]">Sending message...</span>
+            ) : (
+              "Send Message"
+            )}
           </button>
         </form>
       </div>

@@ -11,13 +11,13 @@ interface NavBarProps {
 
 const navItems: { key: Exclude<NavPage, "home" | "about">; label: string; href: string }[] = [
   { key: "projects", label: "Projects", href: "/projects" },
-  { key: "notes", label: "Notes", href: "/notes" },
+  { key: "blogs", label: "Blogs", href: "/blogs" },
   { key: "archive", label: "Archive", href: "/archive" },
   { key: "contact", label: "Contact", href: "/#contact" },
 ];
 const mobileIconByKey: Record<Exclude<NavPage, "home" | "about">, React.ComponentType<{ className?: string }>> = {
   projects: FiPackage,
-  notes: FiBookOpen,
+  blogs: FiBookOpen,
   archive: FiArchive,
   contact: FiMail,
 };

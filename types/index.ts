@@ -1,4 +1,4 @@
-export type NavPage = "home" | "about" | "projects" | "notes" | "archive" | "contact";
+export type NavPage = "home" | "about" | "projects" | "blogs" | "archive" | "contact";
 
 export interface SocialLinks {
   linkedin: string;
