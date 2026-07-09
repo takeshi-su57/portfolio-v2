@@ -101,11 +101,11 @@ const projectArchive = [
     type: "Perpetual DEX",
     role: "Senior Full-Stack Engineer",
     stack: ["Next.js", "NestJS", "Botanix", "viem", "Redis"],
-    proofLabel: "Product case study",
+    proofLabel: "Private case study",
     proofHref: "/projects/tizz",
     caseStudyPath: "/projects/tizz",
     summary:
-      "Built perp trading UX and custom Botanix indexing to keep position and market state reliable.",
+      "Built perp trading UX and a custom Botanix indexer with checkpoints, replay safety, and reconciliation to keep market state trustworthy.",
     status: "Production",
     projectUrl: "/projects/tizz",
   },
@@ -119,7 +119,7 @@ const projectArchive = [
     proofHref: "https://sonar.trade/",
     caseStudyPath: "/projects/sonar",
     summary:
-      "Expanded strategy automation from EVM-only behavior to multi-chain EVM plus Solana execution.",
+      "Expanded strategy automation from EVM-only execution to EVM plus Solana support without breaking existing operator behavior.",
     status: "Production",
     projectUrl: "https://sonar.trade/",
   },
@@ -133,7 +133,7 @@ const projectArchive = [
     proofHref: "https://fullsail.finance/",
     caseStudyPath: "/projects/fullsail",
     summary:
-      "Delivered swap, liquidity, and governance surfaces for a Ve(3,3)-inspired DEX.",
+      "Delivered launch-critical swap, liquidity, and governance flows for a Sui DEX with wallet and transaction reliability pressure.",
     status: "Production",
     projectUrl: "https://fullsail.finance/",
   },
@@ -146,7 +146,7 @@ const projectArchive = [
     proofLabel: "Company site",
     proofHref: "http://klyro.security/",
     summary:
-      "Supported MVP architecture and delivery for AI-assisted IGA connector workflows.",
+      "Supported MVP architecture and delivery for AI-assisted identity-governance connector workflows under rapid product exploration.",
     status: "MVP",
     projectUrl: "http://klyro.security/",
   },
@@ -159,7 +159,7 @@ const projectArchive = [
     proofLabel: "Company site",
     proofHref: "https://www.urbanmix.tech/",
     summary:
-      "Built real-estate product features and visualization-heavy interfaces on Firebase.",
+      "Built real-estate product features and visualization-heavy interfaces on Firebase for an early-stage proptech product.",
     status: "Production",
     projectUrl: "https://www.urbanmix.tech/",
   },
@@ -167,15 +167,15 @@ const projectArchive = [
 
 export const resumeData = {
   fullName: "Takeshi Suzuki",
-  role: "Senior Full-Stack Engineer for Web3, AI",
+  role: "Senior Product Engineer for Web3 and AI Systems",
   tagLine:
     "Senior full-stack engineer shipping AI and Web3 products from concept to scale.",
   introTagline:
-    "I help founders and engineering teams turn complex ideas into shipped software: frontend experiences, backend APIs, blockchain integrations, AI workflows, CI/CD, and cloud infrastructure.",
+    "I help founders ship production-ready Web3 and AI products end-to-end, from UX and APIs to blockchain data, agent workflows, CI/CD, and cloud deployment.",
   subTitle:
     "Role-first execution across frontend and backend with measurable delivery outcomes.",
   profileSummary:
-    "Strongest in fast-moving teams where one engineer needs to own product delivery from architecture to production.",
+    "Best fit for founders and product teams that need one senior engineer to turn ambiguity, blockers, and system complexity into shipped software.",
   yearsOfExperience: 8,
   greetingType: "Hi",
   favoriteQuote:
@@ -229,13 +229,13 @@ export const resumeData = {
     },
   ],
   deliverySnapshot: [
-    { value: "8+", label: "Years building production software" },
-    { value: "5+", label: "Contract engagements delivered" },
-    { value: "100+", label: "Backend endpoints shipped" },
-    { value: "20+", label: "Reusable UI components built" },
+    { value: "8+", label: "Years shipping production web apps" },
+    { value: "5+", label: "Startup and client engagements delivered" },
+    { value: "100+", label: "APIs shipped across SaaS and Web3 products" },
+    { value: "20+", label: "Production UI surfaces and reusable flows shipped" },
     {
       value: "Sui / EVM / Solana / Botanix",
-      label: "Web3 delivery coverage",
+      label: "Multi-chain delivery coverage",
     },
   ],
   ownershipAreas: [
@@ -344,6 +344,21 @@ export const resumeData = {
         "Infrastructure setup, CI/CD pipelines, observability, and performance tuning on AWS-first deployment stacks.",
     },
   ],
+  founderProof: {
+    eyebrow: "Founder Proof",
+    title: "LuckyPlans",
+    description:
+      "Founder-built simulation-first copy-trading research platform shaped by real Web3 execution, failed assumptions, and product iteration under pressure.",
+    bullets: [
+      "Built across leaderboards, indexing, simulation, strategy research, and multi-platform product thinking.",
+      "Learned exactly where backtests, execution reality, and user safety diverge in production systems.",
+      "Shows founder empathy alongside deep engineering ownership for other early-stage teams.",
+    ],
+    links: [
+      { label: "Read founder journey", href: "/blogs" },
+      { label: "View related projects", href: "/projects" },
+    ],
+  },
   seoProfile: {
     defaultTitle: "Takeshi Suzuki | Senior Full-Stack Engineer",
     titleTemplate: "%s | Takeshi Suzuki",
@@ -389,13 +404,13 @@ export const resumeData = {
       projectUrl: "https://fullsail.finance/",
       caseStudyPath: "/projects/fullsail",
       description:
-        "Delivered a Ve(3,3)-inspired Sui DEX from product surfaces to backend and on-chain integration, including swap, liquidity, and governance workflows.",
+        "Built launch-critical Sui DEX flows across swap, liquidity, and governance while solving wallet reliability and transaction-state complexity under deadline pressure.",
       context:
         "Sui-based DEX focused on sustainable liquidity incentives, voting, and emissions design.",
       challenge:
-        "Translate advanced DeFi mechanics into wallet-friendly UX while preserving transaction reliability.",
+        "Translate advanced DeFi mechanics into wallet-friendly UX while keeping signatures, finality, and recovery states reliable.",
       outcome:
-        "Shipped production-ready multi-surface DEX experience on Sui with full-stack delivery ownership.",
+        "Shipped a production-ready Sui DEX experience with stronger transaction clarity and lower launch risk.",
       tags: ["Next.js", "NestJS", "Sui", "GraphQL", "AWS ECS"],
     },
     {
@@ -404,13 +419,13 @@ export const resumeData = {
       projectUrl: "https://sonar.trade/",
       caseStudyPath: "/projects/sonar",
       description:
-        "Expanded an on-chain trading automation platform from EVM-only architecture to dual EVM+Solana execution while modernizing UX and strategy orchestration.",
+        "Expanded an automated trading platform from EVM-only execution to EVM plus Solana while preserving trusted behavior and improving strategy setup UX.",
       context:
         "Algorithmic trading product requiring multi-chain parity and strategy execution reliability.",
       challenge:
-        "Add Solana support without breaking established EVM behavior or degrading automation performance.",
+        "Add Solana support without breaking established EVM behavior or introducing operator risk during rollout.",
       outcome:
-        "Enabled multi-chain strategy execution with compatible v1 behavior and upgraded product usability.",
+        "Enabled stable multi-chain strategy execution with backward-compatible behavior for existing operators.",
       tags: ["Next.js", "NestJS", "Solana", "PostgreSQL", "Prisma"],
     },
     {
@@ -419,13 +434,13 @@ export const resumeData = {
       projectUrl: "/projects/tizz",
       caseStudyPath: "/projects/tizz",
       description:
-        "Built perp trading interfaces and a custom Botanix indexing pipeline to support real-time event ingestion where subgraph tooling was unavailable.",
+        "Built perp trading UX and a custom Botanix indexer where hosted subgraph tooling was unavailable, with replay-safe event processing and reconciliation.",
       context:
         "Perp trading product with custom Botanix indexing requirements.",
       challenge:
-        "No subgraph support, requiring reliable event ingestion, reconciliation, and sync handling.",
+        "No subgraph support, requiring reliable event ingestion, checkpoints, recovery paths, and sync handling from scratch.",
       outcome:
-        "Launched responsive perp UX and reliable off-chain indexing for high-frequency on-chain updates.",
+        "Launched responsive perp UX backed by dependable off-chain indexing for high-frequency on-chain updates.",
       tags: ["Next.js", "NestJS", "viem", "Botanix", "Redis"],
     },
     {
@@ -652,11 +667,11 @@ export const resumeData = {
         "Balanced live updates with API caching to reduce UX jitter",
       ],
       outcome:
-        "Shipped a production-ready DEX experience with complete swap, liquidity, and governance surfaces.",
+        "Shipped launch-critical swap, liquidity, and governance flows with clearer wallet recovery paths and lower release risk.",
       outcomes: [
-        "Launched campaign-critical DeFi flows on schedule",
-        "Reduced support incidents tied to unclear transaction states",
-        "Improved release confidence for founder-facing launch milestones",
+        "Shipped campaign-critical DeFi flows in time for the launch window",
+        "Improved transaction reliability with deterministic wallet and recovery states",
+        "Reduced launch risk by separating Sui-specific adapters from core UI behavior",
       ],
       buildNext: [
         "Add governance and emissions analytics panels for operators",
@@ -711,11 +726,11 @@ export const resumeData = {
         "Prioritized compatibility and operator trust over aggressive feature expansion",
       ],
       outcome:
-        "Delivered stable multi-chain automation with better usability and preserved v1 trust from existing users.",
+        "Delivered stable multi-chain automation while preserving trusted EVM behavior and improving setup clarity for operators.",
       outcomes: [
-        "Enabled production multi-chain strategy execution across EVM and Solana",
-        "Maintained backward-compatible behavior for existing operators",
-        "Reduced strategy misconfiguration risk with clearer setup constraints",
+        "Enabled production strategy execution across both EVM and Solana environments",
+        "Protected existing operator trust by keeping legacy strategy behavior backward-compatible",
+        "Reduced misconfiguration risk with clearer setup constraints and stronger UX guardrails",
       ],
       buildNext: [
         "Add pre-trade simulation previews for strategy validation",
@@ -773,11 +788,11 @@ export const resumeData = {
         "Prioritized data consistency and recovery flows over minimal backend complexity",
       ],
       outcome:
-        "Launched a production-ready perp trading experience with dependable off-chain indexing for high-frequency chain activity.",
+        "Launched a production-ready perp trading experience backed by dependable custom indexing on a chain without hosted subgraph support.",
       outcomes: [
-        "Shipped live perp UX backed by custom indexing infrastructure",
-        "Improved data correctness through replay and reconciliation safeguards",
-        "Established maintainable operations for high-frequency chain ingestion",
+        "Built a custom Botanix indexer when hosted subgraph tooling was unavailable",
+        "Added replay-safe projections, persistent checkpoints, and reconciliation jobs",
+        "Connected indexer outputs to trader-facing market and position views with maintainable recovery paths",
       ],
       buildNext: [
         "Introduce anomaly detection for index lag and projection drift",

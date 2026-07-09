@@ -5,6 +5,7 @@ export interface FounderJourneyBlog {
   series: string;
   part: string;
   chapter: string;
+  chapterLabel: string;
   markdown: string;
   slugSegments: string[];
   slug: string;
@@ -61,6 +62,16 @@ function getBlogMeta(relativeDir: string) {
   return { series, part, chapter };
 }
 
+function formatChapterLabel(chapter: string) {
+  const leadingNumber = chapter.match(/^(\d+)/)?.[1];
+
+  if (leadingNumber) {
+    return `Chapter ${leadingNumber}`;
+  }
+
+  return chapter.replace(/[_-]+/g, " ").replace(/\s+/g, " ").trim();
+}
+
 function formatEyebrow(series: string, part: string) {
   return `${series} · ${part}`;
 }
@@ -93,6 +104,7 @@ async function readBlogDirectory(
     series,
     part,
     chapter,
+    chapterLabel: formatChapterLabel(chapter),
     markdown,
     slugSegments,
     slug: slugSegments.join("/"),
@@ -143,6 +155,20 @@ export async function getFounderJourneyBlogs(): Promise<FounderJourneyBlog[]> {
 export async function getFounderJourneyBlogBySlug(slug: string) {
   const blogs = await getFounderJourneyBlogs();
   return blogs.find((blog) => blog.slug === slug);
+}
+
+export async function getFounderJourneyBlogNeighbors(slug: string) {
+  const blogs = await getFounderJourneyBlogs();
+  const index = blogs.findIndex((blog) => blog.slug === slug);
+
+  if (index === -1) {
+    return {};
+  }
+
+  return {
+    previousBlog: index > 0 ? blogs[index - 1] : undefined,
+    nextBlog: index < blogs.length - 1 ? blogs[index + 1] : undefined,
+  };
 }
 
 export function groupBlogsByPart(

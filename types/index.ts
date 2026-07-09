@@ -51,6 +51,19 @@ export interface AvailabilityItem {
   label: string;
 }
 
+export interface FounderProofLink {
+  label: string;
+  href: string;
+}
+
+export interface FounderProofSection {
+  eyebrow: string;
+  title: string;
+  description: string;
+  bullets: string[];
+  links: FounderProofLink[];
+}
+
 export interface CaseStudyMeta {
   role: string;
   timeline: string;
@@ -117,8 +130,14 @@ export interface EngineeringNote {
 }
 
 export interface ProjectArchiveItem {
+  year?: string;
   title: string;
   summary: string;
+  type?: string;
+  role?: string;
+  proofLabel?: string;
+  proofHref?: string;
+  caseStudyPath?: string;
   status?: string;
   stack?: string[];
   projectUrl?: string;
@@ -150,6 +169,7 @@ export interface ResumeContent {
   ownershipAreas?: OwnershipArea[];
   technicalStackGroups?: TechnicalStackGroup[];
   availableFor?: AvailabilityItem[];
+  founderProof?: FounderProofSection;
   projectCaseStudies?: Record<CaseStudyKey, CaseStudySection>;
   engineeringNotes?: EngineeringNote[];
   projectArchive?: ProjectArchiveItem[];

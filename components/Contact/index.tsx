@@ -65,14 +65,13 @@ export default function Contact() {
             data-aos="fade-right"
             className="mt-2 text-[32px] font-semibold leading-tight text-[var(--text)] md:text-[40px]"
           >
-            Let&apos;s Ship What Matters{" "}
-            <span className="text-[var(--accent)]">Possible.</span>
+            Let&apos;s Ship What Matters.
           </h2>
           <p
             data-aos="fade-right"
             className="mt-3 text-[18px] text-[var(--text)] md:text-[20px]"
           >
-            Need a senior engineer who can scope clearly and deliver reliably?{" "}
+            Need a senior engineer who can turn scope into shipped product?{" "}
             <button
               type="button"
               className="cursor-pointer text-[var(--accent)] underline underline-offset-2"
@@ -82,9 +81,12 @@ export default function Contact() {
             </button>
           </p>
           <p className="mt-4 max-w-[680px] text-[14px] leading-7 text-[var(--muted)]">
-            Share your objective, timeline, and current blockers. I&apos;ll
-            reply with a practical delivery plan, realistic next steps, and
-            where I can add the most leverage fastest.
+            Share your product goal, timeline, and current blocker. I&apos;ll
+            reply with a practical delivery path and where I can help fastest.
+          </p>
+          <p className="mt-3 max-w-[680px] text-[13px] leading-7 text-[var(--muted)]">
+            Best fit: Web3 product engineering, AI workflows, full-stack MVPs,
+            blockchain data systems, and production delivery.
           </p>
         </section>
       </div>

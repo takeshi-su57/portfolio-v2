@@ -82,25 +82,13 @@ export default async function HomePage() {
           </RevealWrapper>
         </Section>
 
-        <Section id="best-fit" className="!py-6 md:!py-7">
-          <RevealWrapper delayMs={40}>
-            <EditorialHeading
-              as="h2"
-              eyebrow="Best Fit"
-              title="Where I Add The Most Value"
-              description="Delivery scopes where I can contribute quickly and own outcomes."
-            />
-            <BestFitPills items={bestFitItems} className="mt-6" />
-          </RevealWrapper>
-        </Section>
-
         <Section id="about-2" className="!py-6 md:!py-7">
-          <RevealWrapper delayMs={50}>
+          <RevealWrapper delayMs={40}>
             <EditorialHeading
               as="h2"
               eyebrow="Snapshot"
               title="Delivery Snapshot"
-              description="Recent proof points from production delivery ownership."
+              description="Fast trust signals for founders who need production delivery, not just implementation."
             />
             <ul className="mt-6 grid gap-3 md:grid-cols-2 lg:grid-cols-3">
               {resumeData.deliverySnapshot.map((item) => (
@@ -120,12 +108,24 @@ export default async function HomePage() {
           </RevealWrapper>
         </Section>
 
+        <Section id="best-fit" className="!py-6 md:!py-7">
+          <RevealWrapper delayMs={50}>
+            <EditorialHeading
+              as="h2"
+              eyebrow="Best Fit"
+              title="Where I Add The Most Value"
+              description="Delivery scopes where I can contribute quickly, reduce product risk, and own outcomes."
+            />
+            <BestFitPills items={bestFitItems} className="mt-6" />
+          </RevealWrapper>
+        </Section>
+
         <Section id="projects" className="!pt-12 md:!pt-16">
           <RevealWrapper delayMs={60}>
             <EditorialHeading
               eyebrow="Selected Work"
               title="Featured Projects"
-              description="A concise sample of recent full-stack delivery across SaaS, AI, and Web3."
+              description="Founder-relevant case studies where product pressure, technical complexity, and delivery ownership all mattered."
             />
             <div className="mt-8">
               <ProjectGrid projects={resumeData.featuredProjects} limit={3} />
@@ -133,8 +133,36 @@ export default async function HomePage() {
           </RevealWrapper>
         </Section>
 
-        <Section id="about-3" className="!pt-12">
+        <Section id="founder-proof" className="!pt-12">
           <RevealWrapper delayMs={70}>
+            <EditorialHeading
+              as="h2"
+              eyebrow={resumeData.founderProof.eyebrow}
+              title={resumeData.founderProof.title}
+              description={resumeData.founderProof.description}
+            />
+            <ul className="mt-6 grid gap-3 md:grid-cols-3">
+              {resumeData.founderProof.bullets.map((bullet) => (
+                <li
+                  key={bullet}
+                  className="list-none border border-[var(--line)] bg-[var(--surface)] p-4"
+                >
+                  <p className="text-[14px] leading-7 text-[var(--muted)]">{bullet}</p>
+                </li>
+              ))}
+            </ul>
+            <div className="mt-5 flex flex-wrap gap-3">
+              {resumeData.founderProof.links.map((link) => (
+                <Link key={link.href} href={link.href} className={ctaClassName}>
+                  {link.label}
+                </Link>
+              ))}
+            </div>
+          </RevealWrapper>
+        </Section>
+
+        <Section id="about-3" className="!pt-12">
+          <RevealWrapper delayMs={80}>
             <EditorialHeading
               as="h2"
               eyebrow="Ownership"
@@ -160,7 +188,7 @@ export default async function HomePage() {
         </Section>
 
         <Section id="about-5" className="!pt-12">
-          <RevealWrapper delayMs={80}>
+          <RevealWrapper delayMs={90}>
             <EditorialHeading
               as="h2"
               eyebrow="Stack"
@@ -193,12 +221,12 @@ export default async function HomePage() {
         </Section>
 
         <Section id="notes-preview" className="!pt-12">
-          <RevealWrapper delayMs={90}>
+          <RevealWrapper delayMs={100}>
             <EditorialHeading
               as="h2"
               eyebrow="Blogs"
               title="Founder Journey Preview"
-              description="Selected LuckyPlans chapters from the blog archive."
+              description="Selected LuckyPlans chapters that show how I test assumptions, debug product risk, and adapt when production reality disagrees with the plan."
             />
             <div className="mt-6 grid gap-3 md:grid-cols-3">
               {blogPreview.map((blog) => (
@@ -213,7 +241,7 @@ export default async function HomePage() {
                     {blog.title}
                   </h3>
                   <p className="mt-1 text-[11px] uppercase tracking-[0.08em] text-[var(--muted)]">
-                    Chapter: {blog.chapter}
+                    {blog.chapterLabel}
                   </p>
                   <p className="mt-2 text-[13px] leading-7 text-[var(--muted)]">
                     {blog.excerpt}
@@ -230,7 +258,7 @@ export default async function HomePage() {
         </Section>
 
         <Section id="archive-preview" className="!pt-12">
-          <RevealWrapper delayMs={100}>
+          <RevealWrapper delayMs={110}>
             <EditorialHeading
               as="h2"
               eyebrow="Archive"
@@ -247,7 +275,7 @@ export default async function HomePage() {
         </Section>
 
         <Section id="about-4" className="!pt-12">
-          <RevealWrapper delayMs={110}>
+          <RevealWrapper delayMs={120}>
             <EditorialHeading
               as="h2"
               eyebrow="Timeline"

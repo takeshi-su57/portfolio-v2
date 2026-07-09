@@ -53,7 +53,7 @@ export default async function ArchivePage() {
             as="h1"
             eyebrow="Archive"
             title="Project Archive"
-            description="A complete index of shipped work with case studies and external proof links."
+            description="A broader record of shipped work, external proof, and delivery contexts behind the featured case studies."
           />
         </Section>
 

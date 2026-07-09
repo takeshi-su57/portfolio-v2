@@ -34,11 +34,17 @@ export default async function BlogsPage() {
             as="h1"
             eyebrow="Blogs"
             title="Founder Journey"
-            description="Static blog pages generated directly from the LuckyPlans blog folders and attachments."
+            description="A curated LuckyPlans series showing how product ideas, trading systems, indexing, simulation, and execution reality shaped my founder-engineer perspective."
           />
         </Section>
 
         <Section className="!pt-4 !pb-16">
+          <div className="mb-10 border border-[var(--line)] bg-[var(--surface)] p-5">
+            <p className="max-w-3xl text-[14px] leading-7 text-[var(--muted)]">
+              This series shows how I build, test assumptions, debug product risk,
+              and adapt when production reality disagrees with the original plan.
+            </p>
+          </div>
           <div className="space-y-10">
             {groupedPosts.map((group) => (
               <section key={`${group.series}-${group.part}`} className="space-y-4">
@@ -72,7 +78,7 @@ export default async function BlogsPage() {
                       ) : null}
                       <div className="p-5">
                         <p className="text-[11px] uppercase tracking-[0.08em] text-[var(--accent)]">
-                          {post.chapter}
+                          {post.chapterLabel}
                         </p>
                         <h3 className="mt-2 text-[18px] font-semibold leading-snug text-[var(--text)]">
                           {post.title}
@@ -81,12 +87,14 @@ export default async function BlogsPage() {
                           {post.excerpt}
                         </p>
                         <div className="mt-4 flex items-center justify-between gap-3 text-[11px] text-[var(--muted)]">
-                          <span>{post.imageUrls.length} attachments</span>
+                          <span>
+                            {post.imageUrls.length} visual{post.imageUrls.length === 1 ? "" : "s"}
+                          </span>
                           <Link
                             href={`/blogs/${post.slug}`}
                             className="text-[var(--text)] underline underline-offset-4"
                           >
-                            Read blog
+                            Read chapter
                           </Link>
                         </div>
                       </div>

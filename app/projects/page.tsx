@@ -29,7 +29,7 @@ export default async function ProjectsPage() {
             as="h1"
             eyebrow="Projects"
             title="Selected Case Studies"
-            description="Case-study snapshots of shipped work across SaaS, Web3, and AI-enabled products."
+            description="Founder-relevant case studies across Web3, AI, and production product delivery."
           />
         </Section>
 
